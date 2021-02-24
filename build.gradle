@@ -1,0 +1,41 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        maven{ url = "http://maven.aliyun.com/nexus/content/groups/public/" }
+        mavenCentral()
+        google()
+        jcenter()
+        maven { url "https://dl.bintray.com/tencentqcloundterminal/maven" };
+        maven { url 'https://dl.bintray.com/umsdk/release' }//友盟
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.2'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        maven{ url = "http://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url "https://jitpack.io" }//这就是添加的
+        google()
+        jcenter()
+        maven { url "https://dl.bintray.com/tencentqcloundterminal/maven" };
+        maven { url 'https://dl.bintray.com/umsdk/release' }//友盟
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    buildToolsVersion = "30.0.2"
+    compileSdkVersion = 30
+    minSdkVersion = 19
+    targetSdkVersion = 30
+    supportLibraryVersion = "30.0.2"
+}

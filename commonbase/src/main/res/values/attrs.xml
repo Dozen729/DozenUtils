@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleView">
+        <attr name="backPicture" format="reference"/>
+
+        <attr name="titleColor" format="color"/>
+        <attr name="titleName" format="string"/>
+        <attr name="titleSize" format="dimension"/>
+
+        <attr name="rightTextShow" format="boolean"/>
+        <attr name="rightTextColor" format="color"/>
+        <attr name="rightTextName" format="string"/>
+        <attr name="rightTextSize" format="dimension"/>
+
+        <attr name="rightImageShow" format="boolean"/>
+        <attr name="rightImagePicture" format="reference"/>
+        <attr name="rightBackgroundColor" format="color"/>
+
+        <attr name="titleLeftShow" format="boolean"/>
+        <attr name="titleLine" format="boolean"/>
+        <attr name="topBackground" format="color"/>
+    </declare-styleable>
+
+    <!--垂直滚动字幕-->
+    <declare-styleable name="VerticalRollingTextView">
+        <!--文字颜色-->
+        <attr name="android:textColor"/>
+        <!--文字大小-->
+        <attr name="android:textSize"/>
+        <!--滚动动画时长-->
+        <attr name="android:duration"/>
+        <!--两次动画之间的间隔-->
+        <attr name="animInterval" format="integer"/>
+    </declare-styleable>
+
+    <!--edit clear图标-->
+    <declare-styleable name="ClearDrawable">
+        <attr name="needClearDrawable" format="boolean"/>
+    </declare-styleable>
+
+    <!--价格-->
+    <declare-styleable name="PriceView">
+        <attr name="text_front" format="string" />
+        <attr name="text_front_size" format="dimension" />
+        <attr name="text_front_color" format="color" />
+        <attr name="text_symbol" format="dimension" />
+        <attr name="show_symbol" format="boolean" />
+        <attr name="text_yuan" format="dimension" />
+        <attr name="text_cent" format="dimension" />
+        <attr name="text_desc" format="string" />
+        <attr name="text_desc_size" format="dimension" />
+        <attr name="text_desc_color" format="color" />
+        <attr name="text_color" format="color" />
+
+        <attr name="text_style" format="enum">
+            <enum name="bold" value="0"/>
+            <enum name="nomal" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <!--圆形头像-->
+    <declare-styleable name="HelloView">
+        <attr name="exampleName" format="string" />
+        <attr name="exampleDimension" format="dimension" />
+        <attr name="exampleColor" format="color" />
+        <attr name="exampleDrawable" format="reference" />
+    </declare-styleable>
+
+    <!-- 以下是重用attr的正确姿势,一切为了在布局中可以自动提示-->
+    <!-- 圆角矩形背景色 -->
+    <attr name="rv_backgroundColor" format="color"/>
+    <!-- 圆角矩形背景色press -->
+    <attr name="rv_backgroundPressColor" format="color"/>
+    <!-- 圆角弧度,单位dp-->
+    <attr name="rv_cornerRadius" format="dimension"/>
+    <!-- 圆角弧度,单位dp-->
+    <attr name="rv_strokeWidth" format="dimension"/>
+    <!-- 圆角边框颜色-->
+    <attr name="rv_strokeColor" format="color"/>
+    <!-- 圆角边框颜色press -->
+    <attr name="rv_strokePressColor" format="color"/>
+    <!-- 文字颜色press-->
+    <attr name="rv_textPressColor" format="color"/>
+    <!-- 圆角弧度是高度一半-->
+    <attr name="rv_isRadiusHalfHeight" format="boolean"/>
+    <!-- 圆角矩形宽高相等,取较宽高中大值-->
+    <attr name="rv_isWidthHeightEqual" format="boolean"/>
+    <!-- 圆角弧度,单位dp,TopLeft-->
+    <attr name="rv_cornerRadius_TL" format="dimension"/>
+    <!-- 圆角弧度,单位dp,TopRight-->
+    <attr name="rv_cornerRadius_TR" format="dimension"/>
+    <!-- 圆角弧度,单位dp,BottomLeft-->
+    <attr name="rv_cornerRadius_BL" format="dimension"/>
+    <!-- 圆角弧度,单位dp,BottomRight-->
+    <attr name="rv_cornerRadius_BR" format="dimension"/>
+    <!-- 是否有Ripple效果,api21+有效-->
+    <attr name="rv_isRippleEnable" format="boolean"/>
+
+    <declare-styleable name="RoundTextView">
+        <attr name="rv_backgroundColor"/>
+        <attr name="rv_backgroundPressColor"/>
+        <attr name="rv_cornerRadius"/>
+        <attr name="rv_strokeWidth"/>
+        <attr name="rv_strokeColor"/>
+        <attr name="rv_strokePressColor"/>
+        <attr name="rv_textPressColor"/>
+        <attr name="rv_isRadiusHalfHeight"/>
+        <attr name="rv_isWidthHeightEqual"/>
+        <attr name="rv_cornerRadius_TL"/>
+        <attr name="rv_cornerRadius_TR"/>
+        <attr name="rv_cornerRadius_BL"/>
+        <attr name="rv_cornerRadius_BR"/>
+        <attr name="rv_isRippleEnable"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundLinearLayout">
+        <attr name="rv_backgroundColor"/>
+        <attr name="rv_backgroundPressColor"/>
+        <attr name="rv_cornerRadius"/>
+        <attr name="rv_strokeWidth"/>
+        <attr name="rv_strokeColor"/>
+        <attr name="rv_strokePressColor"/>
+        <attr name="rv_isRadiusHalfHeight"/>
+        <attr name="rv_isWidthHeightEqual"/>
+        <attr name="rv_cornerRadius_TL"/>
+        <attr name="rv_cornerRadius_TR"/>
+        <attr name="rv_cornerRadius_BL"/>
+        <attr name="rv_cornerRadius_BR"/>
+        <attr name="rv_isRippleEnable"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundRelativeLayout">
+        <attr name="rv_backgroundColor"/>
+        <attr name="rv_backgroundPressColor"/>
+        <attr name="rv_cornerRadius"/>
+        <attr name="rv_strokeWidth"/>
+        <attr name="rv_strokeColor"/>
+        <attr name="rv_strokePressColor"/>
+        <attr name="rv_isRadiusHalfHeight"/>
+        <attr name="rv_isWidthHeightEqual"/>
+        <attr name="rv_cornerRadius_TL"/>
+        <attr name="rv_cornerRadius_TR"/>
+        <attr name="rv_cornerRadius_BL"/>
+        <attr name="rv_cornerRadius_BR"/>
+        <attr name="rv_isRippleEnable"/>
+    </declare-styleable>
+
+    <declare-styleable name="RoundFrameLayout">
+        <attr name="rv_backgroundColor"/>
+        <attr name="rv_backgroundPressColor"/>
+        <attr name="rv_cornerRadius"/>
+        <attr name="rv_strokeWidth"/>
+        <attr name="rv_strokeColor"/>
+        <attr name="rv_strokePressColor"/>
+        <attr name="rv_isRadiusHalfHeight"/>
+        <attr name="rv_isWidthHeightEqual"/>
+        <attr name="rv_cornerRadius_TL"/>
+        <attr name="rv_cornerRadius_TR"/>
+        <attr name="rv_cornerRadius_BL"/>
+        <attr name="rv_cornerRadius_BR"/>
+        <attr name="rv_isRippleEnable"/>
+    </declare-styleable>
+
+
+    <attr name="popupTextAlignment" format="enum">
+        <enum name="start" value="0" />
+        <enum name="end" value="1" />
+        <enum name="center" value="2" />
+    </attr>
+
+    <!--下拉框-->
+    <declare-styleable name="NiceSpinner">
+        <attr name="arrowTint" format="color" />
+        <attr name="hideArrow" format="boolean" />
+        <attr name="arrowDrawable" format="reference|color" />
+        <attr name="dropDownBackground" format="integer"/>
+        <attr name="itemBackgroundChange" format="integer"/>
+        <attr name="dropDownListPaddingBottom" format="dimension" />
+        <attr name="backgroundSelector" format="integer" />
+        <attr name="textTint" format="color" />
+        <attr name="popupTextAlignment" />
+        <attr name="entries" format="reference" />
+    </declare-styleable>
+
+
+    <declare-styleable name="ShapeOfView">
+        <attr name="shape_clip_drawable" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="TriangleView">
+        <attr name="shape_triangle_percentLeft" format="float"/>
+        <attr name="shape_triangle_percentBottom" format="float"/>
+        <attr name="shape_triangle_percentRight" format="float"/>
+    </declare-styleable>
+    <declare-styleable name="StarView">
+        <attr name="shape_star_noOfPoints" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="PolygonView">
+        <attr name="shape_polygon_noOfSides" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="CircleView">
+        <attr name="shape_circle_borderWidth" format="dimension"/>
+        <attr name="shape_circle_borderColor" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="DiagonalView">
+        <attr name="shape_diagonal_angle" format="float"/>
+        <attr name="shape_diagonal_position" format="enum">
+            <enum name="bottom" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="left" value="3"/>
+            <enum name="right" value="4"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="ArcView">
+        <attr name="shape_arc_height" format="dimension"/>
+        <attr name="shape_arc_position" format="enum">
+            <enum name="bottom" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="left" value="3"/>
+            <enum name="right" value="4"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="BubbleView">
+        <attr name="shape_bubble_borderRadius" format="dimension"/>
+        <attr name="shape_bubble_arrowHeight" format="dimension"/>
+        <attr name="shape_bubble_arrowWidth" format="dimension"/>
+        <attr name="shape_bubble_arrowPosition" format="enum">
+            <enum name="bottom" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="left" value="3"/>
+            <enum name="right" value="4"/>
+        </attr>
+        <attr name="arrow_posititon_percent" format="float"/>
+    </declare-styleable>
+    <declare-styleable name="RoundRectView">
+        <attr name="shape_roundRect_topLeftRadius" format="dimension"/>
+        <attr name="shape_roundRect_topRightRadius" format="dimension"/>
+        <attr name="shape_roundRect_bottomLeftRadius" format="dimension"/>
+        <attr name="shape_roundRect_bottomRightRadius" format="dimension"/>
+        <attr name="shape_roundRect_borderWidth" format="dimension"/>
+        <attr name="shape_roundRect_borderColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="CutCornerView">
+        <attr name="shape_cutCorner_topLeftSize" format="dimension"/>
+        <attr name="shape_cutCorner_topRightSize" format="dimension"/>
+        <attr name="shape_cutCorner_bottomLeftSize" format="dimension"/>
+        <attr name="shape_cutCorner_bottomRightSize" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="DottedEdgesCutCornerView">
+        <attr name="shape_dottedEdgesCutCorner_topLeftSize" format="dimension"/>
+        <attr name="shape_dottedEdgesCutCorner_topRightSize" format="dimension"/>
+        <attr name="shape_dottedEdgesCutCorner_bottomLeftSize" format="dimension"/>
+        <attr name="shape_dottedEdgesCutCorner_bottomRightSize" format="dimension"/>
+        <attr name="shape_edge_position" format="flags">
+            <flag name="none" value="0"/>
+            <flag name="bottom" value="1"/>
+            <flag name="top" value="2"/>
+            <flag name="left" value="4"/>
+            <flag name="right" value="8"/>
+            <flag name="all" value="15"/>
+        </attr>
+        <attr name="shape_dot_radius" format="dimension"/>
+        <attr name="shape_dot_spacing" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="WheelView">
+        <attr name="wheelTextColor" format="color"/>
+        <attr name="wheelTextSize" format="dimension"/>
+        <attr name="wheelShowCount" format="integer"/>
+        <attr name="wheelTotalOffsetX" format="dimension"/>
+        <attr name="wheelItemVerticalSpace" format="dimension"/>
+        <attr name="wheelRotationX" format="float"/>
+        <attr name="wheelVelocityUnits" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="WheelMaskView">
+        <attr name="wheelMaskLineColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ZoomageView">
+        <attr format="boolean" name="zoomage_zoomable"/>
+        <attr format="boolean" name="zoomage_translatable"/>
+        <attr format="boolean" name="zoomage_restrictBounds"/>
+        <attr format="boolean" name="zoomage_animateOnReset"/>
+        <attr format="boolean" name="zoomage_doubleTapToZoom"/>
+        <attr format="float" name="zoomage_doubleTapToZoomScaleFactor"/>
+        <attr format="boolean" name="zoomage_autoCenter"/>
+        <attr format="float" name="zoomage_minScale"/>
+        <attr format="float" name="zoomage_maxScale"/>
+        <attr format="enum" name="zoomage_autoResetMode">
+            <enum name="UNDER" value="0"/>
+            <enum name="OVER" value="1"/>
+            <enum name="ALWAYS" value="2"/>
+            <enum name="NEVER" value="3"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="SlidingMenu">
+        <attr name="mode">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="viewAbove" format="reference" />
+        <attr name="viewBehind" format="reference" />
+        <attr name="behindOffset" format="dimension" />
+        <attr name="behindWidth" format="dimension" />
+        <attr name="behindScrollScale" format="float" />
+        <attr name="touchModeAbove">
+            <enum name="margin" value="0" />
+            <enum name="fullscreen" value="1" />
+            <enum name="none" value="2" />
+        </attr>
+        <attr name="touchModeBehind">
+            <enum name="margin" value="0" />
+            <enum name="fullscreen" value="1" />
+            <enum name="none" value="2" />
+        </attr>
+        <attr name="shadowDrawable" format="reference" />
+        <attr name="shadowWidth" format="dimension" />
+        <attr name="fadeEnabled" format="boolean" />
+        <attr name="fadeDegree" format="float" />
+        <attr name="selectorEnabled" format="boolean" />
+        <attr name="selectorDrawable" format="reference" />
+    </declare-styleable>
+</resources>

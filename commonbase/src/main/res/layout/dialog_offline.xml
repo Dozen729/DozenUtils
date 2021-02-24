@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:minWidth="280dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        app:rv_cornerRadius="12dp"
+        app:rv_backgroundColor="#000000"
+        app:rv_strokeWidth="2dp"
+        app:rv_strokeColor="#36DBFF"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="35dp"
+            android:textStyle="bold"
+            android:textColor="#36DBFF"
+            android:textSize="16sp"
+            android:text="下线通知"/>
+
+        <TextView
+            android:id="@+id/tvContext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="37dp"
+            android:layout_marginRight="37dp"
+            android:lineSpacingExtra="4dp"
+            android:layout_gravity="center"
+            android:text="你的登录信息已过期，为保障您的数据安全，请重新登录"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:textColor="@color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="50dp"
+            android:background="#FF545454"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal">
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/tvCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="退出登录"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:rv_cornerRadius="8dp" />
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/tvOK"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="重新登录"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:rv_cornerRadius="8dp" />
+
+        </LinearLayout>
+
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</FrameLayout>

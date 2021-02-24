@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="15dp">
+
+        <TextView
+            android:id="@+id/tv_version_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:text="版本更新"
+            android:textColor="#FF684AFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_version_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="1.Dozen"
+            android:textColor="#FF777770"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_version_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF684AFF"
+                    android:textSize="16sp"
+                    android:text="正在下载，客官稍候..."/>
+                <TextView
+                    android:id="@+id/tv_progress_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textColor="#FF684AFF"
+                    android:textSize="16sp"
+                    android:text="50"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FF684AFF"
+                    android:textSize="16sp"
+                    android:text="%"/>
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/pb_version_update"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="10"
+                android:maxHeight="8dp"
+                android:minHeight="8dp"
+                android:progress="5"
+                android:progressDrawable="@drawable/progressbar_download"
+                android:secondaryProgress="0"
+                tools:ignore="RtlSymmetry" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_version_select"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/rtv_version_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:rv_backgroundColor="#FFB8B8B8"
+                app:rv_cornerRadius_BL="15dp" />
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/rtv_version_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:rv_backgroundColor="#FF684AFF"
+                app:rv_cornerRadius_BR="15dp" />
+        </LinearLayout>
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</FrameLayout>
+

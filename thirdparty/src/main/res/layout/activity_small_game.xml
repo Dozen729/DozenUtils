@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <com.dozen.commonbase.view.TitleView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:topBackground="#FF606AED"
+        app:titleSize="8sp"
+        app:titleLine="false"
+        app:titleColor="#ffffff"
+        app:titleName="玩游戏赚现金"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/game_top_tip"/>
+
+            <!--接入时需要拷贝如下的布局，包括GameView外层的LinearLayout-start -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants"
+                android:orientation="vertical">
+
+                <com.cmcm.cmgame.GameView
+                    android:id="@+id/gameView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="5dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginBottom="15dp"
+                    app:cmgame_category_title_text_color="#FF222222"
+                    app:cmgame_category_title_text_size="15sp"
+                    />
+
+                <!--cmgame_category_title_text_color 分类目录文字颜色-->
+                <!--cmgame_category_title_text_size 分类目录文字大小-->
+                <!--cmgame_view_background 整个View背景，demo使用的是8dp圆角白底-->
+            </LinearLayout>
+            <!--接入时需要拷贝的布局，包括GameView外层的LinearLayout-end -->
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

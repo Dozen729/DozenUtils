@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:rv_cornerRadius="12dp"
+        app:rv_backgroundColor="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/color333333"
+            android:textSize="16sp"
+            android:text="网络未连接"/>
+
+        <TextView
+            android:id="@+id/tvContext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="23dp"
+            android:lineSpacingExtra="4dp"
+            android:layout_gravity="center"
+            android:text="未连接网络或网络不可用，请确认连接"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/color666666" />
+
+        <com.dozen.commonbase.view.roundview.RoundTextView
+            android:id="@+id/tvOK"
+            android:layout_width="139dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="38dp"
+            android:layout_marginBottom="26dp"
+            app:rv_cornerRadius="6dp"
+            app:rv_backgroundColor="#FF379BFA"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="检查网络"/>
+
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</RelativeLayout>

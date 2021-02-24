@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".act.TitleActivity">
+
+    <com.dozen.commonbase.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:titleName="标题"
+        app:topBackground="#EA114E" />
+
+    <com.dozen.commonbase.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:titleColor="#000000"
+        app:titleName="标题1"
+        app:topBackground="#F44336" />
+
+    <com.dozen.commonbase.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:titleColor="#000000"
+        app:titleName="标题2"
+        app:titleSize="9sp"
+        app:topBackground="#E91E63" />
+
+    <com.dozen.commonbase.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:rightTextName="右边"
+        app:rightTextShow="true"
+        app:titleColor="#000000"
+        app:titleName="标题3"
+        app:titleSize="9sp"
+        app:topBackground="#9C27B0" />
+
+    <com.dozen.commonbase.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:rightBackgroundColor="@color/purple_700"
+        app:rightTextName="右边"
+        app:rightTextShow="true"
+        app:titleColor="#000000"
+        app:titleName="标题4"
+        app:titleSize="9sp"
+        app:topBackground="#3F51B5" />
+
+    <com.dozen.commonbase.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:rightBackgroundColor="#009688"
+        app:rightImagePicture="@drawable/icon_loading"
+        app:rightImageShow="true"
+        app:rightTextName="右边"
+        app:rightTextShow="true"
+        app:titleColor="#000000"
+        app:titleName="标题5"
+        app:titleSize="9sp"
+        app:topBackground="#2196F3" />
+
+    <com.dozen.commonbase.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:rightBackgroundColor="#9C27B0"
+        app:rightImagePicture="@drawable/icon_loading"
+        app:rightImageShow="true"
+        app:rightTextColor="#FF5722"
+        app:rightTextName="右边"
+        app:rightTextShow="true"
+        app:rightTextSize="3sp"
+        app:titleColor="#000000"
+        app:titleName="标题6"
+        app:titleSize="9sp"
+        app:topBackground="#03A9F4" />
+
+    <com.dozen.commonbase.view.TitleView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:rightBackgroundColor="#009688"
+        app:rightImagePicture="@drawable/icon_loading"
+        app:rightImageShow="true"
+        app:titleColor="#000000"
+        app:titleName="标题7"
+        app:titleSize="9sp"
+        app:topBackground="#00BCD4" />
+
+    <com.dozen.commonbase.view.TitleView
+        android:id="@+id/title_view_click"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:backPicture="@drawable/icon_white_add"
+        app:rightBackgroundColor="#009688"
+        app:rightImagePicture="@drawable/icon_loading"
+        app:rightImageShow="true"
+        app:titleColor="#000000"
+        app:titleName="标题8"
+        app:titleSize="6sp"
+        app:rightTextShow="true"
+        app:topBackground="#009688" />
+
+</LinearLayout>

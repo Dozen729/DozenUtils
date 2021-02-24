@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="6dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_currency_tip_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:text="警告"
+            android:textColor="@color/color333333"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_currency_tip_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/color666666"
+            android:textSize="14sp"
+            android:text="是否要退出登录" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/grayE3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/rtv_currency_tip_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="退出登录"
+                android:textColor="#7D7D7D"
+                android:textSize="15sp"
+                app:rv_cornerRadius_BL="6dp"/>
+
+            <View
+                android:layout_width="0.9dp"
+                android:layout_height="match_parent"
+                android:background="@color/grayE3" />
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/rtv_currency_tip_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="重新登录"
+                android:textColor="#38ADFF"
+                android:textSize="15sp"
+                app:rv_cornerRadius_BR="6dp" />
+        </LinearLayout>
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</FrameLayout>
+

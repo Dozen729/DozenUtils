@@ -1,0 +1,112 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "long", "BUILD_TIMESTAMP", System.currentTimeMillis() + "L"
+
+        //ARouter必要
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar','*.aar'])
+    api fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+    //doc转换
+    api fileTree(dir: "doclibs", include: ["*.jar","*.aar"])
+    api fileTree(dir: 'doclibs', include: ['*.aar', '*.jar'], exclude: [])
+
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    api 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+
+    //recylerView
+    api 'androidx.recyclerview:recyclerview:1.1.0'
+    //万能适配器
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+    //刷新控件
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-12'
+    //glide加载图片
+    api 'com.github.bumptech.glide:glide:4.9.0'
+    //沉浸式状态栏渲染工具
+    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+    //gson
+    api 'com.google.code.gson:gson:2.8.5'
+    //okhttp框架
+    api 'com.squareup.okhttp3:okhttp:3.12.1'
+    api 'com.squareup.okhttp3:logging-interceptor:3.12.0'
+    api 'com.squareup.okio:okio:1.15.0'
+    //背景色圆角控件
+//    api 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'
+    //导航栏轮播图
+    api 'com.youth.banner:banner:1.4.10'
+    //数字跳动
+//    api 'com.github.JianxunRao:DancingNumberView:V1.0.1'
+    //指示灯
+//    api 'com.github.hackware1993:MagicIndicator:1.5.0'
+    //数据库
+    api 'org.litepal.android:core:1.6.1'
+
+    //友盟
+    api 'com.umeng.umsdk:common:9.1.0' // (必选)
+    api 'com.umeng.umsdk:asms:1.1.3' // asms包依赖(必选)
+    api 'com.umeng.umsdk:crash:0.0.4' // native crash包依赖(必选)
+    //有盟分享
+    api 'com.umeng.umsdk:share-core:7.0.2'
+    api 'com.umeng.umsdk:share-board:7.0.2'
+
+    //二维码生成
+    api 'com.google.zxing:core:3.3.3'
+
+    //微信支付
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
+    //webview使用
+    api 'com.just.agentweb:agentweb:4.1.3'
+    api 'com.just.agentweb:filechooser:4.1.3'
+
+    //随意缩放的ImageView
+    api 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    //图表库:线条-条形图-饼图-雷达-气泡图和烛台图
+    api 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //view的animation运动
+    api 'com.daimajia.androidanimations:library:2.4@aar'
+
+    //gif动画
+    api 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+
+    //pdf显示
+    api 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
+    //router
+    api 'com.alibaba:arouter-api:1.5.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_text_size">16dp</dimen>
+    <dimen name="base_text_size_18sp">18dp</dimen>
+    <dimen name="top_padding">0dp</dimen>
+    <dimen name="title_height">40dp</dimen>
+
+    <!--标题栏高度-->
+    <dimen name="ActionBarHeight">40dp</dimen>
+    <!--标题栏高度-->
+    <dimen name="ItemHeight">55dp</dimen>
+
+    <dimen name="udesk_15">15dip</dimen>
+
+    <dimen name="six_input_size">40dp</dimen>
+    <dimen name="six_ll_limit">3dp</dimen>
+    <dimen name="six_input_limit">1dp</dimen>
+
+    <dimen name="three_grid_unit">24dp</dimen>
+    <dimen name="one_and_a_half_grid_unit">5dp</dimen>
+
+    <dimen name="wheel_title_bar_title_size">15dp</dimen>
+    <dimen name="wheel_title_bar_cancel_size">15dp</dimen>
+    <dimen name="wheel_title_bar_ok_size">15dp</dimen>
+
+    <dimen name="wheel_picker_padding_left">0dp</dimen>
+    <dimen name="wheel_picker_padding_top">4dp</dimen>
+    <dimen name="wheel_picker_padding_right">0dp</dimen>
+    <dimen name="wheel_picker_padding_bottom">4dp</dimen>
+
+    <dimen name="wheel_picker_total_offset_x">4dp</dimen>
+    <dimen name="wheel_dialog_radius">12dp</dimen>
+</resources>

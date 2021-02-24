@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    api fileTree(dir: "adlibs", include: ["*.jar","*.aar"])
+    api fileTree(dir: 'adlibs', include: ['*.aar', '*.jar'], exclude: [])
+    api fileTree(dir: "gamelibs", include: ["*.jar","*.aar"])
+    api fileTree(dir: 'gamelibs', include: ['*.aar', '*.jar'], exclude: [])
+    api fileTree(dir: "letolibs", include: ["*.jar","*.aar"])
+    api fileTree(dir: 'letolibs', include: ['*.aar', '*.jar'], exclude: [])
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation project(path: ':commonbase')
+
+    //推啊广告
+    api ('com.tuia:sdk:2.8.0.0') {
+        transitive = true
+    }
+
+}
