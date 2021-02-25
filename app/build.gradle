@@ -24,6 +24,10 @@ android {
         }
     }
 
+    packagingOptions {
+        pickFirst 'META-INF/*'
+    }
+
     buildTypes {
         release {
             minifyEnabled false

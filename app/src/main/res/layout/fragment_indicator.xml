@@ -1,9 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".act.TitleActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fadeScrollbars="false">
+
+        <com.dozen.commonbase.view.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:rv_backgroundColor="#F8F6F6"
+            app:rv_cornerRadius="15dp"
+            app:rv_strokeColor="#234CD5"
+            app:rv_strokeWidth="1dp">
+
+        <com.dozen.commonbase.view.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="vertical"
+            android:padding="5dp"
+            app:rv_backgroundColor="#FFFFFF"
+            app:rv_cornerRadius="8dp"
+            app:rv_strokeColor="#E91E63"
+            app:rv_strokeWidth="1dp">
+
+            <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                android:id="@+id/magic_indicator100"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/large_navigator_height" />
+
+        </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator4"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator5"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator6"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator7"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator8"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator9"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#F3D09D"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_gravity="center_horizontal" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_gravity="center_horizontal" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_gravity="center_horizontal" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_gravity="center_horizontal" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_above="@+id/magic_indicator1"
+                    android:layout_centerHorizontal="true" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_navigator_height"
+                    android:layout_above="@id/magic_indicator2"
+                    android:layout_centerHorizontal="true" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator31"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/small_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top" />
+
+                <com.dozen.commonbase.view.magicindicator.MagicIndicator
+                    android:id="@+id/magic_indicator32"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/small_navigator_height"
+                    android:layout_marginTop="@dimen/navigator_margin_top_large" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+
+        </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+    </ScrollView>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/red" />
 
 </LinearLayout>

@@ -13,6 +13,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    packagingOptions {
+        pickFirst 'META-INF/*'
+    }
+
     buildTypes {
         release {
             minifyEnabled false
