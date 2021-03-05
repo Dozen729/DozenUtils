@@ -59,6 +59,14 @@ public class HttpUtils extends BaseHttpUtils {
     }
 
     /**
+     * 发起del请求
+     */
+    public void del() {
+        addSign();
+        super.del();
+    }
+
+    /**
      * Http请求拦截特殊处理回调
      * @param info
      * @param tag

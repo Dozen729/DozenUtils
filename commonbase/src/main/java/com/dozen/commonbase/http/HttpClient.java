@@ -48,6 +48,7 @@ public class HttpClient implements Callback {
     public static final int POST = 1;
     public static final int GET = 2;
     public static final int PUT = 3;
+    public static final int DEL = 4;
     public final static int REQUEST_TIMEOUT = 30;
 
     // public static final MediaType TEXT = MediaType.parse("text/plain; charset=utf-8");
@@ -152,6 +153,10 @@ public class HttpClient implements Callback {
         enqueue(PUT);
     }
 
+    public void del(){
+        enqueue(DEL);
+    }
+
     //json数据 request
     public Request buildRequest(int method) {
         Request request = null;
@@ -173,6 +178,11 @@ public class HttpClient implements Callback {
             MyLog.e("put 请求参数：" + content);
         }else if(method == GET){
             request = builder2.url(handleGetRequestParams()).build();;
+        }else if (method == DEL){
+            String content = params.get("json");
+            //MediaType  设置Content-Type 标头中包含的媒体类型值
+            RequestBody requestBody = FormBody.create(JSON, content == null ? "" : content);
+            request = builder2.url(mUrl).delete(requestBody).build();
         }
         return request;
     }

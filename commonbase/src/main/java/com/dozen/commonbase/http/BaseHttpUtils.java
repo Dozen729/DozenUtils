@@ -43,7 +43,7 @@ public class BaseHttpUtils implements HttpClient.HttpCallback{
                     onFailed(HttpCode.DATA_ERROR, "数据解析错误", tag);
                     e.printStackTrace();
                     MyLog.e("数据解析错误，或跟新界面发生错误"+ e.getMessage());
-            }
+                }
             }
         });
     }
@@ -115,6 +115,10 @@ public class BaseHttpUtils implements HttpClient.HttpCallback{
 
     public void put() {
         httpClient.put();
+    }
+
+    public void del(){
+        httpClient.del();
     }
 
     public void cancel() {
