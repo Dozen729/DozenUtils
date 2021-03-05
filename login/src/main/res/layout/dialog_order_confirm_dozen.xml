@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="280dp"
+        android:orientation="vertical"
+        app:rv_backgroundColor="#FFFFFFFF"
+        app:rv_cornerRadius="12dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="33dp"
+            android:text="订单确认"
+            android:textColor="#FF2F2C2C"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvContext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="13dp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:text="请确认您是否已支付完成，点击下方按钮确认"
+            android:textColor="#FF2F2C2C"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/tvOK"
+                android:layout_width="116dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="已完成支付"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:rv_backgroundColor="#FF56DE1A"
+                app:rv_cornerRadius_BL="8dp" />
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/tvCancel"
+                android:layout_width="116dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="未完成支付"
+                android:textColor="#0F0F0F"
+                android:textSize="16sp"
+                app:rv_backgroundColor="#FFB3B3B3"
+                app:rv_cornerRadius_BR="8dp" />
+
+        </LinearLayout>
+
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</FrameLayout>

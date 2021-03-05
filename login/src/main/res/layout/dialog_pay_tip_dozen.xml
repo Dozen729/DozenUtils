@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:minWidth="280dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rv_cornerRadius="12dp"
+        app:rv_backgroundColor="#FFFFFFFF"
+        app:rv_strokeWidth="2dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="33dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/dimen_big"
+            android:textColor="#684AFF"
+            android:textSize="16sp"
+            android:text="温馨提示"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:layout_gravity="center"
+                android:text="您已是VIP用户，使用到期时间"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="#4C518E" />
+            <TextView
+                android:id="@+id/tv_vip_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:layout_gravity="center"
+                android:text="时间"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="#4C518E" />
+        </LinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/tvOK"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="知道了"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/dimen_big"
+                android:layout_marginEnd="@dimen/dimen_center"
+                android:layout_marginStart="@dimen/dimen_center"
+                android:layout_marginBottom="@dimen/dimen_big"
+                android:textSize="16sp"
+                app:rv_backgroundColor="#FF606AED"
+                app:rv_cornerRadius="8dp" />
+
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</FrameLayout>

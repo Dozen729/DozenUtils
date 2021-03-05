@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:minWidth="280dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rv_cornerRadius="12dp"
+        app:rv_backgroundColor="#FFFFFFFF"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="33dp"
+            android:textStyle="bold"
+            android:textColor="#FF302E51"
+            android:textSize="16sp"
+            android:text="操作提示"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/icon_ok"
+            />
+
+        <TextView
+            android:id="@+id/tvContext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="23dp"
+            android:lineSpacingExtra="4dp"
+            android:layout_gravity="center"
+            android:text="恭喜您，开通成功！\n赶紧去体验吧"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textColor="#FF302E51" />
+
+        <com.dozen.commonbase.view.roundview.RoundTextView
+            android:id="@+id/tvOK"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="37dp"
+            android:layout_marginRight="37dp"
+            android:layout_marginBottom="25dp"
+            android:layout_gravity="center_horizontal"
+            app:rv_backgroundColor="#FF56DE1A"
+            app:rv_cornerRadius="10dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:text="确定"/>
+
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</FrameLayout>

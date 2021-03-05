@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.dozen.commonbase.view.TitleView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:topBackground="@color/top_bg_color"
+        app:titleColor="#ffffff"
+        app:titleLine="false"
+        app:titleName="版本信息" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@mipmap/app_icon_v3"
+        android:layout_marginTop="@dimen/dimen_big"
+        android:layout_gravity="center"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_center"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_big"
+            android:text="版本："
+            />
+        <TextView
+            android:id="@+id/avi_tv_version_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/black"
+            android:text="@string/app_name"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_version_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/text_size_big"
+        android:textColor="@color/black"
+        android:text="release"
+        />
+
+    <TextView
+        android:id="@+id/empty_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:textColor="@color/color999999"
+        android:layout_marginTop="20dp"
+        android:text="反馈邮箱：kfbf56123@163.com"
+        />
+
+    <TextView
+        android:id="@+id/show_version_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:textColor="@color/color999999"
+        android:layout_margin="20dp"
+        />
+
+</LinearLayout>

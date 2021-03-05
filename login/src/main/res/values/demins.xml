@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_min">5dp</dimen>
+    <dimen name="dimen_small">10dp</dimen>
+    <dimen name="dimen_center_half">15dp</dimen>
+    <dimen name="dimen_center">20dp</dimen>
+    <dimen name="dimen_big">30dp</dimen>
+    <dimen name="dimen_max_half">40dp</dimen>
+    <dimen name="max">50dp</dimen>
+
+    <dimen name="big_big">100dp</dimen>
+
+    <dimen name="fg_goods_title_size">19sp</dimen>
+    <dimen name="fg_goods_icon_size">50dp</dimen>
+    <dimen name="fg_item_goods_size">19sp</dimen>
+    <dimen name="fg_item_words_detail_size">13sp</dimen>
+
+    <dimen name="text_size_mix">8sp</dimen>
+    <dimen name="text_size_small">13sp</dimen>
+    <dimen name="text_size_center">16sp</dimen>
+    <dimen name="text_size_big">20sp</dimen>
+    <dimen name="text_size_max">30sp</dimen>
+</resources>

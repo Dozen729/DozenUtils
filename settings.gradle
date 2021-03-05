@@ -1,2 +1,2 @@
-include ':app',':cameraview',':commonbase',':thirdparty'
+include ':app',':cameraview',':commonbase',':thirdparty',':login'
 rootProject.name = "DozenUtils"

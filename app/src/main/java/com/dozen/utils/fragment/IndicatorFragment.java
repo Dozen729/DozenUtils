@@ -109,6 +109,12 @@ public class IndicatorFragment extends BaseFragment {
         initMagicIndicator32();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setUpData();
+    }
+
     private void initMagicIndicator100() {
         MagicIndicator magicIndicator = (MagicIndicator) getContentView().findViewById(R.id.magic_indicator100);
         magicIndicator.setBackgroundColor(Color.BLACK);
