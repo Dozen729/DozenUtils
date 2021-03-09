@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
 import android.webkit.JavascriptInterface;
@@ -16,6 +17,7 @@ import android.webkit.WebViewClient;
 import com.dozen.commonbase.CommonConstant;
 import com.dozen.commonbase.act.CommonActivity;
 import com.dozen.commonbase.dialog.DialogCommonListener;
+import com.dozen.commonbase.dialog.LoadingDialog;
 import com.dozen.commonbase.http.CallBack;
 import com.dozen.commonbase.http.HttpConstant;
 import com.dozen.commonbase.http.ResultInfo;
@@ -58,6 +60,8 @@ public class H5PayAct extends CommonActivity {
 
     private boolean isShow = false;
 
+    private LoadingDialog loadingDialog;
+
     @Override
     protected int setLayout() {
         return R.layout.act_h5_dozen;
@@ -83,7 +87,7 @@ public class H5PayAct extends CommonActivity {
             MobclickAgent.onEvent(getBaseContext(), LoginMobclickConstant.get_into_vip_page, map);
         }
 
-        MyLog.d("pay_url="+web_url);
+        MyLog.d("pay_url=" + web_url);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
 
@@ -115,15 +119,11 @@ public class H5PayAct extends CommonActivity {
         titleView.setLeftBackClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                backDialog();
+                if (CommonUtils.isFastClick()){
+                    backDialog();
+                }
             }
         });
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
 
     }
 
@@ -132,7 +132,11 @@ public class H5PayAct extends CommonActivity {
 
     }
 
-    private void backDialog(){
+    private void backDialog() {
+        if (DataSaveMode.isVip()) {
+            finish();
+            return;
+        }
         VipBackDialog dialog = new VipBackDialog(this);
         dialog.setDialogCommonListener(new DialogCommonListener() {
             @Override
@@ -154,38 +158,53 @@ public class H5PayAct extends CommonActivity {
     }
 
     //查询商品信息
-    private void queryGoodsData(){
+    private void queryGoodsData() {
         LoginUserHttpUtils.queryGoods(new CallBack() {
             @Override
             public void onRequested(ResultInfo info, Object tag) {
-                if (info.isSucceed()&&tag.equals("goods")){
+                if (info.isSucceed() && tag.equals("goods")) {
                     GoodsListResult goodsListResult = (GoodsListResult) info;
-                    if (goodsListResult!=null){
-                        pullOrder(goodsListResult.data[0].id);
+                    if (goodsListResult != null) {
+                        checkUserVip(goodsListResult.data[0].id);
                     }
                 }
             }
-        },"goods");
+        }, "goods");
+    }
+
+    //检查vip并下单
+    private void checkUserVip(String orderID) {
+        LoginUserHttpUtils.get_userInfo(LoginConstant.GET_UUID(), new CallBack() {
+            @Override
+            public void onRequested(ResultInfo info, Object tag) {
+                if (info.isSucceed() && tag.equals("vip")) {
+                    DataSaveMode.saveUserInfo((VipInfoResult) info);
+                    pullOrder(orderID);
+                }else {
+                    StyleToastUtil.info(info.getMsg());
+                }
+            }
+        }, "vip");
     }
 
     //下单并跳转支付
-    private void pullOrder(String orderID){
+    private void pullOrder(String orderID) {
         if (CommonConstant.umeng_click) {
             Map<String, String> map = new HashMap<String, String>();//统计埋点
             map.put("click", "1");
             MobclickAgent.onEvent(getBaseContext(), LoginMobclickConstant.call_api_number, map);
         }
-        if (DataSaveMode.isVip()){
+        if (DataSaveMode.isVip()) {
             checkOrderStatus();
             return;
         }
-        if (orderID.equals("")){
+        if (orderID.equals("")) {
             return;
         }
         LoginUserHttpUtils.pullGoodsData(orderID, new CallBack() {
             @Override
             public void onRequested(ResultInfo info, Object tag) {
-                if (info.isSucceed()&&tag.equals("pull")){
+                if (info.isSucceed() && tag.equals("pull")) {
 
                     if (CommonConstant.umeng_click) {
                         Map<String, String> map = new HashMap<String, String>();//统计埋点
@@ -196,33 +215,29 @@ public class H5PayAct extends CommonActivity {
                     PullGoodsResult pullGoodsResult = (PullGoodsResult) info;
 
                     //设置订单号
-                    SPUtils.setString(H5PayAct.this, LoginConstant.PAY_ORDER_ID, pullGoodsResult.data.order.id+"");
-                    SPUtils.setString(H5PayAct.this, LoginConstant.PAY_ORDER_ID_NOW, pullGoodsResult.data.order.id+"");
-                    SPUtils.setBoolean(H5PayAct.this,LoginConstant.PAY_PUSH_UMENG,false);
+                    SPUtils.setString(H5PayAct.this, LoginConstant.PAY_ORDER_ID, pullGoodsResult.data.order.id + "");
+                    SPUtils.setString(H5PayAct.this, LoginConstant.PAY_ORDER_ID_NOW, pullGoodsResult.data.order.id + "");
+                    SPUtils.setBoolean(H5PayAct.this, LoginConstant.PAY_PUSH_UMENG, false);
 
                     String d = pullGoodsResult.data.url;
                     String[] ds = d.split("&redirect_url");
                     Intent intent = new Intent(H5PayAct.this, H5ToWxPayAct.class);
                     intent.putExtra("web_url", ds[0]);
                     startActivity(intent);
-                }else {
-
-                    if (CommonConstant.umeng_click) {
-                        Map<String, String> map = new HashMap<String, String>();//统计埋点
-                        map.put("click", "1");
-                        MobclickAgent.onEvent(getBaseContext(), LoginMobclickConstant.call_api_pay_return_fail, map);
-                    }
                 }
             }
-        },"pull");
+        }, "pull");
     }
 
     //检查订单是否支付完成
     private void checkOrderStatus() {
+        loadingDialog = new LoadingDialog(this);
+        loadingDialog.show();
         String order_id = SPUtils.getString(H5PayAct.this, LoginConstant.PAY_ORDER_ID, "");
         LoginUserHttpUtils.getOrderInfoVerify(order_id, new CallBack() {
             @Override
             public void onRequested(final ResultInfo info, Object tag) {
+                loadingDialog.cancel();
                 if (info.isSucceed() && tag.equals("order")) {
                     final GetOrderInfoResult result = (GetOrderInfoResult) info;
                     if (result.data.order_status == 1) {
@@ -241,10 +256,11 @@ public class H5PayAct extends CommonActivity {
                 } else {
                     String id = SPUtils.getString(H5PayAct.this, LoginConstant.PAY_ORDER_ID, "");
                     if (id.equals("")) {
-                        if (DataSaveMode.isVip()){
+                        if (DataSaveMode.isVip()) {
                             showVIPTimeDialog();
                         }
                     }
+                    StyleToastUtil.info(info.getMsg());
                 }
                 SPUtils.setString(H5PayAct.this, LoginConstant.PAY_ORDER_ID, "");
             }
@@ -256,17 +272,12 @@ public class H5PayAct extends CommonActivity {
         LoginUserHttpUtils.get_userInfo(LoginConstant.GET_UUID(), new CallBack() {
             @Override
             public void onRequested(ResultInfo info, Object tag) {
-                if (info.isSucceed()) {
+                if (info.isSucceed()&&tag.equals("user")) {
                     VipInfoResult vip = (VipInfoResult) info;
                     DataSaveMode.saveUserInfo(vip);
-                    if (vip.data.vip_expire_time != null || vip.data.vip_expire_time.equals("null") || vip.data.vip_expire_time.isEmpty()) {
-                        SPUtils.setString(H5PayAct.this, LoginConstant.VIP_EXPIRE_TIME, vip.data.vip_expire_time);
-                    } else {
-                        SPUtils.setString(H5PayAct.this, LoginConstant.VIP_EXPIRE_TIME, "");
-                    }
                 }
             }
-        }, "1");
+        }, "user");
     }
 
     //弹出用户VIP到期时间
@@ -307,7 +318,7 @@ public class H5PayAct extends CommonActivity {
 
     //弹出订单确认对话框
     private void showOrderConfirmDialog() {
-        if (isShow){
+        if (isShow) {
             return;
         }
         isShow = true;
@@ -343,9 +354,9 @@ public class H5PayAct extends CommonActivity {
     public class AndroidJs {
 
         @JavascriptInterface
-        public void pay(String orderID,String status) {
+        public void pay(String orderID, String status) {
 
-            if (status.equals("1")){
+            if (status.equals("1")) {
                 StyleToastUtil.info("请先同意相关协议！");
                 return;
             }
@@ -361,7 +372,7 @@ public class H5PayAct extends CommonActivity {
             }
             MyLog.d("__order_id:" + orderID);
             if (CommonUtils.isFastClick()) {
-                pullOrder(orderID);
+                checkUserVip(orderID);
             }
         }
 
@@ -396,15 +407,15 @@ public class H5PayAct extends CommonActivity {
     }
 
     private void userPay() {
-        LoginConstant.h5UrlShow(this,LoginUserUrl.user_pay_agreement);
+        LoginConstant.h5UrlShow(this, LoginUserUrl.user_pay_agreement);
     }
 
     private void privatePolicy() {
-        LoginConstant.h5UrlShow(this,LoginUserUrl.user_agreement);
+        LoginConstant.h5UrlShow(this, LoginUserUrl.user_agreement);
     }
 
-    private void userPayAgreement(){
-        LoginConstant.h5UrlShow(this,LoginUserUrl.user_pay_agreement);
+    private void userPayAgreement() {
+        LoginConstant.h5UrlShow(this, LoginUserUrl.user_pay_agreement);
     }
 
     WebChromeClient webChromeClient = new WebChromeClient() {

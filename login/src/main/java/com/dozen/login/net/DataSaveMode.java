@@ -2,6 +2,7 @@ package com.dozen.login.net;
 
 import com.dozen.commonbase.APPBase;
 import com.dozen.commonbase.CommonConstant;
+import com.dozen.commonbase.utils.EmptyCheckUtil;
 import com.dozen.commonbase.utils.SPUtils;
 import com.dozen.login.LoginConstant;
 import com.dozen.login.net.bean.UserLoginResult;
@@ -32,14 +33,19 @@ public class DataSaveMode {
 
     public static void saveUserInfo(VipInfoResult info) {
 
-        SPUtils.setString(APPBase.getApplication(), LoginConstant.VIP_EXPIRE_TIME, info.data.vip_expire_time);
-        if (info.data.mobile == null) {
+        if (EmptyCheckUtil.isEmpty(info.data.vip_expire_time)){
+            SPUtils.setString(APPBase.getApplication(), LoginConstant.VIP_EXPIRE_TIME, "");
+        }else {
+            SPUtils.setString(APPBase.getApplication(), LoginConstant.VIP_EXPIRE_TIME, info.data.vip_expire_time);
+        }
+
+        if (EmptyCheckUtil.isEmpty(info.data.mobile)) {
             SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.IS_Phone_LOGIN, false);
         } else {
             SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.IS_Phone_LOGIN, true);
         }
         SPUtils.setString(APPBase.getApplication(), LoginConstant.USER_NAME, info.data.mobile);
-        if (info.data.openid == null) {
+        if (EmptyCheckUtil.isEmpty(info.data.openid)) {
             SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.IS_WX_LOGIN, false);
         } else {
             SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.IS_WX_LOGIN, true);
