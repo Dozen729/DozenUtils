@@ -22,6 +22,8 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
             }
         }
+
+        flavorDimensions "default"
     }
 
     packagingOptions {
@@ -37,6 +39,33 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    productFlavors {
+        oppo { dimension "default" }
+        huawei { dimension "default" }
+        vivo { dimension "default" }
+        yingyongbao { dimension "default" }
+        xiaomi { dimension "default" }
+        toutiao { dimension "default" }
+        common { dimension "default" }
+
+
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [APP_CHANNEL_VALUE: name]
+    }
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.outputs.all { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = "dozenutils-${variant.productFlavors[0].name}-${defaultConfig.versionCode}-v${defaultConfig.versionName}-${releaseTime()}.apk"
+
+                    outputFileName  = fileName
+                }
+            }
+        }
     }
 }
 
@@ -58,4 +87,8 @@ dependencies {
     //router
     implementation 'com.alibaba:arouter-api:1.5.1'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+}
+
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
