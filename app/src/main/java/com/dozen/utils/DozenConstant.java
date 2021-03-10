@@ -26,10 +26,10 @@ public class DozenConstant {
         List<MainItemBean> list = new ArrayList<>();
 
         list.add(new MainItemBean(0, ItemType.MAIN_ALL,"全部","显示所有项目","",null,0,false,true));
-        list.add(new MainItemBean(1, ItemType.MAIN_VIEW,"自己义View","收集常用的View","",null,0,false,false));
-        list.add(new MainItemBean(2, ItemType.MAIN_UTILS,"工具","整理经常使用的方法","",null,0,false,false));
-        list.add(new MainItemBean(3, ItemType.MAIN_HTTP,"http网络请求","okHttp库简单使用","",null,0,false,false));
-        list.add(new MainItemBean(4, ItemType.MAIN_DIALOG,"对话框","常用对话框集合","",null,0,false,false));
+        list.add(new MainItemBean(1, ItemType.MAIN_VIEW,"自己义View","收集常用的View","",null,0,false,true));
+        list.add(new MainItemBean(2, ItemType.MAIN_UTILS,"工具","整理经常使用的方法","",null,0,false,true));
+        list.add(new MainItemBean(3, ItemType.MAIN_HTTP,"http网络请求","okHttp库简单使用","",null,0,false,true));
+        list.add(new MainItemBean(4, ItemType.MAIN_DIALOG,"对话框","常用对话框集合","",null,0,false,true));
 
         return list;
     }
@@ -42,7 +42,7 @@ public class DozenConstant {
         list.add(new MainItemBean(3, ItemType.MAIN_VIEW,"悬浮控件","悬浮在界面中的一个组件","", SuspendFragment.newInstance("悬浮控件"),0,false,true));
         list.add(new MainItemBean(4, ItemType.MAIN_VIEW,"奇形怪状","各种背景切图","", ShapeFragment.newInstance("背景切图"),0,false,true));
         list.add(new MainItemBean(5, ItemType.MAIN_VIEW,"弹框","弹框提示","", CroutonFragment.newInstance("弹框提示"),0,false,true));
-        list.add(new MainItemBean(5, ItemType.MAIN_VIEW,"SVG","svg格式图片代码加载","", SVGFragment.newInstance("svg"),0,false,true));
+        list.add(new MainItemBean(6, ItemType.MAIN_UTILS,"SVG","svg格式图片代码加载","", SVGFragment.newInstance("svg"),0,false,true));
 
 
 

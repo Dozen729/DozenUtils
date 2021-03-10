@@ -3,7 +3,6 @@ package com.dozen.utils;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
@@ -11,9 +10,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.dozen.commonbase.act.CommonActivity;
 import com.dozen.commonbase.fragmentswitcher.FragmentStateArrayPagerAdapter;
-import com.dozen.commonbase.fragmentswitcher.FragmentSwitcher;
-import com.dozen.commonbase.utils.ScreenUtils;
-import com.dozen.commonbase.view.magicindicator.FragmentContainerHelper;
 import com.dozen.commonbase.view.magicindicator.MagicIndicator;
 import com.dozen.commonbase.view.magicindicator.ViewPagerHelper;
 import com.dozen.commonbase.view.magicindicator.buildins.UIUtil;
@@ -21,29 +17,22 @@ import com.dozen.commonbase.view.magicindicator.buildins.commonnavigator.CommonN
 import com.dozen.commonbase.view.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter;
 import com.dozen.commonbase.view.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
 import com.dozen.commonbase.view.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
-import com.dozen.commonbase.view.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator;
-import com.dozen.commonbase.view.magicindicator.buildins.commonnavigator.indicators.TriangularPagerIndicator;
 import com.dozen.commonbase.view.magicindicator.buildins.commonnavigator.indicators.WrapPagerIndicator;
 import com.dozen.commonbase.view.magicindicator.buildins.commonnavigator.titles.ClipPagerTitleView;
 import com.dozen.commonbase.view.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
-import com.dozen.commonbase.view.magicindicator.buildins.commonnavigator.titles.badge.BadgePagerTitleView;
 import com.dozen.utils.base.ItemType;
 import com.dozen.utils.bean.MainItemBean;
-import com.dozen.utils.fragment.ViewFragment;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends CommonActivity {
 
     private List<MainItemBean> mainData;
-    private List<MainItemBean> mainItemData;
 
     private ViewPager viewPager;
     private MagicIndicator magicIndicator;
     private MagicIndicator mainMagicIndicator;
-    private FragmentStateArrayPagerAdapter mFragmentAdapter;
 
     @Override
     protected int setLayout() {
@@ -60,8 +49,14 @@ public class MainActivity extends CommonActivity {
     @Override
     protected void initData() {
 
-        mainData = DozenConstant.getMainData();
-        mFragmentAdapter = new FragmentStateArrayPagerAdapter(getSupportFragmentManager());
+        mainData = new ArrayList<>();
+        for (MainItemBean bean:DozenConstant.getMainData()){
+            if (bean.isShow()){
+                mainData.add(bean);
+            }
+        }
+
+        viewPager.setAdapter(new FragmentStateArrayPagerAdapter(getSupportFragmentManager()));
 
         initMagicIndicatorMain();
 
@@ -69,45 +64,37 @@ public class MainActivity extends CommonActivity {
     }
 
     private void initMainItemData() {
-        mainItemData = new ArrayList<>();
 
-        int type = ItemType.MAIN_ALL;
-        for (MainItemBean bean : mainData) {
-            if (bean.isShow()) {
-                type = bean.getType();
-                break;
-            }
-        }
-
-        if (type == ItemType.MAIN_ALL) {
-            for (MainItemBean bean : DozenConstant.getMainDetailData()) {
-                if (bean.isShow()) {
-                    mainItemData.add(bean);
-                }
-            }
-        } else {
+        for (int i = 0; i < mainData.size(); i++) {
+            MainItemBean bean = mainData.get(i);
+            FragmentStateArrayPagerAdapter adapter = new FragmentStateArrayPagerAdapter(getSupportFragmentManager());
             List<MainItemBean> list = new ArrayList<>();
-            for (MainItemBean bean : DozenConstant.getMainDetailData()) {
-                if (bean.getType() == type && bean.isShow()) {
-                    list.add(bean);
+            List<Fragment> fragmentList = new ArrayList<>();
+            if (bean.getType() == ItemType.MAIN_ALL) {
+                for (MainItemBean b : DozenConstant.getMainDetailData()) {
+                    if (b.isShow()) {
+                        list.add(b);
+                        fragmentList.add(b.getFragment());
+                    }
+                }
+            } else {
+                for (MainItemBean b : DozenConstant.getMainDetailData()) {
+                    if (b.isShow() && bean.getType() == b.getType()) {
+                        list.add(b);
+                        fragmentList.add(b.getFragment());
+                    }
                 }
             }
-            mainItemData.addAll(list);
+            mainData.get(i).setItemData(list);
+            adapter.addAll(fragmentList);
+            mainData.get(i).setFragmentAdapter(adapter);
         }
 
-        initMagicIndicator();
-        List<Fragment> fs = new ArrayList<>();
-        for (MainItemBean bean : mainItemData) {
-            fs.add(bean.getFragment());
-        }
+        setMainDataShow(0);
 
-        mFragmentAdapter.clear();
-        mFragmentAdapter.addAll(fs);
-        mFragmentAdapter.notifyDataSetChanged();
-        viewPager.setAdapter(mFragmentAdapter);
     }
 
-    private void initMagicIndicator() {
+    private void initMagicIndicator(List<MainItemBean> mainItemData) {
         magicIndicator.setBackgroundColor(Color.parseColor("#8493E3"));
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setSkimOver(true);
@@ -184,10 +171,8 @@ public class MainActivity extends CommonActivity {
     }
 
     private void setMainDataShow(int index) {
-        for (MainItemBean bean : mainData) {
-            bean.setShow(false);
-        }
-        mainData.get(index).setShow(true);
-        initMainItemData();
+        initMagicIndicator(mainData.get(index).getItemData());
+        viewPager.setAdapter(mainData.get(index).getFragmentAdapter());
     }
+
 }

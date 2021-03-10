@@ -2,6 +2,10 @@ package com.dozen.utils.bean;
 
 import androidx.fragment.app.Fragment;
 
+import com.dozen.commonbase.fragmentswitcher.FragmentStateArrayPagerAdapter;
+
+import java.util.List;
+
 /**
  * @author: Dozen
  * @description:
@@ -14,6 +18,8 @@ public class MainItemBean {
     private String tip;
     private String detail;
     private Fragment fragment;
+    private FragmentStateArrayPagerAdapter fragmentAdapter;
+    private List<MainItemBean> itemData;
     private int picture;
     private boolean check;
     private boolean show;
@@ -79,6 +85,22 @@ public class MainItemBean {
 
     public void setFragment(Fragment fragment) {
         this.fragment = fragment;
+    }
+
+    public FragmentStateArrayPagerAdapter getFragmentAdapter() {
+        return fragmentAdapter;
+    }
+
+    public void setFragmentAdapter(FragmentStateArrayPagerAdapter fragmentAdapter) {
+        this.fragmentAdapter = fragmentAdapter;
+    }
+
+    public List<MainItemBean> getItemData() {
+        return itemData;
+    }
+
+    public void setItemData(List<MainItemBean> itemData) {
+        this.itemData = itemData;
     }
 
     public int getPicture() {
