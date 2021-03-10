@@ -7,14 +7,13 @@ import android.widget.Button;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dozen.commonbase.act.BaseFragment;
-import com.dozen.commonbase.view.TitleView;
+import com.dozen.commonbase.utils.StyleToastUtil;
+import com.dozen.commonbase.view.colorpicker.ColorPicker;
 import com.dozen.commonbase.view.menu.SlidingMenu;
 import com.dozen.commonbase.view.vrtv.DataSetAdapter;
 import com.dozen.commonbase.view.vrtv.TVBean;
 import com.dozen.commonbase.view.vrtv.VerticalRollingTextView;
-import com.dozen.utils.DozenConstant;
 import com.dozen.utils.R;
-import com.dozen.utils.bean.MainItemBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +37,7 @@ public class ViewFragment extends BaseFragment {
 
     private VerticalRollingTextView verticalRollingTextView;
     private SlidingMenu slidingMenu;
+    private Button btnColor;
 
     @Override
     protected int setLayoutResourceID() {
@@ -52,6 +52,8 @@ public class ViewFragment extends BaseFragment {
 
         btnSetClick(R.id.btn_show_title);
         btnSetClick(R.id.btn_show_menu);
+        btnSetClick(R.id.btn_show_color);
+        btnColor = getContentView().findViewById(R.id.btn_show_color);
 
         verticalRollingTextView = getContentView().findViewById(R.id.vertical_rolling_tv);
     }
@@ -102,8 +104,27 @@ public class ViewFragment extends BaseFragment {
                 case R.id.btn_show_menu:
                     slidingMenu.toggle();
                     break;
+                case R.id.btn_show_color:
+                    colorPickerShow();
+                    break;
             }
         }
     };
+
+    private void colorPickerShow(){
+        ColorPicker colorPicker = new ColorPicker(getActivity());
+        colorPicker.setOnColorPickListener(new ColorPicker.OnColorPickListener() {
+            @Override
+            public void onColorPicked(int pickedColor) {
+                btnColor.setBackgroundColor(pickedColor);
+            }
+
+            @Override
+            public void onColorString(String pColor) {
+                StyleToastUtil.success("color:"+ pColor);
+            }
+        });
+        colorPicker.show();
+    }
 
 }

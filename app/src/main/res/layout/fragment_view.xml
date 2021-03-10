@@ -41,6 +41,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="侧边控件" />
+                <Button
+                    android:id="@+id/btn_show_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="颜色选择弹框" />
             </com.dozen.commonbase.view.roundview.RoundLinearLayout>
 
             <com.dozen.commonbase.view.roundview.RoundLinearLayout

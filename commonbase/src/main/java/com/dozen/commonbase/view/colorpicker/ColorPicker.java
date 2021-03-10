@@ -113,6 +113,7 @@ public class ColorPicker extends ConfirmPopup<LinearLayout> {
     protected void onSubmit() {
         if (onColorPickListener != null) {
             onColorPickListener.onColorPicked(getCurrentColor());
+            onColorPickListener.onColorString("#"+hexValView.getText().toString());
         }
     }
 
@@ -157,6 +158,7 @@ public class ColorPicker extends ConfirmPopup<LinearLayout> {
 
         void onColorPicked(@ColorInt int pickedColor);
 
+        void onColorString(String pColor);
     }
 
 }
