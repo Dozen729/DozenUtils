@@ -10,6 +10,7 @@ import com.dozen.utils.fragment.ShapeFragment;
 import com.dozen.utils.fragment.SpinnerFragment;
 import com.dozen.utils.fragment.SuspendFragment;
 import com.dozen.utils.fragment.ViewFragment;
+import com.dozen.utils.fragment.WheelFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +43,8 @@ public class DozenConstant {
         list.add(new MainItemBean(3, ItemType.MAIN_VIEW,"悬浮控件","悬浮在界面中的一个组件","", SuspendFragment.newInstance("悬浮控件"),0,false,true));
         list.add(new MainItemBean(4, ItemType.MAIN_VIEW,"奇形怪状","各种背景切图","", ShapeFragment.newInstance("背景切图"),0,false,true));
         list.add(new MainItemBean(5, ItemType.MAIN_VIEW,"弹框","弹框提示","", CroutonFragment.newInstance("弹框提示"),0,false,true));
-        list.add(new MainItemBean(6, ItemType.MAIN_UTILS,"SVG","svg格式图片代码加载","", SVGFragment.newInstance("svg"),0,false,true));
-
+        list.add(new MainItemBean(6, ItemType.MAIN_VIEW,"SVG","svg格式图片代码加载","", SVGFragment.newInstance("svg"),0,false,true));
+        list.add(new MainItemBean(6, ItemType.MAIN_VIEW,"滚动选择器","日期、时间和自定义数据选择器","", WheelFragment.newInstance("选择器"),0,false,true));
 
 
         list.add(new MainItemBean(99, ItemType.MAIN_VIEW,"空的","真的是空的","", EmptyFragment.newInstance("空"),0,false,false));

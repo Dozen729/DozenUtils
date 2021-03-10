@@ -18,7 +18,7 @@ import com.dozen.utils.R;
  */
 public class CroutonFragment extends BaseFragment {
 
-    public static final String KEY_TEXT = "empty";
+    public static final String KEY_TEXT = "crouton";
 
     public static CroutonFragment newInstance(String text) {
         CroutonFragment mineFragment = new CroutonFragment();

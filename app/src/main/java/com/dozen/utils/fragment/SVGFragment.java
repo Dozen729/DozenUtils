@@ -31,7 +31,7 @@ import java.util.Random;
  */
 public class SVGFragment extends BaseFragment {
 
-    public static final String KEY_TEXT = "empty";
+    public static final String KEY_TEXT = "svg";
 
     public static SVGFragment newInstance(String text) {
         SVGFragment mineFragment = new SVGFragment();

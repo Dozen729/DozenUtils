@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.dozen.commonbase.view.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:rv_backgroundColor="#F8F6F6"
+            app:rv_cornerRadius="15dp"
+            app:rv_strokeColor="#234CD5"
+            app:rv_strokeWidth="1dp">
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/wheel_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/wheel_btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="年" />
+
+                <Button
+                    android:id="@+id/wheel_btn2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="月" />
+
+                <Button
+                    android:id="@+id/wheel_btn3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="日" />
+
+                <Button
+                    android:id="@+id/wheel_btn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="时" />
+
+                <Button
+                    android:id="@+id/wheel_btn5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="分" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <Button
+                    android:id="@+id/wheel_btn6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="自定义1个数据" />
+
+                <Button
+                    android:id="@+id/wheel_btn7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="自定义2个数据" />
+
+                <Button
+                    android:id="@+id/wheel_btn8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="自定义3个数据" />
+
+                <Button
+                    android:id="@+id/wheel_btn9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="自定义4个数据" />
+
+                <Button
+                    android:id="@+id/wheel_btn10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="自定义5个数据" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <TextView
+                    android:id="@+id/wheel_text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black" />
+
+                <com.dozen.commonbase.view.wheel.base.WheelItemView
+                    android:id="@+id/wheel_view_left"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    app:wheelItemVerticalSpace="12dp"
+                    app:wheelShowCount="7"
+                    app:wheelTotalOffsetX="4dp" />
+
+                <com.dozen.commonbase.view.wheel.base.WheelItemView
+                    android:id="@+id/wheel_view_center"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    app:wheelItemVerticalSpace="12dp"
+                    app:wheelShowCount="7" />
+
+                <com.dozen.commonbase.view.wheel.base.WheelItemView
+                    android:id="@+id/wheel_view_right"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    app:wheelItemVerticalSpace="12dp"
+                    app:wheelShowCount="7"
+                    app:wheelTotalOffsetX="-4dp" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+        </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
