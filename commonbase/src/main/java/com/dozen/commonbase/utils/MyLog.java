@@ -9,7 +9,7 @@ import android.util.Log;
  */
 public class MyLog {
 
-    private static final String TAG = "PaiPai_Test";
+    private static final String TAG = "Dozen_Test";
     private static boolean enableLog = true;
 
     public MyLog() {

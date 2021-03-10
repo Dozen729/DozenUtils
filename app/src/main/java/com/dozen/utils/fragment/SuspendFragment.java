@@ -1,7 +1,10 @@
 package com.dozen.utils.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -10,8 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dozen.commonbase.act.BaseFragment;
+import com.dozen.commonbase.utils.MyLog;
 import com.dozen.commonbase.utils.StyleToastUtil;
 import com.dozen.commonbase.view.SuspendWidget;
+import com.dozen.commonbase.view.suspend.SuspendService;
 import com.dozen.utils.R;
 
 /**
@@ -42,9 +47,6 @@ public class SuspendFragment extends BaseFragment {
 
     @Override
     protected void setUpView() {
-        Bundle bundle = this.getArguments();
-        assert bundle != null;
-        String name=bundle.getString(KEY_TEXT);
 
         boxLocation = getContentView().findViewById(R.id.ll_box_location);
         boxLocation.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -59,6 +61,10 @@ public class SuspendFragment extends BaseFragment {
                 }
             }
         });
+
+        btnSetClick(R.id.btn_suspend1);
+        btnSetClick(R.id.btn_suspend2);
+        btnSetClick(R.id.btn_suspend3);
     }
 
     @Override
@@ -90,8 +96,35 @@ public class SuspendFragment extends BaseFragment {
         @SuppressLint("NonConstantResourceId")
         @Override
         public void onClick(View view) {
-
+            switch (view.getId()){
+                case R.id.btn_suspend1:
+                    openDisplay();
+                    break;
+                case R.id.btn_suspend2:
+                    if (openDisplay()){
+                        getActivity().startService(new Intent(getActivity(), SuspendService.class));
+                    }
+                    break;
+                case R.id.btn_suspend3:
+                    if (openDisplay()){
+                        getActivity().stopService(new Intent(getActivity(), SuspendService.class));
+                    }
+                    break;
+            }
         }
     };
+
+    private boolean openDisplay(){
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (!Settings.canDrawOverlays(getBaseContext())) {
+                StyleToastUtil.info(getResources().getString(R.string.app_name)+"---需要开启悬浮窗权限,才可以正常运行,请务必开启!!!");
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivityForResult(intent, 3);
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

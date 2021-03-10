@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/alternate_view_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -31,53 +37,59 @@
                 app:rv_strokeColor="#E91E63"
                 app:rv_strokeWidth="1dp">
 
-                <TextView
+                <Button
+                    android:id="@+id/btn_crouton1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="可以缩放的图片" />
+                    android:text="顶部弹窗" />
 
-                <com.dozen.commonbase.view.zoomage.ZoomImageView
+                <Button
+                    android:id="@+id/btn_crouton2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/girl_guide" />
+                    android:layout_height="wrap_content"
+                    android:text="自定义弹窗" />
+
+                <Button
+                    android:id="@+id/btn_crouton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="自带弹窗info" />
+
+                <Button
+                    android:id="@+id/btn_crouton4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="自带弹窗ALERT" />
+
+                <Button
+                    android:id="@+id/btn_crouton5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="自带弹窗CONFIRM" />
+
+                <Button
+                    android:id="@+id/btn_crouton6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="自带弹窗null" />
+
+                <Button
+                    android:id="@+id/btn_crouton7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="直接弹窗" />
+
+                <Button
+                    android:id="@+id/btn_crouton8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="属性弹窗" />
 
             </com.dozen.commonbase.view.roundview.RoundLinearLayout>
 
-
-            <com.dozen.commonbase.view.roundview.RoundLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:orientation="vertical"
-                android:padding="5dp"
-                app:rv_backgroundColor="#FFFFFF"
-                app:rv_cornerRadius="8dp"
-                app:rv_strokeColor="#E91E63"
-                app:rv_strokeWidth="1dp">
-
-                <Button
-                    android:id="@+id/btn_suspend1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="获取权限"/>
-
-                <Button
-                    android:id="@+id/btn_suspend2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="开启悬浮控件"/>
-
-                <Button
-                    android:id="@+id/btn_suspend3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="关闭悬浮控件"/>
-
-            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
 
         </com.dozen.commonbase.view.roundview.RoundLinearLayout>
 
     </ScrollView>
 
-    <include layout="@layout/suspend_widget" />
-</FrameLayout>
+</LinearLayout>

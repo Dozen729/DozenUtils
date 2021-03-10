@@ -2,6 +2,7 @@ package com.dozen.utils;
 
 import com.dozen.utils.base.ItemType;
 import com.dozen.utils.bean.MainItemBean;
+import com.dozen.utils.fragment.CroutonFragment;
 import com.dozen.utils.fragment.EmptyFragment;
 import com.dozen.utils.fragment.IndicatorFragment;
 import com.dozen.utils.fragment.ShapeFragment;
@@ -39,6 +40,8 @@ public class DozenConstant {
         list.add(new MainItemBean(2, ItemType.MAIN_VIEW,"下拉框","简单的下拉框","", SpinnerFragment.newInstance("下拉框"),0,false,true));
         list.add(new MainItemBean(3, ItemType.MAIN_VIEW,"悬浮控件","悬浮在界面中的一个组件","", SuspendFragment.newInstance("悬浮控件"),0,false,true));
         list.add(new MainItemBean(4, ItemType.MAIN_VIEW,"奇形怪状","各种背景切图","", ShapeFragment.newInstance("背景切图"),0,false,true));
+        list.add(new MainItemBean(5, ItemType.MAIN_VIEW,"弹框","弹框提示","", CroutonFragment.newInstance("弹框提示"),0,false,true));
+
 
         list.add(new MainItemBean(99, ItemType.MAIN_VIEW,"空的","真的是空的","", EmptyFragment.newInstance("空"),0,false,false));
         list.add(new MainItemBean(1, ItemType.MAIN_VIEW,"指示器","view","", IndicatorFragment.newInstance("指示器"),0,false,true));
