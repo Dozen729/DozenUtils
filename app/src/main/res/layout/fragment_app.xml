@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.dozen.commonbase.view.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:rv_backgroundColor="#F8F6F6"
+            app:rv_cornerRadius="15dp"
+            app:rv_strokeColor="#234CD5"
+            app:rv_strokeWidth="1dp">
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/app_class11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textSize="12sp"
+                    android:textColor="#0027FF"
+                    android:text="@string/app_name"
+                    app:rv_backgroundColor="@color/white"
+                    app:rv_cornerRadius="45dp"
+                    app:rv_strokeColor="@color/red"
+                    app:rv_strokeWidth="1dp"/>
+
+                <TextView
+                    android:id="@+id/app_tv11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="@string/app_name" />
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+        </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

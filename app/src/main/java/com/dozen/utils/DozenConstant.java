@@ -2,6 +2,7 @@ package com.dozen.utils;
 
 import com.dozen.utils.base.ItemType;
 import com.dozen.utils.bean.MainItemBean;
+import com.dozen.utils.fragment.util.AppFragment;
 import com.dozen.utils.fragment.CroutonFragment;
 import com.dozen.utils.fragment.EmptyFragment;
 import com.dozen.utils.fragment.IndicatorFragment;
@@ -11,6 +12,8 @@ import com.dozen.utils.fragment.SpinnerFragment;
 import com.dozen.utils.fragment.SuspendFragment;
 import com.dozen.utils.fragment.ViewFragment;
 import com.dozen.utils.fragment.WheelFragment;
+import com.dozen.utils.fragment.util.ApplyFragment;
+import com.dozen.utils.fragment.util.CodeFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +31,7 @@ public class DozenConstant {
 
         list.add(new MainItemBean(0, ItemType.MAIN_ALL,"全部","显示所有项目","",null,0,false,true));
         list.add(new MainItemBean(1, ItemType.MAIN_VIEW,"自己义View","收集常用的View","",null,0,false,true));
-        list.add(new MainItemBean(2, ItemType.MAIN_UTILS,"工具","整理经常使用的方法","",null,0,false,true));
+        list.add(new MainItemBean(2, ItemType.MAIN_UTILS,"工具","整理经常使用的方法","",null,0,true,true));
         list.add(new MainItemBean(3, ItemType.MAIN_HTTP,"http网络请求","okHttp库简单使用","",null,0,false,true));
         list.add(new MainItemBean(4, ItemType.MAIN_DIALOG,"对话框","常用对话框集合","",null,0,false,true));
 
@@ -44,7 +47,13 @@ public class DozenConstant {
         list.add(new MainItemBean(4, ItemType.MAIN_VIEW,"奇形怪状","各种背景切图","", ShapeFragment.newInstance("背景切图"),0,false,true));
         list.add(new MainItemBean(5, ItemType.MAIN_VIEW,"弹框","弹框提示","", CroutonFragment.newInstance("弹框提示"),0,false,true));
         list.add(new MainItemBean(6, ItemType.MAIN_VIEW,"SVG","svg格式图片代码加载","", SVGFragment.newInstance("svg"),0,false,true));
-        list.add(new MainItemBean(6, ItemType.MAIN_VIEW,"滚动选择器","日期、时间和自定义数据选择器","", WheelFragment.newInstance("选择器"),0,false,true));
+        list.add(new MainItemBean(7, ItemType.MAIN_VIEW,"滚动选择器","日期、时间和自定义数据选择器","", WheelFragment.newInstance("选择器"),0,false,true));
+
+        list.add(new MainItemBean(8, ItemType.MAIN_UTILS,"app","读取app信息的工具","", AppFragment.newInstance("app"),0,false,true));
+        list.add(new MainItemBean(9, ItemType.MAIN_UTILS,"code","实用代码工具类","", CodeFragment.newInstance("code"),0,false,true));
+        list.add(new MainItemBean(10, ItemType.MAIN_UTILS,"使用","一些实用的工具","", ApplyFragment.newInstance("使用"),0,false,true));
+
+
 
 
         list.add(new MainItemBean(99, ItemType.MAIN_VIEW,"空的","真的是空的","", EmptyFragment.newInstance("空"),0,false,false));

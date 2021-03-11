@@ -90,7 +90,14 @@ public class MainActivity extends CommonActivity {
             mainData.get(i).setFragmentAdapter(adapter);
         }
 
-        setMainDataShow(0);
+        for (int i = 0; i < mainData.size(); i++) {
+            MainItemBean bean = mainData.get(i);
+            if (bean.isCheck()){
+                setMainDataShow(i);
+                mainMagicIndicator.onPageSelected(i);
+                break;
+            }
+        }
 
     }
 

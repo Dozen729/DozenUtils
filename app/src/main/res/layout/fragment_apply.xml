@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.dozen.commonbase.view.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            app:rv_backgroundColor="#F8F6F6"
+            app:rv_cornerRadius="15dp"
+            app:rv_strokeColor="#234CD5"
+            app:rv_strokeWidth="1dp">
+
+            <com.dozen.commonbase.view.roundview.RoundLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:orientation="vertical"
+                android:padding="5dp"
+                app:rv_backgroundColor="#FFFFFF"
+                app:rv_cornerRadius="8dp"
+                app:rv_strokeColor="#E91E63"
+                app:rv_strokeWidth="1dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textSize="25sp"
+                    android:textColor="@color/red"
+                    android:text="倒计时" />
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/apply_sms1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:rv_backgroundColor="#FF5722"
+                    android:padding="10dp"
+                    app:rv_cornerRadius="45dp"
+                    android:text="获取验证码"/>
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/apply_sms2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:rv_backgroundColor="#2196F3"
+                    android:textColor="@color/white"
+                    android:padding="10dp"
+                    app:rv_cornerRadius="10dp"
+                    android:text="获取验证码"/>
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/apply_sms3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:rv_backgroundColor="#FFEB3B"
+                    android:textColor="@color/red"
+                    android:padding="10dp"
+                    app:rv_cornerRadius_TR="13dp"
+                    app:rv_cornerRadius_BR="13dp"
+                    android:text="获取验证码"/>
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/apply_sms4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:rv_backgroundColor="#9C27B0"
+                    android:padding="10dp"
+                    app:rv_cornerRadius_TL="10dp"
+                    android:text="获取验证码"/>
+
+
+                <com.dozen.commonbase.view.roundview.RoundTextView
+                    android:id="@+id/apply_sms5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:rv_backgroundColor="#8BC34A"
+                    android:textColor="#FF5722"
+                    android:padding="10dp"
+                    app:rv_cornerRadius_TR="13dp"
+                    app:rv_cornerRadius_BL="13dp"
+                    android:text="获取验证码"/>
+
+
+            </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+        <com.dozen.commonbase.view.roundview.RoundLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="vertical"
+            android:padding="5dp"
+            app:rv_backgroundColor="#FFFFFF"
+            app:rv_cornerRadius="8dp"
+            app:rv_strokeColor="#E91E63"
+            app:rv_strokeWidth="1dp">
+
+            <EditText
+                android:id="@+id/apply_code_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="输入二维码内容"/>
+
+            <Button
+                android:id="@+id/apply_btn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="生成二维码"/>
+
+            <ImageView
+                android:id="@+id/apply_image1"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/apply_image2"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/apply_image3"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"/>
+
+        </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+        </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
