@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.dozen.commonbase.APPBase;
+import com.dozen.commonbase.CommonConstant;
 import com.dozen.commonbase.http.CallBack;
 import com.dozen.commonbase.http.ResultInfo;
 import com.dozen.commonbase.utils.MyLog;
@@ -57,7 +58,7 @@ public class LoginConstant {
                         SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID_TOKEN, userLoginResult.data.tokeninfo.token);
                         MyLog.d("register_uuid");
                     }else {
-                        if (info.getMsg().contains("no taken")){
+                        if (info.getCode().equals(CommonConstant.TOKEN_INVALID_CODE)){
                             SET_UUID("");
                         }
                     }
