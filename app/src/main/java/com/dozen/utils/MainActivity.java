@@ -61,6 +61,18 @@ public class MainActivity extends CommonActivity {
         initMagicIndicatorMain();
 
         initMainItemData();
+
+        perform(DozenConstant.permissions, new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }, new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
     }
 
     private void initMainItemData() {

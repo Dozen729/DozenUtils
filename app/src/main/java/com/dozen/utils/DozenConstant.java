@@ -1,7 +1,10 @@
 package com.dozen.utils;
 
+import android.Manifest;
+
 import com.dozen.utils.base.ItemType;
 import com.dozen.utils.bean.MainItemBean;
+import com.dozen.utils.fragment.http.HttpFragment;
 import com.dozen.utils.fragment.util.AppFragment;
 import com.dozen.utils.fragment.CroutonFragment;
 import com.dozen.utils.fragment.EmptyFragment;
@@ -31,8 +34,8 @@ public class DozenConstant {
 
         list.add(new MainItemBean(0, ItemType.MAIN_ALL,"全部","显示所有项目","",null,0,false,true));
         list.add(new MainItemBean(1, ItemType.MAIN_VIEW,"自己义View","收集常用的View","",null,0,false,true));
-        list.add(new MainItemBean(2, ItemType.MAIN_UTILS,"工具","整理经常使用的方法","",null,0,true,true));
-        list.add(new MainItemBean(3, ItemType.MAIN_HTTP,"http网络请求","okHttp库简单使用","",null,0,false,true));
+        list.add(new MainItemBean(2, ItemType.MAIN_UTILS,"工具","整理经常使用的方法","",null,0,false,true));
+        list.add(new MainItemBean(3, ItemType.MAIN_HTTP,"http网络请求","okHttp库简单使用","",null,0,true,true));
         list.add(new MainItemBean(4, ItemType.MAIN_DIALOG,"对话框","常用对话框集合","",null,0,false,true));
 
         return list;
@@ -53,7 +56,7 @@ public class DozenConstant {
         list.add(new MainItemBean(9, ItemType.MAIN_UTILS,"code","实用代码工具类","", CodeFragment.newInstance("code"),0,false,true));
         list.add(new MainItemBean(10, ItemType.MAIN_UTILS,"使用","一些实用的工具","", ApplyFragment.newInstance("使用"),0,false,true));
 
-
+        list.add(new MainItemBean(11, ItemType.MAIN_HTTP,"http","http3使用","", HttpFragment.newInstance("http"),0,false,true));
 
 
         list.add(new MainItemBean(99, ItemType.MAIN_VIEW,"空的","真的是空的","", EmptyFragment.newInstance("空"),0,false,false));
@@ -61,5 +64,9 @@ public class DozenConstant {
 
         return list;
     }
+
+    public static String[] permissions = new String[]{
+            Manifest.permission.INTERNET,
+    };
 
 }
