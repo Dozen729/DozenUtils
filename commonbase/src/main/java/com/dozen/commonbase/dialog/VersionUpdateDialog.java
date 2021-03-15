@@ -42,7 +42,7 @@ public class VersionUpdateDialog extends Dialog {
     private TextView tvTitle;
 
     private String url = "http://imtt.dd.qq.com/16891/myapp/channel_92757348_1001280_9bde84da0d1295f2e7ef9db3ba5e3dce.apk?hsr=5848";
-    private String path = Environment.getExternalStorageDirectory().getAbsolutePath()+"/commonbase";
+    private String path = Environment.getExternalStorageDirectory()+"/DCIM/commonbase/";
     private String fileName = "commonBase_update.apk";
 
     private DialogCommonListener dialogCommonListener;

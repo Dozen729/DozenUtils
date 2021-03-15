@@ -5,6 +5,7 @@ import android.Manifest;
 import com.dozen.utils.base.ItemType;
 import com.dozen.utils.bean.MainItemBean;
 import com.dozen.utils.fragment.dialog.DialogShowFragment;
+import com.dozen.utils.fragment.http.DownloadFragment;
 import com.dozen.utils.fragment.http.HttpFragment;
 import com.dozen.utils.fragment.util.AppFragment;
 import com.dozen.utils.fragment.CroutonFragment;
@@ -58,6 +59,8 @@ public class DozenConstant {
         list.add(new MainItemBean(10, ItemType.MAIN_UTILS,"使用","一些实用的工具","", ApplyFragment.newInstance("使用"),0,false,true));
 
         list.add(new MainItemBean(11, ItemType.MAIN_HTTP,"http","http3使用","", HttpFragment.newInstance("http"),0,false,true));
+        list.add(new MainItemBean(13, ItemType.MAIN_HTTP,"download","文件下载","", DownloadFragment.newInstance("download"),0,false,true));
+
 
         list.add(new MainItemBean(12, ItemType.MAIN_DIALOG,"dialog","dialog使用","", DialogShowFragment.newInstance("dialog"),0,false,true));
 
@@ -69,6 +72,8 @@ public class DozenConstant {
 
     public static String[] permissions = new String[]{
             Manifest.permission.INTERNET,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
     };
 
 }
