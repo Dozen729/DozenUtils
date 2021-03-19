@@ -13,5 +13,6 @@ public class ItemType {
     public static final int MAIN_UTILS = 729003;
     public static final int MAIN_HTTP = 729004;
     public static final int MAIN_DIALOG = 729005;
+    public static final int MAIN_THIRD = 729006;
 
 }

@@ -5,8 +5,10 @@ import android.Manifest;
 import com.dozen.utils.base.ItemType;
 import com.dozen.utils.bean.MainItemBean;
 import com.dozen.utils.fragment.dialog.DialogShowFragment;
+import com.dozen.utils.fragment.dialog.FragmentDialogFragment;
 import com.dozen.utils.fragment.http.DownloadFragment;
 import com.dozen.utils.fragment.http.HttpFragment;
+import com.dozen.utils.fragment.third.AnimationFragment;
 import com.dozen.utils.fragment.util.AppFragment;
 import com.dozen.utils.fragment.CroutonFragment;
 import com.dozen.utils.fragment.EmptyFragment;
@@ -39,6 +41,8 @@ public class DozenConstant {
         list.add(new MainItemBean(2, ItemType.MAIN_UTILS,"工具","整理经常使用的方法","",null,0,false,true));
         list.add(new MainItemBean(3, ItemType.MAIN_HTTP,"http网络请求","okHttp库简单使用","",null,0,false,true));
         list.add(new MainItemBean(4, ItemType.MAIN_DIALOG,"对话框","常用对话框集合","",null,0,false,true));
+        list.add(new MainItemBean(5, ItemType.MAIN_THIRD,"开源项目","第三方开源项目使用指南","",null,0,false,true));
+
 
         return list;
     }
@@ -63,6 +67,9 @@ public class DozenConstant {
 
 
         list.add(new MainItemBean(12, ItemType.MAIN_DIALOG,"dialog","dialog使用","", DialogShowFragment.newInstance("dialog"),0,false,true));
+        list.add(new MainItemBean(14, ItemType.MAIN_DIALOG,"fragmentDialog","fragmentDialog使用","", FragmentDialogFragment.newInstance("fragmentDialog"),0,false,true));
+
+        list.add(new MainItemBean(15, ItemType.MAIN_THIRD,"动画","第三方动画使用","", AnimationFragment.newInstance("动画"),0,false,true));
 
         list.add(new MainItemBean(99, ItemType.MAIN_VIEW,"空的","真的是空的","", EmptyFragment.newInstance("空"),0,false,false));
         list.add(new MainItemBean(1, ItemType.MAIN_VIEW,"指示器","view","", IndicatorFragment.newInstance("指示器"),0,false,true));
