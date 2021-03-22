@@ -18,6 +18,7 @@
         android:layout_height="50dp"
         app:titleColor="#000000"
         app:titleName="标题1"
+        app:backPictureColor="@color/black"
         app:topBackground="#F44336" />
 
     <com.dozen.commonbase.view.TitleView
@@ -84,6 +85,7 @@
         app:rightImagePicture="@drawable/icon_loading"
         app:rightImageShow="true"
         app:titleColor="#000000"
+        app:backPictureColor="#FF0000"
         app:titleName="标题7"
         app:titleSize="9sp"
         app:topBackground="#00BCD4" />

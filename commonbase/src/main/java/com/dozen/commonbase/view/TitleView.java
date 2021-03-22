@@ -1,15 +1,19 @@
 package com.dozen.commonbase.view;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.dozen.commonbase.ActivityManager;
 import com.dozen.commonbase.act.CommonBaseActivity;
@@ -110,7 +114,13 @@ public class TitleView extends LinearLayout {
         findViewById(R.id.top_title_bg).setBackgroundColor(bgColor);
 
         int backP = ta.getResourceId(R.styleable.TitleView_backPicture,R.drawable.icon_left_return_white);
-        backPicture.setBackgroundResource(backP);
+        int backPColor = ta.getColor(R.styleable.TitleView_backPictureColor, Color.WHITE);
+
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable = getResources().getDrawable(backP);
+        backPicture.setImageResource(0);
+        backPicture.setBackgroundResource(0);
+        DrawableCompat.setTint(drawable,backPColor);
+        backPicture.setImageDrawable(drawable);
 
         ta.recycle();
     }

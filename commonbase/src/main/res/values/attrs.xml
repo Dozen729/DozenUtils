@@ -2,6 +2,7 @@
 <resources>
     <declare-styleable name="TitleView">
         <attr name="backPicture" format="reference"/>
+        <attr name="backPictureColor" format="color"/>
 
         <attr name="titleColor" format="color"/>
         <attr name="titleName" format="string"/>
