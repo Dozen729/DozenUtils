@@ -26,9 +26,9 @@ android {
         flavorDimensions "default"
     }
 
-    packagingOptions {
-        pickFirst 'META-INF/*'
-    }
+//    packagingOptions {
+//        pickFirst 'META-INF/*'
+//    }
 
     buildTypes {
         release {
@@ -65,6 +65,21 @@ android {
                     outputFileName  = fileName
                 }
             }
+        }
+    }
+
+    signingConfigs {
+        paipai {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('dozen_utils.jks')
+            storePassword '123456'
+        }
+        debug {
+            keyAlias 'key0'
+            keyPassword '123456'
+            storeFile file('dozen_utils.jks')
+            storePassword '123456'
         }
     }
 }
