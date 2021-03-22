@@ -30,7 +30,9 @@ public class TestOneDialog extends BaseDialog {
                 dialogCallBack.click();
             }
         });
-        viewConvertListener.convertView(holder,dialog);
+        if (viewConvertListener != null) {
+            viewConvertListener.convertView(holder,dialog);
+        }
     }
 
     public void setViewConvertListener(ViewConvertListener viewConvertListener) {
