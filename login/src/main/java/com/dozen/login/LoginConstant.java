@@ -47,18 +47,20 @@ public class LoginConstant {
         String uuid = SPUtils.getString(APPBase.getApplication(), UUID, "");
         if (uuid == null || uuid.equals("") || uuid.equals("null")) {
             uuid = OnlyAndroidID.getUniquePsuedoIDtoMD5() + "_" + System.currentTimeMillis();
-            SET_UUID(uuid);
+            String finalUuid = uuid;
             LoginUserHttpUtils.register(uuid, new CallBack() {
                 @Override
                 public void onRequested(ResultInfo info, Object tag) {
                     if (info.isSucceed()&&tag.equals("register")){
+                        SET_UUID(finalUuid);
+                        SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID, finalUuid);
                         DataSaveMode.saveUserData((UserLoginResult) info);
                         UserLoginResult userLoginResult = (UserLoginResult) info;
-                        SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID, LoginConstant.GET_UUID());
                         SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID_TOKEN, userLoginResult.data.tokeninfo.token);
                         MyLog.d("register_uuid");
                     }else {
                         if (info.getCode().equals(CommonConstant.TOKEN_INVALID_CODE)){
+                            DataSaveMode.clearUserInfo();
                             SET_UUID("");
                         }
                     }
