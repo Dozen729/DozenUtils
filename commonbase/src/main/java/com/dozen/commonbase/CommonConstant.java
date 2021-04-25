@@ -27,5 +27,5 @@ public class CommonConstant {
     public static final String ISENCRYPT = "isEncrypt";
 
     //oaid
-    public static String OAID="";
+    public static String OAID="oaid";
 }

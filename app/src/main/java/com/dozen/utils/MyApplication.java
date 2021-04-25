@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.StrictMode;
 
+import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -13,6 +14,7 @@ import com.bun.miitmdid.core.JLibrary;
 import com.dozen.commonbase.APPBase;
 import com.dozen.commonbase.CommonConstant;
 import com.dozen.commonbase.http.HttpConstant;
+import com.dozen.commonbase.mode.MiitHelper;
 import com.dozen.commonbase.utils.MyLog;
 import com.dozen.commonbase.utils.SPUtils;
 import com.umeng.analytics.MobclickAgent;
@@ -59,6 +61,18 @@ public class MyApplication extends LitePalApplication {
 
         //初始化环境
         initEnvironment();
+
+        initOaid();
+    }
+
+    private void initOaid() {
+        MiitHelper miitHelper = new MiitHelper(new MiitHelper.AppIdsUpdater() {
+            @Override
+            public void OnIdsAvalid(@NonNull String ids) {
+                SPUtils.setString(application,CommonConstant.OAID,ids);
+            }
+        });
+        miitHelper.getDeviceIds(application);
     }
 
     @Override
