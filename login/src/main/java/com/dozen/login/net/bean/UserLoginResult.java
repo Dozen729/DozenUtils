@@ -13,6 +13,7 @@ public class UserLoginResult extends HttpResult {
 
     public static class Data{
 
+        public String sign;
         public UserToken tokeninfo;
         public VipInfoResult.Data userinfo;
 

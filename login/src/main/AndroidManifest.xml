@@ -4,6 +4,23 @@
     package="com.dozen.login">
 
     <application>
+        <activity android:name=".act.H5DownloadAct"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            tools:targetApi="n"/>
+        <activity
+            android:name=".act.BindPhoneActivity"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            tools:targetApi="n" />
+        <activity
+            android:name=".act.WXLoginActivity"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            tools:targetApi="n" />
         <activity
             android:name=".act.ResetPasswordAct"
             android:label="重置密码"

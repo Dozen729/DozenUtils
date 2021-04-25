@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/top_bg_color"
+    android:orientation="vertical">
+
+    <com.dozen.commonbase.view.TitleView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightTextColor="@color/login_title_right_text"
+        app:titleColor="@color/login_title_center_text"
+        app:titleLine="false"
+        app:topBackground="@color/top_bg_color" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@mipmap/icon_good_login" />
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:rv_backgroundColor="#202020"
+        app:rv_cornerRadius_TL="20dp"
+        app:rv_cornerRadius_TR="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_big"
+            android:layout_marginStart="@dimen/dimen_center"
+            android:text="为了您的账号安全，请绑定手机号码"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_center"
+            android:layout_marginTop="@dimen/dimen_small"
+            android:layout_marginEnd="@dimen/dimen_center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/dimen_small"
+                android:text="手机号码"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/sp_14" />
+
+            <EditText
+                android:id="@+id/et_user_phone"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:textColorHint="#616161"
+                android:background="@drawable/bg_circle_r6_login"
+                android:ems="11"
+                android:hint="输入11位手机号"
+                android:inputType="phone"
+                android:paddingStart="@dimen/dimen_center"
+                android:textSize="14sp"
+                tools:ignore="RtlSymmetry" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginStart="@dimen/dimen_center"
+            android:layout_marginTop="@dimen/dimen_small"
+            android:layout_marginEnd="@dimen/dimen_center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/dimen_small"
+                android:text="设置密码"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/sp_14" />
+
+            <EditText
+                android:id="@+id/et_user_password"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/bg_circle_r6_login"
+                android:ems="8"
+                android:textColor="@color/white"
+                android:hint="设置6位纯数字密码"
+                android:textColorHint="#616161"
+                android:inputType="phone"
+                android:paddingStart="@dimen/dimen_center"
+                android:textSize="14sp"
+                tools:ignore="RtlSymmetry" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_center"
+            android:layout_marginTop="@dimen/dimen_small"
+            android:layout_marginEnd="@dimen/dimen_center"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/dimen_small"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="验证码"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="空白空白"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/sp_14"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+
+
+            <EditText
+                android:id="@+id/et_user_verification"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/bg_circle_r6_login"
+                android:ems="4"
+                android:hint="输入验证码"
+                android:inputType="phone"
+                android:textColorHint="#616161"
+                android:textColor="@color/white"
+                android:paddingStart="@dimen/dimen_center"
+                android:textSize="14sp"
+                tools:ignore="RtlSymmetry" />
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/tv_user_get_code_and_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_small"
+                android:layout_marginEnd="@dimen/dimen_small"
+                android:padding="@dimen/dimen_small"
+                android:text="获取验证码"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_14"
+                app:rv_backgroundColor="@color/login_code_text"
+                app:rv_cornerRadius="6dp" />
+
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/view_login_agree_dozen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen_center"
+            android:layout_marginTop="@dimen/big_big"
+            android:layout_marginEnd="@dimen/dimen_center"
+            android:gravity="center"
+            android:orientation="horizontal" />
+
+        <com.dozen.commonbase.view.roundview.RoundTextView
+            android:id="@+id/btn_user_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/max"
+            android:layout_marginTop="@dimen/dimen_big"
+            android:layout_marginEnd="@dimen/max"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="立即绑定"
+            android:textColor="@color/login_confirm_btn_text"
+            android:textSize="16sp"
+            app:rv_backgroundColor="@color/login_confirm_bg"
+            app:rv_cornerRadius="5dp" />
+
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</LinearLayout>

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.dozen.commonbase.APPBase;
 import com.dozen.commonbase.CommonConstant;
 import com.dozen.commonbase.act.CommonActivity;
 import com.dozen.commonbase.dialog.DialogCommonListener;
@@ -246,7 +248,6 @@ public class H5PayAct extends CommonActivity {
                         SPUtils.setBoolean(H5PayAct.this, LoginConstant.ISVIP, true);
 
                         setUserInfo();
-                        LoginMobclickConstant.upData();
 
                         showOrderSuccessDialog();
                     } else {
@@ -321,6 +322,7 @@ public class H5PayAct extends CommonActivity {
         if (isShow) {
             return;
         }
+        upData();
         isShow = true;
         OrderConfirmDialog dialog = new OrderConfirmDialog(this);
         dialog.setOkLisenter(new OrderConfirmDialog.onOkLisenter() {
@@ -464,4 +466,66 @@ public class H5PayAct extends CommonActivity {
             return true;
         }
     };
+
+
+    //支付完成埋点
+    public static void upData() {
+
+        String order_id = SPUtils.getString(APPBase.getApplication(), LoginConstant.PAY_ORDER_ID_NOW, "");
+        if (order_id.equals("")) {
+            return;
+        }
+        if (SPUtils.getBoolean(APPBase.getApplication(), LoginConstant.PAY_PUSH_UMENG, false)) {
+            return;
+        }
+        LoginUserHttpUtils.getOrderInfoVerify(order_id, new CallBack() {
+            @Override
+            public void onRequested(final ResultInfo info, Object tag) {
+                if (info.isSucceed() && tag.equals("order")) {
+                    final GetOrderInfoResult result = (GetOrderInfoResult) info;
+                    MyLog.d("0000userid" + LoginConstant.GET_UUID() + "_orderid=" + result.data.order_sn + "_amount" + result.data.order_price);
+                    if (result.data.order_status == 1) {
+                        //只有头条才发送
+                        if (CommonConstant.umeng_click) {
+                            MyLog.d("11111userid" + LoginConstant.GET_UUID() + "_orderid=" + result.data.order_sn + "_amount" + result.data.order_price);
+                            Map<String, String> map = new HashMap<String, String>();//统计埋点
+                            map.put("wxpay", "1");
+                            map.put("userid", LoginConstant.GET_UUID());
+                            map.put("orderid", "_version=" + VersionInfoUtils.getVersionName(APPBase.getApplication()) + "_order=" + result.data.order_sn + "_amount=" + result.data.order_price);//订单号+版本号+价格
+                            map.put("amount", result.data.order_price);
+                            MobclickAgent.onEvent(APPBase.getApplication(), LoginMobclickConstant.pay_ment_successful_wechat, map);
+                        }
+                        if (LoginConstant.H5Pay_UMENG.contains(LoginConstant.channel)) {
+                            //延迟一秒发，以免丢失
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (CommonConstant.umeng_click) {
+                                        MyLog.d("2222userid" + LoginConstant.GET_UUID() + "_orderid=" + result.data.order_sn + "_amount" + result.data.order_price);
+                                        Map<String, String> successPayMap = new HashMap<String, String>();//统计埋点
+                                        successPayMap.put("userid", LoginConstant.GET_UUID());
+                                        successPayMap.put("orderid", "_version=" + VersionInfoUtils.getVersionName(APPBase.getApplication()) + "_order=" + result.data.order_sn + "_amount=" + result.data.order_price);//订单号+版本号+价格
+                                        successPayMap.put("item", "开通vip");
+                                        successPayMap.put("amount", result.data.order_price);
+                                        MobclickAgent.onEvent(APPBase.getApplication(), "__finish_payment", successPayMap);
+
+                                        //上报成功
+                                        SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_ORDER_ID_NOW, "");
+                                        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.PAY_PUSH_UMENG, true);
+
+                                    }
+                                }
+                            }, 10);
+                        }
+                    } else {
+                        //支付未完成
+                        SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_ORDER_ID_NOW, "");
+                    }
+                } else {
+                    //支付未完成
+                    SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_ORDER_ID_NOW, "");
+                }
+            }
+        }, "order");
+    }
 }

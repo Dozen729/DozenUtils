@@ -20,6 +20,9 @@ public class ChannelResult extends HttpResult {
         public CSwitch oppo;
         public CSwitch huawei;
         public CSwitch common;
+        public CSwitch kuaishou;
+        public CSwitch weibo;
+        public CSwitch dongfang;
     }
 
     public class CSwitch{

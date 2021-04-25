@@ -47,4 +47,8 @@ public class LoginUserUrl {
     //商品
     public static final String goods = HttpConstant.MPYS_API_BASE_URL + SPLICING_INDEX + "goods";
 
+    public static final String wx_login = HttpConstant.MPYS_API_BASE_URL + SPLICING_INDEX + "wechatLogin";
+
+    public static final String bind_phone = HttpConstant.MPYS_API_BASE_URL + SPLICING_INDEX + "bindMobile";
+
 }

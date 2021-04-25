@@ -106,4 +106,17 @@ public class LoginUserHttpUtils {
         httpUtils.get();
     }
 
+    //微信登录
+    public static void wxLogin(String code, CallBack callBack, Object tag) {
+        String url = LoginUserUrl.wx_login + "?code=" + code + "&uuid=" + LoginConstant.GET_UUID();
+        HttpUtils httpUtils = new HttpUtils(url, callBack, UserLoginResult.class, tag);
+        httpUtils.post();
+    }
+
+    //绑定手机
+    public static void bindPhone(String sign, String mobile, String sms_code, CallBack callBack, Object tag) {
+        String url = LoginUserUrl.bind_phone + "?sign=" + sign + "&mobile=" + mobile + "&sms_code=" + sms_code + "&uuid=" + LoginConstant.GET_UUID();
+        HttpUtils httpUtils = new HttpUtils(url, callBack, UserLoginResult.class, tag);
+        httpUtils.post();
+    }
 }
