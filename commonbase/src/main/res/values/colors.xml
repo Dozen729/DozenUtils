@@ -63,4 +63,6 @@
     <color name="wheel_text_color_2">#666666</color>
     <color name="wheel_text_color_3">#999999</color>
     <color name="wheel_text_color_4">#CCCCCC</color>
+
+    <color name="agreement_rule">#A1C0FC</color>
 </resources>
