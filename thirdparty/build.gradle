@@ -32,10 +32,6 @@ android {
 dependencies {
     api fileTree(dir: "adlibs", include: ["*.jar","*.aar"])
     api fileTree(dir: 'adlibs', include: ['*.aar', '*.jar'], exclude: [])
-    api fileTree(dir: "gamelibs", include: ["*.jar","*.aar"])
-    api fileTree(dir: 'gamelibs', include: ['*.aar', '*.jar'], exclude: [])
-    api fileTree(dir: "letolibs", include: ["*.jar","*.aar"])
-    api fileTree(dir: 'letolibs', include: ['*.aar', '*.jar'], exclude: [])
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.0'
@@ -45,10 +41,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation project(path: ':commonbase')
-
-    //推啊广告
-    api ('com.tuia:sdk:2.8.0.0') {
-        transitive = true
-    }
-
 }

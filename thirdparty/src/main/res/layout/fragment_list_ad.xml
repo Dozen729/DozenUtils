@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.dozen.thirdparty.ad.tt.adapter.LoadMoreListView
+        android:id="@+id/lmrv_mine_ad_show"
+        android:layout_width="match_parent"
+        android:layout_height="350dp">
+
+    </com.dozen.thirdparty.ad.tt.adapter.LoadMoreListView>
+
+</LinearLayout>
