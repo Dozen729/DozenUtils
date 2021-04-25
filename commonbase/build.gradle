@@ -109,4 +109,13 @@ dependencies {
     //router
     api 'com.alibaba:arouter-api:1.5.1'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+
+    //展开收起的textview
+    api 'com.ms-square:expandableTextView:0.1.4'
+
+    //列表自适应
+    api 'com.google.android:flexbox:2.0.1'
+
+    //选择本地图片
+    api 'cn.finalteam:galleryfinal:1.4.8.7'
 }

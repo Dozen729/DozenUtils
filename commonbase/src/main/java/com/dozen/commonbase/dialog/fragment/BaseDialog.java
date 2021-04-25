@@ -64,7 +64,6 @@ public abstract class BaseDialog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(mLayoutResId, container, false);
         convertView(ViewHolder.create(view), this);
-        clickCancel();
         return view;
     }
 
