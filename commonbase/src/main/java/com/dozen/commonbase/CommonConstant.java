@@ -13,7 +13,10 @@ public class CommonConstant {
     public static String guideData = "guideData";//引导页数据
     public static String isAnswer = "isAnswer";//回答问题
 
-    public static boolean umeng_click = true;//有盟点击事件传递开关
+    public static boolean umeng_click = false;//有盟点击事件传递开关
+    public static boolean umeng_pay = false;//有盟付费
+    public static boolean reyun_click_switch=false;//热云埋点开关
+    public static boolean mine_click_switch=false;//自己的服务器上传开关
     public static final String skip_guide="skip_guide";//true为跳过引导，false为进入引导
 
     public static final int REQUEST_PERMISSIONS=10001;
