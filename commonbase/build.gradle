@@ -109,6 +109,7 @@ dependencies {
     //router
     api 'com.alibaba:arouter-api:1.5.1'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+    api 'com.alibaba:fastjson:1.2.48'
 
     //展开收起的textview
     api 'com.ms-square:expandableTextView:0.1.4'

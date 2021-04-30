@@ -49,8 +49,10 @@ android {
         xiaomi { dimension "default" }
         toutiao { dimension "default" }
         common { dimension "default" }
-
-
+        kuaishou { dimension "default" }
+        weibo { dimension "default" }
+        dongfang { dimension "default" }
+        befun { dimension "default" }
     }
     productFlavors.all {
         flavor -> flavor.manifestPlaceholders = [APP_CHANNEL_VALUE: name]
@@ -104,6 +106,6 @@ dependencies {
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
 }
 
-def releaseTime() {
-    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+static def releaseTime() {
+    return new Date().format("yyyy-MM-dd-HH-mm", TimeZone.getTimeZone("GMT+08:00"))
 }

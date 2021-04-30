@@ -8,7 +8,10 @@ import com.bun.miitmdid.core.ErrorCode;
 import com.bun.miitmdid.core.MdidSdkHelper;
 import com.bun.miitmdid.interfaces.IIdentifierListener;
 import com.bun.miitmdid.interfaces.IdSupplier;
+import com.dozen.commonbase.APPBase;
+import com.dozen.commonbase.CommonConstant;
 import com.dozen.commonbase.utils.MyLog;
+import com.dozen.commonbase.utils.SPUtils;
 
 /**
  * @author: Dozen
@@ -31,15 +34,15 @@ public class MiitHelper implements IIdentifierListener {
         long timee = System.currentTimeMillis();
         long offset = timee - timeb;
         if (nres == ErrorCode.INIT_ERROR_DEVICE_NOSUPPORT) {//1008612 不支持的设备
-            MyLog.e(nres+"");
+            MyLog.e(nres + "");
         } else if (nres == ErrorCode.INIT_ERROR_LOAD_CONFIGFILE) {//1008613 加载配置文件出错
-            MyLog.e(nres+"");
+            MyLog.e(nres + "");
         } else if (nres == ErrorCode.INIT_ERROR_MANUFACTURER_NOSUPPORT) {//1008611 不支持的设备厂商
-            MyLog.e(nres+"");
+            MyLog.e(nres + "");
         } else if (nres == ErrorCode.INIT_ERROR_RESULT_DELAY) {//1008614 获取接口是异步的，结果会在回调中返回，回调执行的回调可能在工作线程
-            MyLog.e(nres+"");
+            MyLog.e(nres + "");
         } else if (nres == ErrorCode.INIT_HELPER_CALL_ERROR) {//1008615 反射调用出错
-            MyLog.e(nres+"");
+            MyLog.e(nres + "");
         }
 
     }
@@ -51,6 +54,7 @@ public class MiitHelper implements IIdentifierListener {
     private int CallFromReflect(Context cxt) {
         return MdidSdkHelper.InitSdk(cxt, true, this);
     }
+
     @Override
     public void OnSupport(boolean isSupport, IdSupplier _supplier) {
         if (_supplier == null) {
@@ -69,6 +73,7 @@ public class MiitHelper implements IIdentifierListener {
         String idstext=builder.toString();*/
 
         String oaid = _supplier.getOAID();
+        SPUtils.setString(APPBase.getApplication(), CommonConstant.OAID, oaid);
         if (_listener != null) {
             _listener.OnIdsAvalid(oaid);
         }
