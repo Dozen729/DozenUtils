@@ -54,8 +54,7 @@ dependencies {
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-12'
     //glide加载图片
     api 'com.github.bumptech.glide:glide:4.11.0'
-    //沉浸式状态栏渲染工具
-    implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     //gson
     api 'com.google.code.gson:gson:2.8.6'
     //okhttp框架
@@ -70,22 +69,25 @@ dependencies {
 //    api 'com.github.JianxunRao:DancingNumberView:V1.0.1'
     //指示灯
 //    api 'com.github.hackware1993:MagicIndicator:1.5.0'
-    //数据库
-    api 'org.litepal.android:core:1.6.1'
 
     //友盟
-    api 'com.umeng.umsdk:common:9.1.0' // (必选)
-    api 'com.umeng.umsdk:asms:1.1.3' // asms包依赖(必选)
-    api 'com.umeng.umsdk:crash:0.0.4' // native crash包依赖(必选)
+    api 'com.umeng.umsdk:common:9.3.8' // (必选)
+    api 'com.umeng.umsdk:asms:1.2.2' // asms包依赖(必选)
     //有盟分享
-    api 'com.umeng.umsdk:share-core:7.0.2'
-    api 'com.umeng.umsdk:share-board:7.0.2'
+    api 'com.umeng.umsdk:share-core:7.1.4'
+    api 'com.umeng.umsdk:share-board:7.1.4'
 
     //二维码生成
     api 'com.google.zxing:core:3.3.3'
 
     //微信支付
     api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+
+    //数据库
+    api 'org.litepal.android:core:1.6.1'
+
+    //沉浸式状态栏渲染工具
+    api 'com.gyf.barlibrary:barlibrary:2.3.0'
 
     //webview使用
     api 'com.just.agentweb:agentweb:4.1.3'
@@ -119,4 +121,17 @@ dependencies {
 
     //选择本地图片
     api 'cn.finalteam:galleryfinal:1.4.8.7'
+
+    // 图片浏览器，查看大图
+    api 'com.github.SherlockGougou:BigImageViewPager:androidx-6.1.3'
+
+    //音乐，视频播放器
+    api 'cn.jzvd:jiaozivideoplayer:7.2.0'
+    api 'com.google.android.exoplayer:exoplayer:2.11.1'
+
+    //卡片view
+    api 'androidx.cardview:cardview:1.0.0'
+
+    //cameraview
+    api 'com.otaliastudios:cameraview:2.7.0'
 }

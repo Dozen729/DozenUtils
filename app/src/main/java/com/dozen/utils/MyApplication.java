@@ -10,15 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.bun.miitmdid.core.JLibrary;
 import com.dozen.commonbase.APPBase;
 import com.dozen.commonbase.CommonConstant;
-import com.dozen.commonbase.http.HttpConstant;
 import com.dozen.commonbase.mode.MiitHelper;
-import com.dozen.commonbase.utils.MyLog;
 import com.dozen.commonbase.utils.SPUtils;
-import com.umeng.analytics.MobclickAgent;
-import com.umeng.commonsdk.UMConfigure;
 
 import org.litepal.LitePal;
 import org.litepal.LitePalApplication;
@@ -73,16 +68,6 @@ public class MyApplication extends LitePalApplication {
             }
         });
         miitHelper.getDeviceIds(application);
-    }
-
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        try {
-            JLibrary.InitEntry(base);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     //初始化环境
