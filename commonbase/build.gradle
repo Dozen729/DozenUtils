@@ -34,6 +34,9 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar','*.aar'])
     api fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
+
+    //assets中的supplierconfig.json为oaid_sdk_1.0.25.aar所需，详情请查看http://www.msa-alliance.cn/col.jsp?id=120
+
     //doc转换
     api fileTree(dir: "doclibs", include: ["*.jar","*.aar"])
     api fileTree(dir: 'doclibs', include: ['*.aar', '*.jar'], exclude: [])
