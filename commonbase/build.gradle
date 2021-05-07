@@ -123,7 +123,11 @@ dependencies {
     api 'com.google.android:flexbox:2.0.1'
 
     //选择本地图片
-    api 'cn.finalteam:galleryfinal:1.4.8.7'
+//    api 'cn.finalteam:galleryfinal:1.4.8.7' //废弃项目
+    api 'cn.finalteam.rxgalleryfinal:library:1.1.3'
+
+    //剪切图片
+    api 'com.github.yalantis:ucrop:2.2.4'
 
     // 图片浏览器，查看大图
     api 'com.github.SherlockGougou:BigImageViewPager:androidx-6.1.3'
@@ -137,4 +141,17 @@ dependencies {
 
     //cameraview
     api 'com.otaliastudios:cameraview:2.7.0'
+
+    //顶部栏工具
+    api 'com.jaeger.statusbaruitl:library:1.3.6'
+
+    //json动画 assets中empty.json和location.json
+    api 'com.airbnb.android:lottie:3.4.0'
+
+    //鲁班图片压缩
+    api 'top.zibin:Luban:1.1.8'
+
+    //20210507只支持kotlin语言的图片压缩
+//    api 'id.zelory:compressor:3.0.1'
+
 }
