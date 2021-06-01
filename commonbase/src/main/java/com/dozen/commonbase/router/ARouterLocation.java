@@ -7,23 +7,26 @@ package com.dozen.commonbase.router;
  */
 public class ARouterLocation {
 
-    private static final String app_main="/seaking";
+    private static final String app_main="/dwxia";
 
-    private static final String act=app_main+"/act";
+    private static final String login_act =app_main+"/login";
 
-    public static final String tag_chat_act=act+"/tag";
+    public static final String login_feedback= login_act +"/feedback";
 
-    public static final String discuss_act=act+"/discuss";
+    public static final String login_complaint= login_act +"/complaint";
 
-    public static final String chat_picture_act=act+"/picture";
+    public static final String login_h5_zf= login_act +"/zf";
 
-    public static final String search=act+"/search";
+    public static final String login_version_info= login_act +"/version";
 
-    public static final String search_answer_act=search+"/answer";
+    public static final String login_sign= login_act +"/sign";
 
-    public static final String search_detail_act=search+"/detail";
+    public static final String login_register= login_act +"/register";
 
-    public static final String search_discuss_act=search+"/discuss";
+    public static final String login_password= login_act +"/password";
 
-    public static final String post_act=act+"/post";
+    public static final String app_url_show_android_js = app_main + "/url/show/androidjs";
+
+    public static final String app_url_show= app_main +"/url/show";
+
 }

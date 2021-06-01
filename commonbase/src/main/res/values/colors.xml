@@ -65,4 +65,10 @@
     <color name="wheel_text_color_4">#CCCCCC</color>
 
     <color name="agreement_rule">#A1C0FC</color>
+
+    <color name="top_bg_color">#FFFFFFFF</color>
+    <color name="top_content_color">#FF334168</color>
+
+    <color name="app_bg_color">#FFF3F3F3</color>
+
 </resources>

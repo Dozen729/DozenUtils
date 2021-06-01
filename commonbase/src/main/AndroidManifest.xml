@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.dozen.commonbase">
 
     <!--android 11 调起微信支付需要增加如下包名设置-->
@@ -11,7 +12,44 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+
+    <uses-permission android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+
     <application>
         <service android:name=".view.suspend.SuspendService"/>
+        <activity android:name=".h5.BaseWebActivity" />
+
+        <activity android:name=".router.SchemeFilterActivity">
+
+            <!-- Scheme -->
+            <intent-filter>
+                <data
+                    android:host="com.dozen.commonbase"
+                    android:scheme="arouter"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+
+            <!-- App Links -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data
+                    android:host="com.dozen.commonbase"
+                    android:scheme="http"/>
+                <data
+                    android:host="com.dozen.commonbase"
+                    android:scheme="https"/>
+            </intent-filter>
+        </activity>
+
     </application>
+
 </manifest>
