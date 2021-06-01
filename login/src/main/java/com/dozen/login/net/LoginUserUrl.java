@@ -51,4 +51,6 @@ public class LoginUserUrl {
 
     public static final String bind_phone = HttpConstant.MPYS_API_BASE_URL + SPLICING_INDEX + "bindMobile";
 
+    //反馈
+    public static final String feedback = HttpConstant.MPYS_API_BASE_URL + SPLICING_INDEX + "suggest";
 }

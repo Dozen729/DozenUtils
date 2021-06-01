@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.dozen.commonbase.view.TitleView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:topBackground="@color/top_bg_color"
+        app:titleLine="false"
+        app:titleName="我要投诉" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FF334168"
+                android:text="联系方式"/>
+
+            <com.dozen.commonbase.view.roundview.RoundFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:rv_cornerRadius="6dp"
+                app:rv_backgroundColor="#FFFFFFFF">
+                <EditText
+                    android:id="@+id/et_complaint_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_margin="10dp"
+                    android:gravity="start"
+                    android:textSize="16sp"
+                    android:textColorHint="#FF939393"
+                    android:background="#FFFFFFFF"
+                    android:hint="输入你的手机号，方便我们尽快为你解决问题。"
+                    tools:ignore="TextFields" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="end|bottom">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+                        <TextView
+                            android:id="@+id/tv_complaint_phone_limit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#FF777777"
+                            android:text="0"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#FF777777"
+                            android:text="/"/>
+                        <TextView
+                            android:id="@+id/tv_complaint_phone_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:textColor="#FF777777"
+                            android:text="11"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </com.dozen.commonbase.view.roundview.RoundFrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FF334168"
+                android:text="投诉内容"/>
+
+            <com.dozen.commonbase.view.roundview.RoundFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:rv_backgroundColor="#FFFFFFFF"
+                app:rv_cornerRadius="6dp">
+
+                <EditText
+                    android:id="@+id/et_complaint_problem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFFFF"
+                    android:minHeight="300dp"
+                    android:layout_margin="10dp"
+                    android:textColorHint="#FF939393"
+                    android:textSize="16sp"
+                    android:gravity="start"
+                    android:textAlignment="textStart"
+                    android:hint="请输入投诉内容，客服部将派专人尽快处理，请您耐心等待。"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="end|bottom">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp">
+                        <TextView
+                            android:id="@+id/tv_complaint_problem_limit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/"/>
+                        <TextView
+                            android:id="@+id/tv_complaint_problem_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="11"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.dozen.commonbase.view.roundview.RoundFrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|center_horizontal">
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/rtv_complaint_commit"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="30dp"
+                app:rv_cornerRadius="20dp"
+                app:rv_backgroundColor="#FF777777"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="提交"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>

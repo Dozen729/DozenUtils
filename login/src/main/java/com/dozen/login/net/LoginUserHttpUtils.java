@@ -119,4 +119,11 @@ public class LoginUserHttpUtils {
         HttpUtils httpUtils = new HttpUtils(url, callBack, UserLoginResult.class, tag);
         httpUtils.post();
     }
+
+    //反馈
+    public static void feedback(String mobile, String content,String type, CallBack callBack, Object tag) {
+        String url = LoginUserUrl.feedback + "?uuid=" + LoginConstant.GET_UUID() + "&mobile=" + mobile + "&content=" + content+ "&type=" + type;
+        HttpUtils httpUtils = new HttpUtils(url, callBack, HttpResult.class, tag);
+        httpUtils.post();
+    }
 }

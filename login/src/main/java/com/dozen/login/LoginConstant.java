@@ -7,15 +7,18 @@ import com.dozen.commonbase.APPBase;
 import com.dozen.commonbase.CommonConstant;
 import com.dozen.commonbase.http.CallBack;
 import com.dozen.commonbase.http.ResultInfo;
+import com.dozen.commonbase.utils.GsonUtils;
 import com.dozen.commonbase.utils.MyLog;
 import com.dozen.commonbase.utils.SPUtils;
 import com.dozen.commonbase.utils.id.OnlyAndroidID;
 import com.dozen.login.act.H5Act;
 import com.dozen.login.net.DataSaveMode;
 import com.dozen.login.net.LoginUserHttpUtils;
-import com.dozen.login.net.LoginUserUrl;
 import com.dozen.login.net.bean.ChannelResult;
 import com.dozen.login.net.bean.UserLoginResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * @author: Dozen
@@ -52,15 +55,16 @@ public class LoginConstant {
             LoginUserHttpUtils.register(uuid, new CallBack() {
                 @Override
                 public void onRequested(ResultInfo info, Object tag) {
-                    if (info.isSucceed()&&tag.equals("register")){
+                    if (info.isSucceed() && tag.equals("register")) {
                         SET_UUID(finalUuid);
                         SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID, finalUuid);
                         DataSaveMode.saveUserData((UserLoginResult) info);
                         UserLoginResult userLoginResult = (UserLoginResult) info;
                         SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID_TOKEN, userLoginResult.data.tokeninfo.token);
                         MyLog.d("register_uuid");
-                    }else {
-                        if (info.getCode().equals(CommonConstant.TOKEN_INVALID_CODE)){
+                    } else {
+                        if (info.getCode().equals(CommonConstant.TOKEN_INVALID_CODE)) {
+                            DataSaveMode.clearToken();
                             DataSaveMode.clearUserInfo();
                             SET_UUID("");
                         }
@@ -75,6 +79,10 @@ public class LoginConstant {
         SPUtils.setString(APPBase.getApplication(), UUID, uuid);
     }
 
+    //支付方式
+    public static final String WX_PAY = "1";//微信
+    public static final String ALIPAY = "2";//支付宝
+
     //渠道 toutiao vivo yingyongbao xiaomi oppo huawei common
     public static final String COMMON = "common";
     public static final String TOUTIAO = "toutiao";
@@ -84,24 +92,7 @@ public class LoginConstant {
     public static final String OPPO = "oppo";
     public static final String HUAWEI = "huawei";
     public static final String FUSION = "fusion";
-    public static final String KUAISHOU = "kuaishou";
-    public static final String WEIBO = "weibo";
-    public static final String DONGFANG = "dongfang";
-
-    //渠道支付开关
-    public static final String CHANNELZHIFU="channel_zhifu";
-    //广告播放开关
-    public static final String CHANNELAD="channel_ad";
-    //tag切换
-    public static final String CHANNEL_TAG="channel_tag";
-    //开屏广告
-    public static final String CHANNEL_AD_SPLASH="channel_ad_splash";
-    //信息流广告
-    public static final String CHANNEL_AD_INFO="channel_ad_info";
-    //查找界面
-    public static final String CHANNEL_SEARCH="channel_search";
-    //VIP入口
-    public static final String CHANNEL_VIP_IN="channel_vip_in";
+    public static final String GUANGDIANTONG = "guangdiantong";
 
     //登录成功数据
     public static final String USER_TOKEN = "user_token";
@@ -119,6 +110,27 @@ public class LoginConstant {
     public static final String PAY_UUID = "pay_uuid";
     public static final String PAY_UUID_TOKEN = "pay_uuid_token";
     public static final String IS_LOGIN = "is_login";
+
+    //开关数据
+    public static final String app_channel_wenzi = "app_channel_wenzi";
+    public static final String app_channel_zhifu = "app_channel_zhifu";
+    public static final String app_channel_icon = "app_channel_icon";
+    public static final String app_channel_kaiping = "app_channel_kaiping";
+    public static final String app_channel_xinxiliu = "app_channel_xinxiliu";
+    public static final String app_channel_fufei = "app_channel_fufei";
+    public static final String app_channel_loginfufei = "app_channel_loginfufei";
+    public static final String app_channel_tcwenzi = "app_channel_tcwenzi";
+    public static final String app_channel_shiyong = "app_channel_shiyong";
+    public static final String app_channel_ffwenzi = "app_channel_ffwenzi";
+    public static final String app_channel_changxian1 = "app_channel_changxian1";
+    public static final String app_channel_chaping = "app_channel_chaping";
+    public static final String app_channel_chaxun = "app_channel_chaxun";
+    public static final String app_channel_changxian2 = "app_channel_changxian2";
+    public static final String app_channel_hutui = "app_channel_hutui";
+    public static final String app_channel_kefu = "app_channel_kefu";
+    public static final String app_channel_fenxiang = "app_channel_fenxiang";
+    public static final String app_channel_smwenzi = "app_channel_smwenzi";
+
     //vip开关
     public static final String ISVIP = "is_vip";
 
@@ -138,8 +150,10 @@ public class LoginConstant {
     public static final String PAY_ORDER_ID = "pay_order_id";
     public static final String PAY_ORDER_ID_NOW = "pay_order_id_now";//最新订单号
     public static final String PAY_PUSH_UMENG = "pay_push_umeng"; //更新到umeng
+    public static final String PAY_MODE = "pay_mode"; //支付方式
 
-    public static void h5UrlShow(Context context,String url){
+
+    public static void h5UrlShow(Context context, String url) {
         Intent intent = new Intent(context, H5Act.class);
         intent.putExtra("web_url", url);
         context.startActivity(intent);
@@ -161,102 +175,44 @@ public class LoginConstant {
     }
 
     private static void ADResult(ChannelResult result) {
-        boolean show = false;
-        boolean pay = false;
-        boolean tag = false;
-        boolean kp = false;
-        boolean xxl = false;
-        boolean search = false;
-        boolean zf = false;
 
-        if (LoginConstant.channel.equals(LoginConstant.TOUTIAO)) {//toutiao
-            if ("on".equals(result.data.toutiao.ad)) {
-                show = true;
-            }
-            if ("on".equals(result.data.toutiao.zf)) {
-                pay = true;
-            }
+        ChannelResult.CSwitch cSwitch = null;
 
-        }
-        if (LoginConstant.channel.equals(LoginConstant.YINGYONGBAO)) {//yingyongbao
-            if ("on".equals(result.data.yingyongbao.ad)) {
-                show = true;
-            }
-            if ("on".equals(result.data.yingyongbao.zf)) {
-                zf = true;
-            }
-        }
-        if (LoginConstant.channel.equals(LoginConstant.VIVO)) {//vivo
-            if ("on".equals(result.data.vivo.ad)) {
-                show = true;
-            }
-            if ("on".equals(result.data.vivo.zf)) {
-                zf = true;
-            }
-        }
-        if (LoginConstant.channel.equals(LoginConstant.XIAOMI)) {//xiaomi
-            if ("on".equals(result.data.xiaomi.ad)) {
-                show = true;
-            }
-            if ("on".equals(result.data.xiaomi.zf)) {
-                zf = true;
-            }
-        }
-        if (LoginConstant.channel.equals(LoginConstant.OPPO)) {//oppo
-            if ("on".equals(result.data.oppo.ad)) {
-                show = true;
-            }
-            if ("on".equals(result.data.oppo.zf)) {
-                zf = true;
-            }
-        }
-        if (LoginConstant.channel.equals(LoginConstant.HUAWEI)) {//huawei
-            if ("on".equals(result.data.huawei.ad)) {
-                show = true;
-            }
-            if ("on".equals(result.data.huawei.zf)) {
-                zf = true;
-            }
-        }
-        if (LoginConstant.channel.equals(LoginConstant.COMMON)) {//common
-            if ("on".equals(result.data.common.ad)) {
-                show = true;
-            }
-            if ("on".equals(result.data.common.zf)) {
-                zf = true;
-            }
-        }
-        if (LoginConstant.channel.equals(LoginConstant.KUAISHOU)) {//kuaishou
-            if ("on".equals(result.data.kuaishou.ad)) {
-                show = true;
-            }
-            if ("on".equals(result.data.kuaishou.zf)) {
-                zf = true;
-            }
-        }
-        if (LoginConstant.channel.equals(LoginConstant.WEIBO)) {//weibo
-            if ("on".equals(result.data.weibo.ad)) {
-                show = true;
-            }
-            if ("on".equals(result.data.weibo.zf)) {
-                zf = true;
-            }
-        }
-        if (LoginConstant.channel.equals(LoginConstant.DONGFANG)) {//dongfang
-            if ("on".equals(result.data.dongfang.ad)) {
-                show = true;
-            }
-            if ("on".equals(result.data.dongfang.zf)) {
-                zf = true;
-            }
+        try {
+            JSONObject jsonObject = new JSONObject(GsonUtils.GsonString(result));
+
+            JSONObject data = jsonObject.getJSONObject("data");
+
+            JSONObject channel = data.getJSONObject(LoginConstant.channel);
+
+            cSwitch = GsonUtils.GsonToBean(channel.toString(), ChannelResult.CSwitch.class);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.CHANNELAD, show);
-        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.CHANNELZHIFU, pay);
-        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.CHANNEL_TAG, tag);
-        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.CHANNEL_AD_SPLASH, kp);
-        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.CHANNEL_AD_INFO, xxl);
-        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.CHANNEL_SEARCH, search);
-        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.CHANNEL_VIP_IN, zf);
+        if (cSwitch == null) {
+            return;
+        }
+        MyLog.d("channel_setting_ok");
+
+        SPUtils.setString(APPBase.getApplication(), LoginConstant.app_channel_wenzi, cSwitch.wenzi);
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_zhifu, "on".equals(cSwitch.zhifu));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_icon, "on".equals(cSwitch.icon));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_kaiping, "on".equals(cSwitch.kaiping));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_xinxiliu, "on".equals(cSwitch.xinxiliu));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_fufei, "on".equals(cSwitch.fufei));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_loginfufei, "on".equals(cSwitch.loginfufei));
+        SPUtils.setString(APPBase.getApplication(), LoginConstant.app_channel_tcwenzi, cSwitch.tcwenzi);
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_shiyong, "on".equals(cSwitch.shiyong));
+        SPUtils.setString(APPBase.getApplication(), LoginConstant.app_channel_ffwenzi, cSwitch.ffwenzi);
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_changxian1, "on".equals(cSwitch.changxian1));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_chaping, "on".equals(cSwitch.chaping));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_chaxun, "on".equals(cSwitch.chaxun));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_changxian2, "on".equals(cSwitch.changxian2));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_hutui, "on".equals(cSwitch.hutui));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_kefu, "on".equals(cSwitch.kefu));
+        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.app_channel_fenxiang, "on".equals(cSwitch.fenxiang));
+        SPUtils.setString(APPBase.getApplication(), LoginConstant.app_channel_smwenzi, cSwitch.smwenzi);
     }
 }

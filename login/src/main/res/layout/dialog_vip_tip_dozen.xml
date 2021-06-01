@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:minWidth="280dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rv_cornerRadius="12dp"
+        app:rv_backgroundColor="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="#FF2F2C2C"
+            android:textSize="18sp"
+            android:text="温馨提示"/>
+
+        <TextView
+            android:id="@+id/tvContext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:textColor="#FF2F2C2C"
+            android:textSize="16sp"
+            android:text="因咨询人数过多，客服无法逐一处理，因此建议使用VIP账号登录哦。"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/tvCancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                app:rv_backgroundColor="#FFE4E4E4"
+                app:rv_cornerRadius_BL="12dp"
+                android:lines="1"
+                android:text="好的"
+                android:textColor="#FF090909"
+                android:textSize="15sp" />
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/tvOK"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:rv_backgroundColor="#FFFFE979"
+                app:rv_cornerRadius_BR="12dp"
+                android:gravity="center"
+                android:lines="1"
+                android:text="去开通会员"
+                android:textColor="#FF090909"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</FrameLayout>
