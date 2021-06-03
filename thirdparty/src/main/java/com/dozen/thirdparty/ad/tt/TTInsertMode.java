@@ -182,7 +182,7 @@ public class TTInsertMode {
     private void bindDislike(TTNativeExpressAd ad, boolean customStyle) {
         if (customStyle) {
             //使用自定义样式
-            List<FilterWord> words = ad.getFilterWords();
+            List<FilterWord> words = ad.getDislikeInfo().getFilterWords();
             if (words == null || words.isEmpty()) {
                 return;
             }
@@ -201,20 +201,19 @@ public class TTInsertMode {
         //使用默认模板中默认dislike弹出样式
         ad.setDislikeCallback(mContext, new TTAdDislike.DislikeInteractionCallback() {
             @Override
-            public void onSelected(int position, String value) {
-//                TToast.show(mContext, "\t\t\t\t\t\t\t感谢您的反馈!\t\t\t\t\t\t\n我们将为您带来更优质的广告体验", 3);
+            public void onShow() {
+
+            }
+
+            @Override
+            public void onSelected(int i, String s, boolean b) {
+
             }
 
             @Override
             public void onCancel() {
-//                TToast.show(mContext, "点击取消 ");
-            }
 
-            @Override
-            public void onRefuse() {
-//                TToast.show(mContext, "您已成功提交反馈，请勿重复提交哦！", 3);
             }
-
         });
     }
 

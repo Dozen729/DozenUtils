@@ -9,10 +9,9 @@
         android:id="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleColor="#ffffff"
         app:titleLine="false"
         app:titleName="推荐活动"
-        app:topBackground="#606AED" />
+        app:topBackground="@color/top_bg_color" />
 
     <FrameLayout
         android:id="@+id/fl_tui_a_ad_show"

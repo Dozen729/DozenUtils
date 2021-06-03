@@ -178,7 +178,7 @@ public class TTFeedAdapter extends BaseAdapter {
     private void bindDislike(final TTNativeExpressAd ad, boolean customStyle) {
         if (customStyle) {
             //使用自定义样式
-            List<FilterWord> words = ad.getFilterWords();
+            List<FilterWord> words = ad.getDislikeInfo().getFilterWords();
             if (words == null || words.isEmpty()) {
                 return;
             }
@@ -201,20 +201,21 @@ public class TTFeedAdapter extends BaseAdapter {
         //使用默认模板中默认dislike弹出样式
         ad.setDislikeCallback((Activity) mContext, new TTAdDislike.DislikeInteractionCallback() {
             @Override
-            public void onSelected(int position, String value) {
-//                TToast.show(mContext, "点击 " + value);
+            public void onShow() {
+                //                TToast.show(mContext, "点击 " + value);
                 //用户选择不喜欢原因后，移除广告展示
                 mData.remove(ad);
                 notifyDataSetChanged();
             }
 
             @Override
-            public void onCancel() {
-//                TToast.show(mContext, "点击取消 ");
+            public void onSelected(int i, String s, boolean b) {
+
             }
 
             @Override
-            public void onRefuse() {
+            public void onCancel() {
+//                TToast.show(mContext, "点击取消 ");
 
             }
         });

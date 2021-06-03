@@ -11,8 +11,8 @@
 
     <application>
         <activity android:name=".ad.tt.act.SplashPlayAct"
-            android:resizeableActivity="true"
-            android:theme="@style/AppTheme"/>
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />

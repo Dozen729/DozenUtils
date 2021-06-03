@@ -99,7 +99,7 @@ public class TTRewardVideoMode {
                 MyLog.e("Callback --> onRewardVideoCached");
                 mIsLoaded = true;
                 rewardVideoCallBack.loadSuccess();
-                StyleToastUtil.info("观看完整视频后可免费使用", 2000);
+                StyleToastUtil.info("奖励将于30秒后发放", 2000);
             }
 
             //视频广告的素材加载完毕，比如视频url等，在此回调后，可以播放在线视频，网络不好可能出现加载缓冲，影响体验。

@@ -56,7 +56,8 @@ public class AdFragment extends BaseFragment {
     }
 
     @Override
-    protected void setUpView() {
+    protected void setUpView(Bundle savedInstanceState) {
+
     }
 
     @Override
@@ -102,7 +103,7 @@ public class AdFragment extends BaseFragment {
         AdSlot adSlot = new AdSlot.Builder()
                 .setCodeId(TPConstant.TT_AD_EXPRESS_LIST)
                 .setSupportDeepLink(true)
-                .setExpressViewAcceptedSize(300, 400) //期望模板广告view的size,单位dp
+                .setExpressViewAcceptedSize(330, 400) //期望模板广告view的size,单位dp
                 .setAdCount(1) //请求广告数量为1到3条
                 .build();
         //step5:请求广告，调用feed广告异步请求接口，加载到广告后，拿到广告素材自定义渲染
@@ -145,9 +146,6 @@ public class AdFragment extends BaseFragment {
                 @Override
                 public void onAdShow(View view, int type) {
 //                    TToast.show(NativeExpressListActivity.this, "广告展示");
-                    if (adCallBack!=null){
-                        adCallBack.success();
-                    }
                 }
 
                 @Override
@@ -166,16 +164,5 @@ public class AdFragment extends BaseFragment {
 
         }
 
-    }
-
-    private AdCallBack adCallBack;
-
-    public void setAdCallBack(AdCallBack adCallBack) {
-        this.adCallBack = adCallBack;
-    }
-
-    public interface AdCallBack{
-        void success();
-        void fail();
     }
 }
