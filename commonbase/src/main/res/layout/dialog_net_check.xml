@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rv_backgroundColor="@color/white"
+        app:rv_cornerRadius="14dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_currency_tip_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:visibility="gone"
+            android:text="警告"
+            android:textColor="@color/color333333"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@mipmap/net_bad"/>
+
+        <TextView
+            android:id="@+id/tv_currency_tip_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="#FF2F2C2C"
+            android:textSize="16sp"
+            android:text="网络断开了，请检查网络连接" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/rtv_currency_tip_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="重试"
+                android:textColor="#FF090909"
+                android:textSize="16sp"
+                app:rv_cornerRadius_BL="14dp"
+                app:rv_backgroundColor="#FFE2E2E2"/>
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/rtv_currency_tip_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="去检查"
+                android:textColor="#FF2F2C2C"
+                android:textSize="16sp"
+                app:rv_cornerRadius_BR="14dp"
+                app:rv_backgroundColor="#FFFFE979"/>
+        </LinearLayout>
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</FrameLayout>
+
