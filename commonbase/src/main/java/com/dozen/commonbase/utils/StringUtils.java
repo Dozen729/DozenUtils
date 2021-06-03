@@ -4,6 +4,8 @@ import android.util.Log;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -137,5 +139,26 @@ public class StringUtils {
         return false;
     }
 
+
+    /**
+     *  从str中找出所有key存在的位置下标
+     * @param str 需要查找的字符串
+     * @param key 关键字符串
+     * @return 所有下标整数列表
+     */
+    public static List<Integer> searchAllIndex(String str, String key) {
+        List<Integer> list = new ArrayList<>();
+        int a = str.indexOf(key);//*第一个出现的索引位置
+        if (a != -1) {
+            list.add(a);
+        }
+        while (a != -1) {
+            a = str.indexOf(key, a + 1);//*从这个索引往后开始第一个出现的位置
+            if (a != -1) {
+                list.add(a);
+            }
+        }
+        return list;
+    }
 
 }
