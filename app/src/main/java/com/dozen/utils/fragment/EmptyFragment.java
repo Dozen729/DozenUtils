@@ -32,7 +32,7 @@ public class EmptyFragment extends BaseFragment {
     }
 
     @Override
-    protected void setUpView() {
+    protected void setUpView(Bundle savedInstanceState) {
         Bundle bundle = this.getArguments();
         assert bundle != null;
         String name=bundle.getString(KEY_TEXT);

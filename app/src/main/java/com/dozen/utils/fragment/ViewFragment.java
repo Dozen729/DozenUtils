@@ -44,8 +44,8 @@ public class ViewFragment extends BaseFragment {
         return R.layout.fragment_view;
     }
 
-    @Override
-    protected void setUpView() {
+        @Override
+    protected void setUpView(Bundle savedInstanceState) {
         Bundle bundle = this.getArguments();
         assert bundle != null;
         String name=bundle.getString(KEY_TEXT);

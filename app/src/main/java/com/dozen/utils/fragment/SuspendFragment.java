@@ -45,8 +45,8 @@ public class SuspendFragment extends BaseFragment {
         return R.layout.fragment_suspend;
     }
 
-    @Override
-    protected void setUpView() {
+        @Override
+    protected void setUpView(Bundle savedInstanceState) {
 
         boxLocation = getContentView().findViewById(R.id.ll_box_location);
         boxLocation.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {

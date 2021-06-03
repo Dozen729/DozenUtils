@@ -27,7 +27,7 @@ public abstract  class BaseFragment extends Fragment {
         mContentView = inflater.inflate(setLayoutResourceID(), container, false);
         mContext = getContext();
         init();
-        setUpView();
+        setUpView(savedInstanceState);
         setUpData();
         return mContentView;
     }
@@ -40,7 +40,7 @@ public abstract  class BaseFragment extends Fragment {
     /**
      * 一些View的相关操作
      */
-    protected abstract void setUpView();
+    protected abstract void setUpView(Bundle savedInstanceState);
 
     /**
      * 一些Data的相关操作
