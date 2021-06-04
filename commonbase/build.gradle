@@ -166,4 +166,6 @@ dependencies {
 //    releaseApi 'com.squareup.leakcanary:leakcanary-android-no-op:2.3'
 //    testApi 'com.squareup.leakcanary:leakcanary-android-no-op:2.3'
 
+    //网页爬虫
+    api 'org.jsoup:jsoup:1.9.2'
 }

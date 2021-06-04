@@ -20,7 +20,14 @@
         android:theme="@style/AppTheme"
         tools:replace="android:theme"
         tools:targetApi="n">
-        <activity android:name=".act.SharesAct"></activity>
+        <activity
+            android:name=".act.shares.SharesLineAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppLauncher" />
+        <activity
+            android:name=".act.shares.SharesAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppLauncher" />
         <activity
             android:name=".act.TitleActivity"
             android:screenOrientation="portrait" />

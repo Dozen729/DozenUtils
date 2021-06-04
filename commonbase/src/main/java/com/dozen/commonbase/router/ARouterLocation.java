@@ -7,7 +7,7 @@ package com.dozen.commonbase.router;
  */
 public class ARouterLocation {
 
-    private static final String app_main="/dwxia";
+    private static final String app_main="/dozen";
 
     private static final String login_act =app_main+"/login";
 
@@ -29,4 +29,5 @@ public class ARouterLocation {
 
     public static final String app_url_show= app_main +"/url/show";
 
+    public static final String app_shares = app_main +"/shares";
 }

@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dozen.commonbase.act.BaseFragment;
+import com.dozen.commonbase.router.ARouterLocation;
+import com.dozen.commonbase.utils.CommonUtils;
 import com.dozen.utils.R;
 
 /**
@@ -37,6 +39,14 @@ public class EmptyFragment extends BaseFragment {
         assert bundle != null;
         String name=bundle.getString(KEY_TEXT);
 
+        getContentView().findViewById(R.id.empty_click).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (CommonUtils.isContinueTwoClick()){
+                    ARouter.getInstance().build(ARouterLocation.app_shares).navigation();
+                }
+            }
+        });
     }
 
     @Override
