@@ -2,7 +2,6 @@ package com.dozen.thirdparty.ad.tt.act;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -14,7 +13,6 @@ import com.bytedance.sdk.openadsdk.TTNativeExpressAd;
 import com.dozen.commonbase.APPBase;
 import com.dozen.commonbase.act.BaseFragment;
 import com.dozen.commonbase.utils.MyLog;
-import com.dozen.commonbase.utils.ScreenUtils;
 import com.dozen.thirdparty.R;
 import com.dozen.thirdparty.ad.TPConstant;
 import com.dozen.thirdparty.ad.tt.adapter.LoadMoreListView;
@@ -57,11 +55,15 @@ public class AdFragment extends BaseFragment {
 
     @Override
     protected void setUpView(Bundle savedInstanceState) {
-
+        mListView = getContentView().findViewById(R.id.lmrv_mine_ad_show);
     }
 
     @Override
     protected void setUpData() {
+        if (!TPConstant.ttAdListShow){
+            mListView.setVisibility(View.GONE);
+            return;
+        }
         initListView();
     }
 
@@ -77,7 +79,6 @@ public class AdFragment extends BaseFragment {
     @SuppressWarnings("RedundantCast")
     private void initListView() {
         MyLog.d("addadshow");
-        mListView = getContentView().findViewById(R.id.lmrv_mine_ad_show);
 
         mTTAdNative = TTAdManagerHolder.get().createAdNative(getActivity());
         //step3:(可选，强烈建议在合适的时机调用):申请部分权限，如read_phone_state,防止获取不了imei时候，下载类广告没有填充的问题。

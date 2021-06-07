@@ -30,6 +30,10 @@ public class SplashPlayAct extends CommonActivity {
 
     @Override
     protected void initData() {
+        if (!TPConstant.ttAdSplashShow){
+            finish();
+            return;
+        }
         openADAct();
     }
 
