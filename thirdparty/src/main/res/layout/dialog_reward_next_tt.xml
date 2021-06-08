@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.dozen.commonbase.view.roundview.RoundLinearLayout
+        android:minWidth="280dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rv_cornerRadius="12dp"
+        app:rv_backgroundColor="@color/white"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:textColor="#FF302E51"
+            android:textSize="18sp"
+            android:text="温馨提示"/>
+
+        <TextView
+            android:id="@+id/tvContext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:textColor="#FF302E51"
+            android:textSize="16sp"
+            android:text="观看完整创意广告后可免费使用此功能，是否继续？"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/tvOK"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginBottom="15dp"
+                app:rv_backgroundColor="#FF43C97E"
+                app:rv_cornerRadius="7dp"
+                android:gravity="center"
+                android:lines="1"
+                android:text="继续使用"
+                android:textColor="#FFFFFFFF"
+                android:textSize="16sp" />
+
+            <com.dozen.commonbase.view.roundview.RoundTextView
+                android:id="@+id/tvCancel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginBottom="15dp"
+                android:gravity="center"
+                app:rv_backgroundColor="#FF939393"
+                app:rv_cornerRadius="7dp"
+                android:lines="1"
+                android:text="取消"
+                android:textColor="#FFFFFFFF"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </com.dozen.commonbase.view.roundview.RoundLinearLayout>
+
+</FrameLayout>

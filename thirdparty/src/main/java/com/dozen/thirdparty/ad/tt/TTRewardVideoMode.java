@@ -7,7 +7,11 @@ import com.bytedance.sdk.openadsdk.TTAdConstant;
 import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
+import com.dozen.commonbase.APPBase;
+import com.dozen.commonbase.dialog.LoadingDialog;
 import com.dozen.commonbase.utils.MyLog;
+import com.dozen.commonbase.utils.NetworkUtils;
+import com.dozen.commonbase.utils.SPUtils;
 import com.dozen.commonbase.utils.StyleToastUtil;
 import com.dozen.thirdparty.ad.TPConstant;
 import com.dozen.thirdparty.ad.tt.config.TTADCallBack;
@@ -25,6 +29,7 @@ public class TTRewardVideoMode {
     private boolean mIsExpress = true; //是否请求模板广告
     private boolean mIsLoaded = false; //视频是否加载完成
     private boolean isPlayComplete = false; //视频是否播放完成
+    private LoadingDialog loadingDialog;
 
     private Activity mContext;
 
@@ -40,20 +45,50 @@ public class TTRewardVideoMode {
     }
 
     private void initMode() {
-        mIsExpress= TPConstant.TT_AD_IS_EXPRESS;
-        mTTAdNative= TTAdManagerHolder.get().createAdNative(mContext);
+        mIsExpress = TPConstant.TT_AD_IS_EXPRESS;
+        mTTAdNative = TTAdManagerHolder.get().createAdNative(mContext);
+        loadingDialog = new LoadingDialog(mContext);
     }
 
-    public void loadVerticalAD(String mVerticalCodeId){
-        loadAd(mVerticalCodeId, TTAdConstant.VERTICAL);
+    public void loadVerticalAD(String mVerticalCodeId) {
+        if (!TPConstant.ttAdVideoShow){
+            rewardVideoCallBack.playComplete();
+            return;
+        }
+        if (!NetworkUtils.checkWifiAndGPRS(mContext)){
+            StyleToastUtil.error("网络连接失败");
+            return;
+        }
+        if (SPUtils.getBoolean(APPBase.getApplication(), "reward_dialog_show_once", false)) {
+            loadAd(mVerticalCodeId, TTAdConstant.VERTICAL);
+        } else {
+            showDialog(mVerticalCodeId);
+        }
     }
 
-    public void loadHorizontalAD(String mHorizontalCodeId){
-        loadAd(mHorizontalCodeId,TTAdConstant.HORIZONTAL);
+    public void loadHorizontalAD(String mHorizontalCodeId) {
+        loadAd(mHorizontalCodeId, TTAdConstant.HORIZONTAL);
     }
 
-    public void showFullAD(){
-        if (mttRewardVideoAd != null&&mIsLoaded) {
+    private void showDialog(String codeId) {
+        RewardNextDialog dialog = new RewardNextDialog(mContext);
+        dialog.setOkListener(new RewardNextDialog.onOkListener() {
+            @Override
+            public void OK() {
+                SPUtils.setBoolean(APPBase.getApplication(), "reward_dialog_show_once", true);
+                loadAd(codeId, TTAdConstant.VERTICAL);
+            }
+
+            @Override
+            public void cancel() {
+
+            }
+        });
+        dialog.show();
+    }
+
+    public void showFullAD() {
+        if (mttRewardVideoAd != null && mIsLoaded) {
             //step6:在获取到广告后展示,强烈建议在onRewardVideoCached回调后，展示广告，提升播放体验
             //该方法直接展示广告
 //                    mttRewardVideoAd.showRewardVideoAd(RewardVideoActivity.this);
@@ -70,6 +105,7 @@ public class TTRewardVideoMode {
     private boolean mHasShowDownloadActive = false;
 
     private void loadAd(final String codeId, int orientation) {
+        loadingDialog.show();
         //step4:创建广告请求参数AdSlot,具体参数含义参考文档
         AdSlot adSlot;
         if (mIsExpress) {
@@ -77,7 +113,7 @@ public class TTRewardVideoMode {
             adSlot = new AdSlot.Builder()
                     .setCodeId(codeId)
                     //模板广告需要设置期望个性化模板广告的大小,单位dp,激励视频场景，只要设置的值大于0即可
-                    .setExpressViewAcceptedSize(500,500)
+                    .setExpressViewAcceptedSize(500, 500)
                     .build();
         } else {
             //模板广告需要设置期望个性化模板广告的大小,单位dp,代码位是否属于个性化模板广告，请在穿山甲平台查看
@@ -90,6 +126,9 @@ public class TTRewardVideoMode {
             @Override
             public void onError(int code, String message) {
                 MyLog.e("Callback --> onError: " + code + ", " + String.valueOf(message));
+                if (loadingDialog!=null){
+                    loadingDialog.dismiss();
+                }
                 rewardVideoCallBack.isFail(message);
             }
 
@@ -97,6 +136,9 @@ public class TTRewardVideoMode {
             @Override
             public void onRewardVideoCached() {
                 MyLog.e("Callback --> onRewardVideoCached");
+                if (loadingDialog!=null){
+                    loadingDialog.dismiss();
+                }
                 mIsLoaded = true;
                 rewardVideoCallBack.loadSuccess();
                 StyleToastUtil.info("奖励将于30秒后发放", 2000);
@@ -125,9 +167,9 @@ public class TTRewardVideoMode {
                     @Override
                     public void onAdClose() {
                         MyLog.i("Callback --> rewardVideoAd close");
-                        if (isPlayComplete){
+                        if (isPlayComplete) {
                             rewardVideoCallBack.playComplete();
-                        }else {
+                        } else {
                             rewardVideoCallBack.isFail("播放未完成");
                         }
                     }
@@ -136,12 +178,15 @@ public class TTRewardVideoMode {
                     @Override
                     public void onVideoComplete() {
                         MyLog.i("Callback --> rewardVideoAd complete");
-                        isPlayComplete=true;
+                        isPlayComplete = true;
                     }
 
                     @Override
                     public void onVideoError() {
                         MyLog.e("Callback --> rewardVideoAd error");
+                        if (loadingDialog!=null){
+                            loadingDialog.dismiss();
+                        }
                         rewardVideoCallBack.isFail("播放失败");
                     }
 
@@ -151,7 +196,7 @@ public class TTRewardVideoMode {
                         String logString = "verify:" + rewardVerify + " amount:" + rewardAmount +
                                 " name:" + rewardName + " errorCode:" + errorCode + " errorMsg:" + errorMsg;
                         MyLog.e("Callback --> " + logString);
-                        rewardVideoCallBack.onRewardVerify(rewardVerify,rewardAmount,rewardName,errorCode,errorMsg);
+                        rewardVideoCallBack.onRewardVerify(rewardVerify, rewardAmount, rewardName, errorCode, errorMsg);
                     }
 
                     @Override
@@ -167,35 +212,35 @@ public class TTRewardVideoMode {
 
                     @Override
                     public void onDownloadActive(long totalBytes, long currBytes, String fileName, String appName) {
-                        MyLog.d("DML"+ "onDownloadActive==totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
+                        MyLog.d("DML" + "onDownloadActive==totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
 
                         if (!mHasShowDownloadActive) {
                             mHasShowDownloadActive = true;
-                            MyLog.d( "下载中，点击下载区域暂停");
+                            MyLog.d("下载中，点击下载区域暂停");
                         }
                     }
 
                     @Override
                     public void onDownloadPaused(long totalBytes, long currBytes, String fileName, String appName) {
-                        MyLog.d("DML"+ "onDownloadPaused===totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
+                        MyLog.d("DML" + "onDownloadPaused===totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
                         rewardVideoCallBack.isFail("下载暂停，点击下载区域继续");
                     }
 
                     @Override
                     public void onDownloadFailed(long totalBytes, long currBytes, String fileName, String appName) {
-                        MyLog.d("DML"+ "onDownloadFailed==totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
+                        MyLog.d("DML" + "onDownloadFailed==totalBytes=" + totalBytes + ",currBytes=" + currBytes + ",fileName=" + fileName + ",appName=" + appName);
                         rewardVideoCallBack.isFail("下载失败，点击下载区域重新下载");
                     }
 
                     @Override
                     public void onDownloadFinished(long totalBytes, String fileName, String appName) {
-                        MyLog.d("DML"+ "onDownloadFinished==totalBytes=" + totalBytes + ",fileName=" + fileName + ",appName=" + appName);
+                        MyLog.d("DML" + "onDownloadFinished==totalBytes=" + totalBytes + ",fileName=" + fileName + ",appName=" + appName);
                     }
 
                     @Override
                     public void onInstalled(String fileName, String appName) {
-                        MyLog.d("DML"+ "onInstalled==" + ",fileName=" + fileName + ",appName=" + appName);
-                        rewardVideoCallBack.downloadFinish(fileName,appName);
+                        MyLog.d("DML" + "onInstalled==" + ",fileName=" + fileName + ",appName=" + appName);
+                        rewardVideoCallBack.downloadFinish(fileName, appName);
                     }
                 });
             }
@@ -215,7 +260,7 @@ public class TTRewardVideoMode {
         return "未知类型+type=" + type;
     }
 
-    public interface RewardDetailCallBack extends TTADCallBack{
+    public interface RewardDetailCallBack extends TTADCallBack {
         @Override
         void isFail(String error);
 
