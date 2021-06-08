@@ -6,11 +6,43 @@
     android:orientation="vertical"
     tools:context=".act.shares.SharesAct">
 
-    <Button
-        android:id="@+id/shares_jsoup"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:text="jsoup"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/shares_jsoup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="jsoup"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/shares_jsoup_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="save"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/shares_jsoup_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="show"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shares_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

@@ -2,9 +2,15 @@ package com.dozen.utils.act.shares;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.dozen.commonbase.act.CommonActivity;
@@ -12,14 +18,18 @@ import com.dozen.commonbase.router.ARouterLocation;
 import com.dozen.commonbase.utils.EmptyCheckUtil;
 import com.dozen.commonbase.utils.MyLog;
 import com.dozen.commonbase.utils.ThreadUtils;
+import com.dozen.commonbase.utils.TimeUtil;
 import com.dozen.utils.R;
+import com.dozen.utils.adapter.SharesAdapter;
 import com.dozen.utils.bean.SharesBean;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.litepal.crud.DataSupport;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +42,8 @@ import okhttp3.Response;
 public class SharesAct extends CommonActivity {
 
     private List<SharesBean> sharesBeanList;
+    private SharesAdapter sharesAdapter;
+    private RecyclerView recyclerView;
 
     @Override
     protected int setLayout() {
@@ -43,11 +55,18 @@ public class SharesAct extends CommonActivity {
     @Override
     protected void initView(Bundle savedInstanceState) {
         btnSetClick(R.id.shares_jsoup);
+        btnSetClick(R.id.shares_jsoup_save);
+        btnSetClick(R.id.shares_jsoup_show);
+        recyclerView = findViewById(R.id.shares_recycler_view);
     }
 
     @Override
     protected void initData() {
         sharesBeanList = new ArrayList<>();
+
+        sharesAdapter = new SharesAdapter(sharesBeanList);
+        recyclerView.setAdapter(sharesAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void btnSetClick(int id) {
@@ -63,9 +82,21 @@ public class SharesAct extends CommonActivity {
                 case R.id.shares_jsoup:
                     loadNetShares();
                     break;
+                case R.id.shares_jsoup_save:
+                    DataSupport.saveAll(sharesBeanList);
+                    break;
+                case R.id.shares_jsoup_show:
+                    showLitePalData();
+                    break;
             }
         }
     };
+
+    private void showLitePalData() {
+        List<SharesBean> sbl = DataSupport.findAll(SharesBean.class);
+        sharesAdapter.setList(sbl);
+        sharesAdapter.notifyDataSetChanged();
+    }
 
     private void loadNetShares() {
         ThreadUtils.executeByCached(new ThreadUtils.Task<Object>() {
@@ -99,7 +130,7 @@ public class SharesAct extends CommonActivity {
             @Override
             public void onSuccess(Object result) {
                 MyLog.d("onSuccess");
-                loadSharesDetail(0);
+                loadSharesDetail();
             }
 
             @Override
@@ -114,41 +145,79 @@ public class SharesAct extends CommonActivity {
         });
     }
 
-    private void loadSharesDetail(int index) {
-        ThreadUtils.executeByCached(new ThreadUtils.Task<Object>() {
-            @Override
-            public Object doInBackground() throws Throwable {
-                OkHttpClient okHttpClient = new OkHttpClient();
-                String url = "http://hq.sinajs.cn/list=";
+    private void loadSharesDetail() {
 
-                for (int i = 0; i < sharesBeanList.size(); i++) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient okHttpClient = new OkHttpClient();
+                    String url = "http://hq.sinajs.cn/list=";
+
+                    StringBuilder sb = new StringBuilder();
+
+                    for (SharesBean bean : sharesBeanList) {
+                        sb.append(bean.getCode()).append(",");
+                    }
+
                     Request request = new Request.Builder()
-                            .url(url+sharesBeanList.get(i).getCode())
+                            .url(url + sb.toString())
                             .build();
                     Call call = okHttpClient.newCall(request);
                     Response response = call.execute();
-                    MyLog.d("" + response.body().string());
+//                MyLog.d("" + response.body().string());
+
+                    String[] callList = response.body().string().split(";");
+
+                    int sharesSize = DataSupport.count(SharesBean.class);
+
+                    for (int i = 0; i < callList.length; i++) {
+
+                        String scode = callList[i];
+
+                        String[] scList = scode.split(",");
+
+                        float a = Float.parseFloat(scList[2]);//昨收
+                        DecimalFormat df = new DecimalFormat("#,##0.000");
+                        a = Float.parseFloat(df.format(a));
+                        float b = Float.parseFloat(scList[3]);//今收
+                        b = Float.parseFloat(df.format(b));
+                        float upup = ((b - a) / a) * 100;
+                        DecimalFormat updf = new DecimalFormat("#,##0.00");
+                        upup = Float.parseFloat(updf.format(upup));
+                        MyLog.d(scList[0]);
+
+                        sharesBeanList.get(i).setSid(sharesSize+i);
+                        sharesBeanList.get(i).setTime(TimeUtil.getCurrentData());
+                        sharesBeanList.get(i).setRanking(i);
+                        sharesBeanList.get(i).setName(scList[0].split("\"")[1]);
+                        sharesBeanList.get(i).setPrice(a);
+                        sharesBeanList.get(i).setUpup(upup);
+                        sharesBeanList.get(i).setDetail(scode);
+                    }
+
+
+                } catch (Exception e) {
+                    MyLog.d(e.toString());
+                } finally {
+                    handler.sendEmptyMessage(0);
                 }
-
-
-                return null;
             }
+        }).start();
+    }
 
-            @Override
-            public void onSuccess(Object result) {
-                loadSharesDetail(index+1);
-            }
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            loadComplete();
+        }
+    };
 
-            @Override
-            public void onCancel() {
-
-            }
-
-            @Override
-            public void onFail(Throwable t) {
-
-            }
-        });
+    private void loadComplete() {
+        MyLog.d("no");
+        sharesAdapter.setList(sharesBeanList);
+        sharesAdapter.notifyDataSetChanged();
     }
 
 }
