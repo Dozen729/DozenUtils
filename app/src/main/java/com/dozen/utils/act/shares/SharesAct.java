@@ -13,8 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.dozen.commonbase.act.CommonActivity;
 import com.dozen.commonbase.router.ARouterLocation;
+import com.dozen.commonbase.utils.AppUtils;
+import com.dozen.commonbase.utils.CommonUtils;
 import com.dozen.commonbase.utils.EmptyCheckUtil;
 import com.dozen.commonbase.utils.MyLog;
 import com.dozen.commonbase.utils.ThreadUtils;
@@ -67,6 +73,22 @@ public class SharesAct extends CommonActivity {
         sharesAdapter = new SharesAdapter(sharesBeanList);
         recyclerView.setAdapter(sharesAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        sharesAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
+                if (CommonUtils.isFastClick()) {
+                    String code = sharesBeanList.get(position).getCode();
+                    code = code.substring(2);
+                    AppUtils.copyContent(code);
+                }
+            }
+        });
+        sharesAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                ARouter.getInstance().build(ARouterLocation.app_shares_line).withObject("sharesBean", sharesBeanList.get(position)).navigation();
+            }
+        });
     }
 
     private void btnSetClick(int id) {
@@ -187,7 +209,7 @@ public class SharesAct extends CommonActivity {
                         upup = Float.parseFloat(updf.format(upup));
                         MyLog.d(scList[0]);
 
-                        sharesBeanList.get(i).setSid(sharesSize+i);
+                        sharesBeanList.get(i).setSid(sharesSize + i);
                         sharesBeanList.get(i).setTime(TimeUtil.getCurrentData());
                         sharesBeanList.get(i).setRanking(i);
                         sharesBeanList.get(i).setName(scList[0].split("\"")[1]);

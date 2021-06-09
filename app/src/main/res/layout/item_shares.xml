@@ -7,12 +7,24 @@
 
     <com.dozen.commonbase.view.roundview.RoundLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="25dp"
         android:layout_gravity="center_vertical"
         android:layout_margin="2dp"
         android:gravity="center_vertical"
         app:rv_cornerRadius="8dp"
         app:rv_backgroundColor="#EAEAEA">
+
+        <com.dozen.commonbase.view.roundview.RoundTextView
+            android:id="@+id/shares_sid"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:text="20"
+            app:rv_cornerRadius="45dp"
+            app:rv_backgroundColor="#00BCD4"/>
 
         <com.dozen.commonbase.view.roundview.RoundTextView
             android:id="@+id/shares_code"
@@ -28,7 +40,7 @@
             android:id="@+id/shares_name"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="start"
             android:layout_marginStart="10dp"
             android:textSize="15sp"
             android:textColor="#4E4E4E"
@@ -39,17 +51,17 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:gravity="center"
+            android:gravity="start"
             android:textSize="15sp"
             android:textColor="#465AC6"
             android:text="code"/>
 
         <com.dozen.commonbase.view.roundview.RoundTextView
             android:id="@+id/shares_upup"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:gravity="center"
+            android:gravity="end"
             android:textSize="15sp"
             android:textColor="#FF0000"
             android:text="code"/>

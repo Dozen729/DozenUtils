@@ -30,4 +30,6 @@ public class ARouterLocation {
     public static final String app_url_show= app_main +"/url/show";
 
     public static final String app_shares = app_main +"/shares";
+
+    public static final String app_shares_line = app_shares + "/line";
 }

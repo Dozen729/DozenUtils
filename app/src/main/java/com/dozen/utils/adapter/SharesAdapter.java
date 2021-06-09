@@ -18,11 +18,13 @@ public class SharesAdapter extends BaseQuickAdapter<SharesBean, BaseViewHolder> 
 
     public SharesAdapter(@Nullable List<SharesBean> data) {
         super(R.layout.item_shares, data);
+        addChildClickViewIds(R.id.shares_code);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, SharesBean sharesBean) {
+        baseViewHolder.setText(R.id.shares_sid, sharesBean.getRanking() + "");
         baseViewHolder.setText(R.id.shares_code, sharesBean.getCode() + "");
         baseViewHolder.setText(R.id.shares_name, sharesBean.getName() + "");
         baseViewHolder.setText(R.id.shares_price, sharesBean.getPrice() + "");
