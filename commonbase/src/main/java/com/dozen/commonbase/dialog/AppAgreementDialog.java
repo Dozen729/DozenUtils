@@ -3,6 +3,7 @@ package com.dozen.commonbase.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -19,6 +20,9 @@ import androidx.annotation.NonNull;
 
 import com.dozen.commonbase.R;
 import com.dozen.commonbase.utils.ScreenUtils;
+import com.dozen.commonbase.utils.StringUtils;
+
+import java.util.List;
 
 /**
  * 文件描述：
@@ -96,70 +100,50 @@ public class AppAgreementDialog extends Dialog {
     }
 
     private void initMiddleTerm(TextView tx_bottom_term) {
-        SpannableString spanTextYinSi = new SpannableString(mContext.getResources().getString(R.string.agreement));
-        // 用户协议
-        spanTextYinSi.setSpan(new ClickableSpan() {
 
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setColor(mContext.getResources().getColor(R.color.agreement_rule));       //设置文件颜色
-                ds.setUnderlineText(true);      //设置下划线
-            }
+        String middleText = mContext.getResources().getString(R.string.agreement);
 
-            @Override
-            public void onClick(View view) {
-                OkListener.UserRule();
-            }
-        }, 53, 59, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        SpannableString spanTextYinSi = new SpannableString(middleText);
 
-        // 隐私政策
-        spanTextYinSi.setSpan(new ClickableSpan() {
+        List<Integer> listUR = StringUtils.searchAllIndex(middleText,"《使用条款》");
 
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setColor(mContext.getResources().getColor(R.color.agreement_rule));       //设置文件颜色
-                ds.setUnderlineText(true);      //设置下划线
-            }
+        for (Integer in:listUR){
+            // 用户协议
+            spanTextYinSi.setSpan(new ClickableSpan() {
 
-            @Override
-            public void onClick(View view) {
-                OkListener.PrivatePolicy();
-            }
-        }, 60, 66, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                @Override
+                public void updateDrawState(TextPaint ds) {
+                    super.updateDrawState(ds);
+                    ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
+                    ds.setUnderlineText(true);      //设置下划线
+                }
 
-        // 隐私政策
-        spanTextYinSi.setSpan(new ClickableSpan() {
+                @Override
+                public void onClick(View view) {
+                    OkListener.UserRule();
+                }
+            }, in, in+6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
 
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setColor(mContext.getResources().getColor(R.color.agreement_rule));       //设置文件颜色
-                ds.setUnderlineText(true);      //设置下划线
-            }
+        List<Integer> listPP = StringUtils.searchAllIndex(middleText,"《隐私政策》");
 
-            @Override
-            public void onClick(View view) {
-                OkListener.PrivatePolicy();
-            }
-        }, 158, 164, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        for (Integer in:listPP){
+            // 隐私政策
+            spanTextYinSi.setSpan(new ClickableSpan() {
 
-        // 隐私政策
-        spanTextYinSi.setSpan(new ClickableSpan() {
+                @Override
+                public void updateDrawState(TextPaint ds) {
+                    super.updateDrawState(ds);
+                    ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
+                    ds.setUnderlineText(true);      //设置下划线
+                }
 
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setColor(mContext.getResources().getColor(R.color.agreement_rule));       //设置文件颜色
-                ds.setUnderlineText(true);      //设置下划线
-            }
-
-            @Override
-            public void onClick(View view) {
-                OkListener.PrivatePolicy();
-            }
-        }, 204, 210, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                @Override
+                public void onClick(View view) {
+                    OkListener.PrivatePolicy();
+                }
+            }, in, in+6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
 
         tx_bottom_term.setHighlightColor(Color.TRANSPARENT); //设置点击后的颜色为透明，否则会一直出现高亮
         tx_bottom_term.setText(spanTextYinSi);
@@ -174,7 +158,7 @@ public class AppAgreementDialog extends Dialog {
             @Override
             public void updateDrawState(TextPaint ds) {
                 super.updateDrawState(ds);
-                ds.setColor(mContext.getResources().getColor(R.color.agreement_rule));       //设置文件颜色
+                ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
                 ds.setUnderlineText(true);      //设置下划线
             }
 
@@ -190,7 +174,7 @@ public class AppAgreementDialog extends Dialog {
             @Override
             public void updateDrawState(TextPaint ds) {
                 super.updateDrawState(ds);
-                ds.setColor(mContext.getResources().getColor(R.color.agreement_rule));       //设置文件颜色
+                ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
                 ds.setUnderlineText(true);      //设置下划线
             }
 

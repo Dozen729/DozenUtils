@@ -76,9 +76,7 @@ dependencies {
     //友盟
     api 'com.umeng.umsdk:common:9.3.8' // (必选)
     api 'com.umeng.umsdk:asms:1.2.2' // asms包依赖(必选)
-    //有盟分享
-    api 'com.umeng.umsdk:share-core:7.1.4'
-    api 'com.umeng.umsdk:share-board:7.1.4'
+    api 'com.umeng.umsdk:apm:1.2.0' // apm包依赖(必选)
 
     //二维码生成
     api 'com.google.zxing:core:3.3.3'
