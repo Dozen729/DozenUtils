@@ -46,31 +46,36 @@ public class LoginConstant {
 
     //uuid
     public static String UUID = "uuid";
+    private static boolean uuid_register = true;
 
     public static String GET_UUID() {
         String uuid = SPUtils.getString(APPBase.getApplication(), UUID, "");
         if (uuid == null || uuid.equals("") || uuid.equals("null")) {
             uuid = OnlyAndroidID.getUniquePsuedoIDtoMD5() + "_" + System.currentTimeMillis();
-            String finalUuid = uuid;
-            LoginUserHttpUtils.register(uuid, new CallBack() {
-                @Override
-                public void onRequested(ResultInfo info, Object tag) {
-                    if (info.isSucceed() && tag.equals("register")) {
-                        SET_UUID(finalUuid);
-                        SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID, finalUuid);
-                        DataSaveMode.saveUserData((UserLoginResult) info);
-                        UserLoginResult userLoginResult = (UserLoginResult) info;
-                        SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID_TOKEN, userLoginResult.data.tokeninfo.token);
-                        MyLog.d("register_uuid");
-                    } else {
-                        if (info.getCode().equals(CommonConstant.TOKEN_INVALID_CODE)) {
-                            DataSaveMode.clearToken();
-                            DataSaveMode.clearUserInfo();
-                            SET_UUID("");
+            if (uuid_register) {
+                uuid_register = false;
+                String finalUuid = uuid;
+                LoginUserHttpUtils.register(uuid, new CallBack() {
+                    @Override
+                    public void onRequested(ResultInfo info, Object tag) {
+                        if (info.isSucceed() && tag.equals("register")) {
+                            SET_UUID(finalUuid);
+                            SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID, finalUuid);
+                            DataSaveMode.saveUserData((UserLoginResult) info);
+                            UserLoginResult userLoginResult = (UserLoginResult) info;
+                            SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID_TOKEN, userLoginResult.data.tokeninfo.token);
+                            MyLog.d("register_uuid");
+                        } else {
+                            if (info.getCode().equals(CommonConstant.TOKEN_INVALID_CODE)) {
+                                DataSaveMode.clearToken();
+                                DataSaveMode.clearUserInfo();
+                                SET_UUID("");
+                            }
                         }
+                        uuid_register = true;
                     }
-                }
-            }, "register");
+                }, "register");
+            }
         }
         return uuid;
     }
