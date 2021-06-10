@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
 import android.webkit.JavascriptInterface;
@@ -121,7 +120,7 @@ public class H5PayAct extends CommonActivity {
         titleView.setLeftBackClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (CommonUtils.isFastClick()){
+                if (CommonUtils.isFastClick()) {
                     backDialog();
                 }
             }
@@ -182,7 +181,7 @@ public class H5PayAct extends CommonActivity {
                 if (info.isSucceed() && tag.equals("vip")) {
                     DataSaveMode.saveUserInfo((VipInfoResult) info);
                     pullOrder(orderID);
-                }else {
+                } else {
                     StyleToastUtil.info(info.getMsg());
                 }
             }
@@ -273,7 +272,7 @@ public class H5PayAct extends CommonActivity {
         LoginUserHttpUtils.get_userInfo(LoginConstant.GET_UUID(), new CallBack() {
             @Override
             public void onRequested(ResultInfo info, Object tag) {
-                if (info.isSucceed()&&tag.equals("user")) {
+                if (info.isSucceed() && tag.equals("user")) {
                     VipInfoResult vip = (VipInfoResult) info;
                     DataSaveMode.saveUserInfo(vip);
                 }
@@ -469,13 +468,13 @@ public class H5PayAct extends CommonActivity {
 
 
     //支付完成埋点
-    public static void upData() {
+    public void upData() {
 
-        String order_id = SPUtils.getString(APPBase.getApplication(), LoginConstant.PAY_ORDER_ID_NOW, "");
+        String order_id = SPUtils.getString(H5PayAct.this, LoginConstant.PAY_ORDER_ID_NOW, "");
         if (order_id.equals("")) {
             return;
         }
-        if (SPUtils.getBoolean(APPBase.getApplication(), LoginConstant.PAY_PUSH_UMENG, false)) {
+        if (SPUtils.getBoolean(H5PayAct.this, LoginConstant.PAY_PUSH_UMENG, false)) {
             return;
         }
         LoginUserHttpUtils.getOrderInfoVerify(order_id, new CallBack() {
@@ -484,16 +483,16 @@ public class H5PayAct extends CommonActivity {
                 if (info.isSucceed() && tag.equals("order")) {
                     final GetOrderInfoResult result = (GetOrderInfoResult) info;
                     MyLog.d("0000userid" + LoginConstant.GET_UUID() + "_orderid=" + result.data.order_sn + "_amount" + result.data.order_price);
+                    String pay_mode = SPUtils.getString(H5PayAct.this, LoginConstant.PAY_MODE, "");
                     if (result.data.order_status == 1) {
                         //只有头条才发送
                         if (CommonConstant.umeng_click) {
                             MyLog.d("11111userid" + LoginConstant.GET_UUID() + "_orderid=" + result.data.order_sn + "_amount" + result.data.order_price);
                             Map<String, String> map = new HashMap<String, String>();//统计埋点
-                            map.put("wxpay", "1");
                             map.put("userid", LoginConstant.GET_UUID());
-                            map.put("orderid", "_version=" + VersionInfoUtils.getVersionName(APPBase.getApplication()) + "_order=" + result.data.order_sn + "_amount=" + result.data.order_price);//订单号+版本号+价格
+                            map.put("orderid", result.data.order_price + "_" + VersionInfoUtils.getVersionName(APPBase.getApplication()) + "_" + result.data.order_sn + "_" + pay_mode);//订单号+版本号+价格
                             map.put("amount", result.data.order_price);
-                            MobclickAgent.onEvent(APPBase.getApplication(), LoginMobclickConstant.pay_ment_successful_wechat, map);
+                            MobclickAgent.onEvent(H5PayAct.this, LoginMobclickConstant.pay_ment_successful_wechat, map);
                         }
                         if (LoginConstant.H5Pay_UMENG.contains(LoginConstant.channel)) {
                             //延迟一秒发，以免丢失
@@ -504,26 +503,27 @@ public class H5PayAct extends CommonActivity {
                                         MyLog.d("2222userid" + LoginConstant.GET_UUID() + "_orderid=" + result.data.order_sn + "_amount" + result.data.order_price);
                                         Map<String, String> successPayMap = new HashMap<String, String>();//统计埋点
                                         successPayMap.put("userid", LoginConstant.GET_UUID());
-                                        successPayMap.put("orderid", "_version=" + VersionInfoUtils.getVersionName(APPBase.getApplication()) + "_order=" + result.data.order_sn + "_amount=" + result.data.order_price);//订单号+版本号+价格
+                                        successPayMap.put("orderid", result.data.order_price + "_" + VersionInfoUtils.getVersionName(APPBase.getApplication()) + "_" + result.data.order_sn + "_" + pay_mode);//订单号+版本号+价格
                                         successPayMap.put("item", "开通vip");
                                         successPayMap.put("amount", result.data.order_price);
-                                        MobclickAgent.onEvent(APPBase.getApplication(), "__finish_payment", successPayMap);
-
-                                        //上报成功
-                                        SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_ORDER_ID_NOW, "");
-                                        SPUtils.setBoolean(APPBase.getApplication(), LoginConstant.PAY_PUSH_UMENG, true);
-
+                                        MobclickAgent.onEvent(H5PayAct.this, "__finish_payment", successPayMap);
                                     }
                                 }
                             }, 10);
                         }
+
+                        //上报成功
+                        SPUtils.setString(H5PayAct.this, LoginConstant.PAY_ORDER_ID_NOW, "");
+                        SPUtils.setBoolean(H5PayAct.this, LoginConstant.PAY_PUSH_UMENG, true);
+                        SPUtils.setString(H5PayAct.this, LoginConstant.PAY_MODE, "");
+
                     } else {
                         //支付未完成
-                        SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_ORDER_ID_NOW, "");
+                        SPUtils.setString(H5PayAct.this, LoginConstant.PAY_ORDER_ID_NOW, "");
                     }
                 } else {
                     //支付未完成
-                    SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_ORDER_ID_NOW, "");
+                    SPUtils.setString(H5PayAct.this, LoginConstant.PAY_ORDER_ID_NOW, "");
                 }
             }
         }, "order");

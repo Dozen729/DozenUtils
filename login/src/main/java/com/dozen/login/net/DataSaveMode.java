@@ -98,7 +98,10 @@ public class DataSaveMode {
     }
 
     public static void clearToken() {
-        clearUserInfo();
+        SPUtils.setString(APPBase.getApplication(), LoginConstant.PAY_UUID, "");
+        SPUtils.setString(APPBase.getApplication(),LoginConstant.PAY_UUID_TOKEN,"");
+        SPUtils.setString(APPBase.getApplication(), CommonConstant.USER_TOKEN,"");
+        LoginConstant.SET_UUID("");
     }
 
     public static void registerUUID() {
@@ -123,6 +126,11 @@ public class DataSaveMode {
     }
 
     public static boolean isVip() {
+
+        if (!SPUtils.getBoolean(APPBase.getApplication(),LoginConstant.app_channel_fufei,false)){
+            return true;
+        }
+
         return SPUtils.getBoolean(APPBase.getApplication(), LoginConstant.ISVIP, false);
     }
 
