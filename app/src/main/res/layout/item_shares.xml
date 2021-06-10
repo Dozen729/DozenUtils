@@ -58,7 +58,7 @@
 
         <com.dozen.commonbase.view.roundview.RoundTextView
             android:id="@+id/shares_upup"
-            android:layout_width="50dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:gravity="end"

@@ -23,6 +23,7 @@ import com.dozen.commonbase.utils.AppUtils;
 import com.dozen.commonbase.utils.CommonUtils;
 import com.dozen.commonbase.utils.EmptyCheckUtil;
 import com.dozen.commonbase.utils.MyLog;
+import com.dozen.commonbase.utils.StyleToastUtil;
 import com.dozen.commonbase.utils.ThreadUtils;
 import com.dozen.commonbase.utils.TimeUtil;
 import com.dozen.utils.R;
@@ -105,7 +106,10 @@ public class SharesAct extends CommonActivity {
                     loadNetShares();
                     break;
                 case R.id.shares_jsoup_save:
-                    DataSupport.saveAll(sharesBeanList);
+                    if (CommonUtils.isContinueTwoClick()) {
+                        DataSupport.saveAll(sharesBeanList);
+                        StyleToastUtil.success("D");
+                    }
                     break;
                 case R.id.shares_jsoup_show:
                     showLitePalData();
