@@ -5,6 +5,9 @@
         <item name="colorPrimary">#FF5A20FE</item>
         <item name="colorPrimaryDark">#FF5A20FE</item>
         <item name="colorAccent">#FF5A20FE</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <!--无标题-->

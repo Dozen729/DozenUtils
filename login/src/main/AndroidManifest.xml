@@ -4,6 +4,32 @@
     package="com.dozen.login">
 
     <application>
+        <activity android:name=".act.UrlShowAndroidJsAct"
+            android:label="在线客服"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            tools:targetApi="n"/>
+        <activity
+            android:name=".act.UrlShowAct"
+            android:label="展示H5页面"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            tools:targetApi="n" />
+        <activity
+            android:name=".act.ComplaintAct"
+            android:label="投诉"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            tools:targetApi="n" />
+        <activity
+            android:name=".act.FeedbackAct"
+            android:label="反馈"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            tools:targetApi="n" />
         <activity android:name=".act.H5DownloadAct"
             android:launchMode="singleTask"
             android:resizeableActivity="true"
@@ -58,6 +84,13 @@
             tools:targetApi="n" />
         <activity
             android:name=".act.H5ToWxPayAct"
+            android:label="wxPay"
+            android:launchMode="singleTask"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            tools:targetApi="n" />
+        <activity
+            android:name=".act.H5ToAliPayAct"
             android:label="wxPay"
             android:launchMode="singleTask"
             android:resizeableActivity="true"

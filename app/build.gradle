@@ -15,7 +15,10 @@ android {
 
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        lintOptions {
+            abortOnError false
+            checkReleaseBuilds false
+        }
         //ARouter必要
         javaCompileOptions {
             annotationProcessorOptions {
@@ -96,6 +99,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation project(path: ':commonbase')
+    implementation project(path: ':login')
     implementation project(path: ':cameraview')
 
     // 引入multidex库，jar包太多dex太大时使用

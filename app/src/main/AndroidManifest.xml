@@ -23,11 +23,11 @@
         <activity
             android:name=".act.shares.SharesLineAct"
             android:screenOrientation="portrait"
-            android:theme="@style/AppLauncher" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".act.shares.SharesAct"
             android:screenOrientation="portrait"
-            android:theme="@style/AppLauncher" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".act.TitleActivity"
             android:screenOrientation="portrait" />

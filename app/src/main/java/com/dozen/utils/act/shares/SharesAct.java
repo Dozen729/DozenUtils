@@ -17,6 +17,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.chad.library.adapter.base.listener.OnItemLongClickListener;
 import com.dozen.commonbase.act.CommonActivity;
 import com.dozen.commonbase.router.ARouterLocation;
 import com.dozen.commonbase.utils.AppUtils;
@@ -90,6 +91,16 @@ public class SharesAct extends CommonActivity {
                 ARouter.getInstance().build(ARouterLocation.app_shares_line).withObject("sharesBean", sharesBeanList.get(position)).navigation();
             }
         });
+        sharesAdapter.setOnItemLongClickListener(new OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
+
+                ARouter.getInstance().build(ARouterLocation.app_url_show)
+                        .withString("url_show", "https://xueqiu.com/S/" + sharesBeanList.get(position).getCode() + "?from=status_stock_match").navigation();
+
+                return true;
+            }
+        });
     }
 
     private void btnSetClick(int id) {
@@ -103,6 +114,7 @@ public class SharesAct extends CommonActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.shares_jsoup:
+
                     loadNetShares();
                     break;
                 case R.id.shares_jsoup_save:

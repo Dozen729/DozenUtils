@@ -9,7 +9,7 @@ public class ARouterLocation {
 
     private static final String app_main="/dozen";
 
-    private static final String login_act =app_main+"/login";
+    private static final String login_act ="/login";
 
     public static final String login_feedback= login_act +"/feedback";
 
@@ -25,9 +25,9 @@ public class ARouterLocation {
 
     public static final String login_password= login_act +"/password";
 
-    public static final String app_url_show_android_js = app_main + "/url/show/androidjs";
+    public static final String app_url_show_android_js = login_act + "/url/show/androidjs";
 
-    public static final String app_url_show= app_main +"/url/show";
+    public static final String app_url_show= login_act +"/url/show";
 
     public static final String app_shares = app_main +"/shares";
 
