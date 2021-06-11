@@ -44,7 +44,7 @@ public class UrlShowAct extends AppCompatActivity {
         mBundle.putString(AgentWebFragment.URL_KEY, url);
         ft.commit();
 
-        mAgentWebFragment.setMenuState(false);
+//        mAgentWebFragment.setMenuState(false);
     }
 
     @Override

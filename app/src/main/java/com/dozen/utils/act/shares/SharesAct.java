@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -55,8 +54,6 @@ public class SharesAct extends CommonActivity {
 
     @Override
     protected int setLayout() {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         return R.layout.activity_shares;
     }
 
@@ -65,6 +62,8 @@ public class SharesAct extends CommonActivity {
         btnSetClick(R.id.shares_jsoup);
         btnSetClick(R.id.shares_jsoup_save);
         btnSetClick(R.id.shares_jsoup_show);
+        btnSetClick(R.id.shares_jsoup_clear);
+        btnSetClick(R.id.shares_jsoup_open);
         recyclerView = findViewById(R.id.shares_recycler_view);
     }
 
@@ -125,6 +124,13 @@ public class SharesAct extends CommonActivity {
                     break;
                 case R.id.shares_jsoup_show:
                     showLitePalData();
+                    break;
+                case R.id.shares_jsoup_clear:
+                    sharesBeanList.clear();
+                    sharesAdapter.notifyDataSetChanged();
+                    break;
+                case R.id.shares_jsoup_open:
+                    ARouter.getInstance().build(ARouterLocation.app_url_show).withString("url_show", "https://i.eastmoney.com/9069375875299658").navigation();
                     break;
             }
         }

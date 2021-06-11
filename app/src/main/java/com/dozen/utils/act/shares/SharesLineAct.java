@@ -14,6 +14,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dozen.commonbase.act.CommonActivity;
 import com.dozen.commonbase.router.ARouterLocation;
+import com.dozen.commonbase.utils.EmptyCheckUtil;
+import com.dozen.commonbase.utils.StyleToastUtil;
 import com.dozen.utils.R;
 import com.dozen.utils.bean.SharesBean;
 import com.github.mikephil.charting.charts.LineChart;
@@ -51,8 +53,6 @@ public class SharesLineAct extends CommonActivity implements OnChartValueSelecte
 
     @Override
     protected int setLayout() {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         return R.layout.activity_shares_line;
     }
 
@@ -181,9 +181,14 @@ public class SharesLineAct extends CommonActivity implements OnChartValueSelecte
 
     private void initLineData() {
 //        testData("300", 1);
-
         List<SharesBean> listBean = DataSupport.where("code = ?", sharesBean.getCode()).find(SharesBean.class);
-        addData(listBean);
+        if (!EmptyCheckUtil.isEmpty(listBean)) {
+            addData(listBean);
+        }else {
+            StyleToastUtil.success("empty");
+            finish();
+            return;
+        }
 
         setData();
 

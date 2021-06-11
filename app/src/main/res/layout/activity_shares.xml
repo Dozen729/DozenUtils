@@ -34,7 +34,20 @@
             android:layout_weight="1"
             android:text="show"
             android:textSize="10sp" />
-
+        <Button
+            android:id="@+id/shares_jsoup_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="clear"
+            android:textSize="10sp" />
+        <Button
+            android:id="@+id/shares_jsoup_open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="open"
+            android:textSize="10sp" />
     </LinearLayout>
 
 
