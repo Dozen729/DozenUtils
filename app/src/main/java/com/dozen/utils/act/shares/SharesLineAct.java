@@ -131,7 +131,7 @@ public class SharesLineAct extends CommonActivity implements OnChartValueSelecte
 
             // axis range
             yAxis.setAxisMaximum(25f);
-            yAxis.setAxisMinimum(-5f);
+            yAxis.setAxisMinimum(-25f);
         }
 
 
@@ -184,6 +184,7 @@ public class SharesLineAct extends CommonActivity implements OnChartValueSelecte
         List<SharesBean> listBean = DataSupport.where("code = ?", sharesBean.getCode()).find(SharesBean.class);
         if (!EmptyCheckUtil.isEmpty(listBean)) {
             addData(listBean);
+            addUpUpData(listBean);
         }else {
             StyleToastUtil.success("empty");
             finish();
@@ -208,6 +209,54 @@ public class SharesLineAct extends CommonActivity implements OnChartValueSelecte
 
     }
 
+    private void addUpUpData(List<SharesBean> list) {
+
+        LineDataSet set;
+        ArrayList<Entry> values = new ArrayList<>();
+        for (SharesBean bean : list) {
+            values.add(new Entry(bean.getSid(), bean.getUpup(), bean));
+        }
+
+        // create a dataset and give it a type
+        set = new LineDataSet(values, list.get(0).getCode());
+
+        int r = (int) (Math.random() * 245) + list.get(0).getRanking();
+        int g = (int) (Math.random() * 245) + list.get(0).getRanking();
+        int b = (int) (Math.random() * 245) + list.get(0).getRanking();
+        set.setColor(Color.rgb(r, g, b));
+        set.setFillColor(Color.rgb(r, g, b));
+
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set.setCircleColor(Color.RED);
+        set.setLineWidth(2f);
+        set.setCircleRadius(3f);
+        set.setFillAlpha(65);
+        set.setHighLightColor(Color.rgb(244, 117, 117));
+        set.setDrawCircleHole(false);
+        // customize legend entry
+        set.setFormLineWidth(1f);
+        set.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
+        set.setFormSize(15.f);
+
+        // text size of values
+        set.setValueTextSize(9f);
+
+        // set the filled area
+        set.setDrawFilled(true);
+        set.setFillFormatter(new IFillFormatter() {
+            @Override
+            public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                return chart.getAxisLeft().getAxisMinimum();
+            }
+        });
+
+//        set.setMode(set.getMode() == LineDataSet.Mode.CUBIC_BEZIER
+//                ? LineDataSet.Mode.LINEAR
+//                :  LineDataSet.Mode.CUBIC_BEZIER);
+
+        lineDataSetList.add(set);
+    }
+
     private void addData(List<SharesBean> list) {
 
         LineDataSet set;
@@ -226,7 +275,7 @@ public class SharesLineAct extends CommonActivity implements OnChartValueSelecte
         set.setFillColor(Color.rgb(r, g, b));
 
         set.setAxisDependency(YAxis.AxisDependency.LEFT);
-        set.setCircleColor(Color.RED);
+        set.setCircleColor(Color.BLUE);
         set.setLineWidth(2f);
         set.setCircleRadius(3f);
         set.setFillAlpha(65);
