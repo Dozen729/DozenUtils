@@ -17,6 +17,11 @@
         tools:ignore="ProtectedPermissions" />
 
     <application>
+
+        <service
+            android:name=".h5.WebService"
+            android:process=":web" />
+
         <service android:name=".view.suspend.SuspendService"/>
         <activity android:name=".h5.BaseWebActivity" />
 

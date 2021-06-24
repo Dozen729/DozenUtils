@@ -1,6 +1,7 @@
 package com.dozen.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -12,8 +13,10 @@ import androidx.multidex.MultiDex;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dozen.commonbase.APPBase;
 import com.dozen.commonbase.CommonConstant;
+import com.dozen.commonbase.h5.WebService;
 import com.dozen.commonbase.mode.MiitHelper;
 import com.dozen.commonbase.utils.SPUtils;
+import com.queue.library.GlobalQueue;
 
 import org.litepal.LitePal;
 import org.litepal.LitePalApplication;
@@ -58,6 +61,14 @@ public class MyApplication extends LitePalApplication {
         initEnvironment();
 
         initOaid();
+
+        //webView
+        GlobalQueue.getMainQueue().postRunnableInIdleRunning(new Runnable() {
+            @Override
+            public void run() {
+                startService(new Intent(MyApplication.this, WebService.class));
+            }
+        });
     }
 
     private void initOaid() {
