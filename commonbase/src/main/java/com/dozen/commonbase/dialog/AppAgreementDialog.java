@@ -3,7 +3,6 @@ package com.dozen.commonbase.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -105,9 +104,9 @@ public class AppAgreementDialog extends Dialog {
 
         SpannableString spanTextYinSi = new SpannableString(middleText);
 
-        List<Integer> listUR = StringUtils.searchAllIndex(middleText,"《使用条款》");
+        List<Integer> listUR = StringUtils.searchAllIndex(middleText, "《使用条款》");
 
-        for (Integer in:listUR){
+        for (Integer in : listUR) {
             // 用户协议
             spanTextYinSi.setSpan(new ClickableSpan() {
 
@@ -122,12 +121,12 @@ public class AppAgreementDialog extends Dialog {
                 public void onClick(View view) {
                     OkListener.UserRule();
                 }
-            }, in, in+6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }, in, in + 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
-        List<Integer> listPP = StringUtils.searchAllIndex(middleText,"《隐私政策》");
+        List<Integer> listPP = StringUtils.searchAllIndex(middleText, "《隐私政策》");
 
-        for (Integer in:listPP){
+        for (Integer in : listPP) {
             // 隐私政策
             spanTextYinSi.setSpan(new ClickableSpan() {
 
@@ -142,7 +141,7 @@ public class AppAgreementDialog extends Dialog {
                 public void onClick(View view) {
                     OkListener.PrivatePolicy();
                 }
-            }, in, in+6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }, in, in + 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
 
         tx_bottom_term.setHighlightColor(Color.TRANSPARENT); //设置点击后的颜色为透明，否则会一直出现高亮
@@ -151,38 +150,49 @@ public class AppAgreementDialog extends Dialog {
     }
 
     private void initBottomTerm(TextView tx_bottom_term) {
-        SpannableString spanTextYinSi = new SpannableString(mContext.getResources().getString(R.string.agreement_end));
-        // 用户协议
-        spanTextYinSi.setSpan(new ClickableSpan() {
+        String middleText = mContext.getResources().getString(R.string.agreement_end);
 
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
-                ds.setUnderlineText(true);      //设置下划线
-            }
+        SpannableString spanTextYinSi = new SpannableString(middleText);
 
-            @Override
-            public void onClick(View view) {
-                OkListener.UserRule();
-            }
-        }, 5, 11, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        List<Integer> listUR = StringUtils.searchAllIndex(middleText, "《使用条款》");
 
-        // 隐私政策
-        spanTextYinSi.setSpan(new ClickableSpan() {
+        for (Integer in : listUR) {
+            // 用户协议
+            spanTextYinSi.setSpan(new ClickableSpan() {
 
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
-                ds.setUnderlineText(true);      //设置下划线
-            }
+                @Override
+                public void updateDrawState(TextPaint ds) {
+                    super.updateDrawState(ds);
+                    ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
+                    ds.setUnderlineText(true);      //设置下划线
+                }
 
-            @Override
-            public void onClick(View view) {
-                OkListener.PrivatePolicy();
-            }
-        }, 12, 18, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                @Override
+                public void onClick(View view) {
+                    OkListener.UserRule();
+                }
+            }, in, in + 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        List<Integer> listPP = StringUtils.searchAllIndex(middleText, "《隐私政策》");
+
+        for (Integer in : listPP) {
+            // 隐私政策
+            spanTextYinSi.setSpan(new ClickableSpan() {
+
+                @Override
+                public void updateDrawState(TextPaint ds) {
+                    super.updateDrawState(ds);
+                    ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
+                    ds.setUnderlineText(true);      //设置下划线
+                }
+
+                @Override
+                public void onClick(View view) {
+                    OkListener.PrivatePolicy();
+                }
+            }, in, in + 6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
 
         tx_bottom_term.setHighlightColor(Color.TRANSPARENT); //设置点击后的颜色为透明，否则会一直出现高亮
         tx_bottom_term.setText(spanTextYinSi);

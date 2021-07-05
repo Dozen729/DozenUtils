@@ -33,6 +33,7 @@ public class TitleView extends LinearLayout {
     private TextView rightText;//右边文字
     private ImageView rightPicture;//右边图标
     private RoundLinearLayout rllRightBg;//右边背景
+    private int topContentColor = getResources().getColor(R.color.top_content_color);
 
     public TitleView(Context context) {
         super(context);
@@ -81,9 +82,9 @@ public class TitleView extends LinearLayout {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TitleView);
         String title = ta.getString(R.styleable.TitleView_titleName);
         setTitle(title);
-        int color = ta.getColor(R.styleable.TitleView_titleColor, Color.WHITE);
+        int color = ta.getColor(R.styleable.TitleView_titleColor, topContentColor);
         titleView.setTextColor(color);
-        float dimension = ta.getDimension(R.styleable.TitleView_titleSize, 16);
+        float dimension = ta.getDimension(R.styleable.TitleView_titleSize, 20);
         titleView.setTextSize(dimension);
 
         boolean titleLeftShow = ta.getBoolean(R.styleable.TitleView_titleLeftShow, true);
@@ -93,7 +94,7 @@ public class TitleView extends LinearLayout {
 
         String rightTitle = ta.getString(R.styleable.TitleView_rightTextName);
         rightText.setText(rightTitle);
-        int rightColor = ta.getColor(R.styleable.TitleView_rightTextColor, Color.WHITE);
+        int rightColor = ta.getColor(R.styleable.TitleView_rightTextColor, topContentColor);
         rightText.setTextColor(rightColor);
         float rightDimension = ta.getDimension(R.styleable.TitleView_rightTextSize, 16);
         rightText.setTextSize(rightDimension);
@@ -102,7 +103,7 @@ public class TitleView extends LinearLayout {
 
         boolean pictureV = ta.getBoolean(R.styleable.TitleView_rightImageShow, false);
         rightPicture.setVisibility(pictureV ? View.VISIBLE : View.GONE);
-        int picture = ta.getResourceId(R.styleable.TitleView_rightImagePicture,R.drawable.icon_white_add);
+        int picture = ta.getResourceId(R.styleable.TitleView_rightImagePicture,R.mipmap.icon_white_add);
         rightPicture.setBackgroundResource(picture);
 
         int rightBgColor = ta.getColor(R.styleable.TitleView_rightBackgroundColor, 0);
@@ -113,8 +114,8 @@ public class TitleView extends LinearLayout {
         int bgColor = ta.getColor(R.styleable.TitleView_topBackground, Color.WHITE);
         findViewById(R.id.top_title_bg).setBackgroundColor(bgColor);
 
-        int backP = ta.getResourceId(R.styleable.TitleView_backPicture,R.drawable.icon_left_return_white);
-        int backPColor = ta.getColor(R.styleable.TitleView_backPictureColor, Color.WHITE);
+        int backP = ta.getResourceId(R.styleable.TitleView_backPicture,R.mipmap.icon_left_return_gray);
+        int backPColor = ta.getColor(R.styleable.TitleView_backPictureColor, topContentColor);
 
         @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable = getResources().getDrawable(backP);
         backPicture.setImageResource(0);
