@@ -22,6 +22,9 @@ public class CommonConstant {
     public static final int REQUEST_PERMISSIONS=10001;
     public static final String USER_TOKEN="user_token";
 
+    public static final String permissions_state = "permissions_state";//权限判断
+    public static final String app_no_net = "app_no_net";//网络实时判断
+
     //token失效错误码
     public static final String TOKEN_INVALID_CODE = "10001";
     //token失效广播
