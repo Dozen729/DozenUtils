@@ -18,6 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.dozen.commonbase.R;
+import com.dozen.commonbase.utils.EmptyCheckUtil;
 import com.dozen.commonbase.utils.ScreenUtils;
 import com.dozen.commonbase.utils.StringUtils;
 
@@ -91,16 +92,24 @@ public class AppAgreementDialog extends Dialog {
         tvHead.setText(head);
     }
 
+    public void setBodyContext(String body) {
+        initMiddleTerm(tvAgreement, body);
+    }
+
     @Override
     public void show() {
         super.show();
-        initMiddleTerm(tvAgreement);
+        initMiddleTerm(tvAgreement, "");
         initBottomTerm(tvUserRule);
     }
 
-    private void initMiddleTerm(TextView tx_bottom_term) {
+    private void initMiddleTerm(TextView tx_bottom_term, String body) {
 
         String middleText = mContext.getResources().getString(R.string.agreement);
+
+        if (!EmptyCheckUtil.isEmpty(body)) {
+            middleText = body;
+        }
 
         SpannableString spanTextYinSi = new SpannableString(middleText);
 
@@ -113,7 +122,7 @@ public class AppAgreementDialog extends Dialog {
                 @Override
                 public void updateDrawState(TextPaint ds) {
                     super.updateDrawState(ds);
-                    ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
+                    ds.setColor(mContext.getResources().getColor(R.color.title_bg2));       //设置文件颜色
                     ds.setUnderlineText(true);      //设置下划线
                 }
 
@@ -133,7 +142,7 @@ public class AppAgreementDialog extends Dialog {
                 @Override
                 public void updateDrawState(TextPaint ds) {
                     super.updateDrawState(ds);
-                    ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
+                    ds.setColor(mContext.getResources().getColor(R.color.title_bg2));       //设置文件颜色
                     ds.setUnderlineText(true);      //设置下划线
                 }
 
@@ -163,7 +172,7 @@ public class AppAgreementDialog extends Dialog {
                 @Override
                 public void updateDrawState(TextPaint ds) {
                     super.updateDrawState(ds);
-                    ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
+                    ds.setColor(mContext.getResources().getColor(R.color.title_bg2));       //设置文件颜色
                     ds.setUnderlineText(true);      //设置下划线
                 }
 
@@ -183,7 +192,7 @@ public class AppAgreementDialog extends Dialog {
                 @Override
                 public void updateDrawState(TextPaint ds) {
                     super.updateDrawState(ds);
-                    ds.setColor(mContext.getResources().getColor(R.color.green));       //设置文件颜色
+                    ds.setColor(mContext.getResources().getColor(R.color.title_bg2));       //设置文件颜色
                     ds.setUnderlineText(true);      //设置下划线
                 }
 

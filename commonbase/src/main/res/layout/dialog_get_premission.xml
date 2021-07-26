@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:ignore="MissingDefaultResource">
 
     <com.dozen.commonbase.view.roundview.RoundLinearLayout
-        android:minWidth="280dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:rv_cornerRadius="14dp"
+        android:minWidth="280dp"
+        android:orientation="vertical"
         app:rv_backgroundColor="#FFFFFFFF"
-        android:orientation="vertical" >
+        app:rv_cornerRadius="14dp">
 
         <TextView
             android:id="@+id/tv_title_show"
@@ -21,39 +21,38 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
             android:gravity="center"
-            android:textColor="#FF0009"
-            android:textSize="18sp"
-            android:text="权限申请"/>
+            android:text="权限申请"
+            android:textColor="#FF302E51"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:gravity="center"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:text="当前缺少必要权限,比如“文件存储”,“相机”权限。请点击(设置->权限管理)，打开所需权限。"/>
+            android:text="当前缺少必要权限,比如“获取位置”,“存储”权限。请点击(设置->权限管理)，打开所需权限。"
+            android:textColor="#FF444950"
+            android:textSize="16sp" />
 
 
-        <com.dozen.commonbase.view.roundview.RoundTextView
+        <Button
             android:id="@+id/tvOK"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="25dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="37dp"
+            android:layout_marginTop="25dp"
             android:layout_marginRight="37dp"
             android:layout_marginBottom="44dp"
-            app:rv_cornerRadius="6dp"
-            app:rv_backgroundColor="#FF606AED"
-            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_btn_currency"
             android:gravity="center"
+            android:text="去开启权限"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:text="去开启权限"/>
+            android:textSize="16sp" />
     </com.dozen.commonbase.view.roundview.RoundLinearLayout>
 
     <ImageView
@@ -61,10 +60,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:paddingTop="15dp"
         android:paddingLeft="8dp"
-        android:paddingBottom="8dp"
+        android:paddingTop="15dp"
         android:paddingRight="12dp"
-        android:src="@mipmap/icon_delete_blue"/>
+        android:paddingBottom="8dp"
+        android:src="@mipmap/icon_close" />
 
 </FrameLayout>
